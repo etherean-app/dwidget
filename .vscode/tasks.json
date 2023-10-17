@@ -1,0 +1,27 @@
+// https://stackoverflow.com/questions/73064022/set-a-dev-container-to-open-a-terminal
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Template",
+      "type": "shell",
+      "command": "pnpm dev",
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "group": "startGroup",
+        "reveal": "always",
+        "panel": "new",
+        "echo": false
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/packages/template"
+      }
+    }
+  ]
+}
