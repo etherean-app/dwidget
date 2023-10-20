@@ -4,24 +4,24 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
-    {
-      "label": "Start Template",
-      "type": "shell",
-      "command": "pnpm dev",
-      "group": "build",
-      "isBackground": true,
-      "presentation": {
-        "group": "startGroup",
-        "reveal": "always",
-        "panel": "new",
-        "echo": false
-      },
-      "runOptions": {
-        "runOn": "folderOpen"
-      },
-      "options": {
-        "cwd": "${workspaceFolder}/packages/template"
-      }
-    }
+    // {
+    //   "label": "Start Template",
+    //   "type": "shell",
+    //   "command": "pnpm dev",
+    //   "group": "build",
+    //   "isBackground": true,
+    //   "presentation": {
+    //     "group": "startGroup",
+    //     "reveal": "always",
+    //     "panel": "new",
+    //     "echo": false
+    //   },
+    //   "runOptions": {
+    //     "runOn": "folderOpen"
+    //   },
+    //   "options": {
+    //     "cwd": "${workspaceFolder}/packages/template"
+    //   }
+    // }
   ]
 }

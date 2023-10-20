@@ -3,7 +3,9 @@
 {
   "name": "Node.js & TypeScript",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-18",
+  "build": {
+    "dockerfile": "./Dockerfile"
+  },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     // https://github.com/devcontainers/features/tree/main/src/common-utils
@@ -22,7 +24,9 @@
       "version": "latest"
     },
     // https://github.com/devcontainers/features/tree/main/src/node
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/node:1": {},
+    // https://github.com/devcontainers-contrib/features/tree/main/src/vercel-cli
+    "ghcr.io/devcontainers-contrib/features/vercel-cli:1": {}
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -33,7 +37,10 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "figma.figma-vscode-extension",
+        "github.vscode-github-actions"
       ],
       "settings": {
         "dev.containers.copyGitConfig": true
