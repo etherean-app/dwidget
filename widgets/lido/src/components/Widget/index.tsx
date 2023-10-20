@@ -88,7 +88,7 @@ export const Widget = observer(function Widget() {
           </div>
         </div>
       </div>
-      <h1 className="text-3xl font-bold  text-center">{data.rewards}</h1>
+      <h1 className="text-3xl font-bold  text-center">{data.rewards} 1</h1>
     </div>
   );
 });
