@@ -1,0 +1,39 @@
+{
+  "private": true,
+  "name": "@dwidget/template",
+  "version": "0.0.0",
+  "description": "Lido widget",
+  "author": "Alexey Elizarov <alex.elizarov1@gmail.com>",
+  "homepage": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:proto": "pnpm dlx protoc -I src/proto --ts_out src/proto --ts_opt optimize_code_size etherean.proto",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@dwidget/shared": "workspace:^",
+    "@legendapp/state": "^2.0.1",
+    "@protobuf-ts/grpcweb-transport": "^2.9.1",
+    "@protobuf-ts/plugin": "^2.9.1",
+    "@protobuf-ts/runtime": "^2.9.1",
+    "@protobuf-ts/runtime-rpc": "^2.9.1",
+    "@tanstack/react-query": "^5.0.0",
+    "preact": "^10.16.0",
+    "viem": "^1.16.6",
+    "wagmi": "^1.4.4"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.5.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-banner": "^0.7.1",
+    "vite-plugin-compression2": "^0.10.6",
+    "vite-plugin-progress": "^0.0.7"
+  }
+}

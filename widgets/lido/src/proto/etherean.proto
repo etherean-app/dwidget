@@ -1,0 +1,15 @@
+syntax = "proto3";
+package etherean;
+
+service EthereanGrpc {
+    rpc GetLidoRewards (LidoRewardsRequest) returns (LidoRewardsReply);
+}
+
+message LidoRewardsRequest {
+    string user_wallet = 1; // ethereum wallet address
+    uint32 limit = 2; // count of days for calculate rewards e.g. 1/7/31
+}
+
+message LidoRewardsReply {
+    string rewards = 1;
+}
