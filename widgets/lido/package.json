@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@dwidget/template",
+  "name": "@dwidget/lido",
   "version": "0.0.0",
   "description": "Lido widget",
   "author": "Alexey Elizarov <alex.elizarov1@gmail.com>",
