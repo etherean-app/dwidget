@@ -1,35 +1,14 @@
+import path from "path";
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
-import banner from "vite-plugin-banner";
-import progress from "vite-plugin-progress";
-import { visualizer } from "rollup-plugin-visualizer";
-import compression from "vite-plugin-compression2";
-import path from "path";
+import { plugins } from "@dwidget/vite";
+
 import pkg from "./package.json";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "dwidget/lido",
-  plugins: [
-    progress(),
-    banner({
-      content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`,
-    }),
-    preact(),
-    compression({
-      algorithm: "gzip",
-      exclude: [/\.(br)$ /, /\.(gz)$/],
-    }),
-    compression({
-      algorithm: "brotliCompress",
-      exclude: [/\.(br)$ /, /\.(gz)$/],
-    }),
-    visualizer({
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-    }),
-  ],
+  plugins: [preact(), plugins({ pkg })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/"),

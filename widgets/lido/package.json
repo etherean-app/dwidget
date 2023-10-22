@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@dwidget/lido",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Lido widget",
   "author": "Alexey Elizarov <alex.elizarov1@gmail.com>",
   "homepage": "",
@@ -14,9 +14,7 @@
   },
   "dependencies": {
     "@dwidget/shared": "workspace:^",
-    "@legendapp/state": "^2.0.1",
-    "@protobuf-ts/grpcweb-transport": "^2.9.1",
-    "@protobuf-ts/plugin": "^2.9.1",
+    "@dwidget/vite": "workspace:^",
     "@protobuf-ts/runtime": "^2.9.1",
     "@protobuf-ts/runtime-rpc": "^2.9.1",
     "@tanstack/react-query": "^5.0.0",
@@ -29,12 +27,8 @@
     "@preact/preset-vite": "^2.5.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
-    "rollup-plugin-visualizer": "^5.9.2",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vite-plugin-banner": "^0.7.1",
-    "vite-plugin-compression2": "^0.10.6",
-    "vite-plugin-progress": "^0.0.7"
+    "vite": "^4.4.5"
   }
 }

@@ -22,9 +22,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    // "typeRoots": [
-    //   "./types"
-    // ],
     "baseUrl": "./",
     "paths": {
       "@/*": [

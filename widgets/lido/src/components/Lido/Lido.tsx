@@ -1,11 +1,9 @@
 import useRewards from "@/hooks/data/useRewards";
 import { useEffect } from "preact/hooks";
 import { useAccount, useConnect } from "wagmi";
-import { observer } from "@legendapp/state/react";
 import { Column } from "./Column";
-// import { Reactive } from "@legendapp/state/react";
 
-export const Widget = observer(function Widget() {
+export const Lido = () => {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
 
@@ -38,4 +36,4 @@ export const Widget = observer(function Widget() {
       {/* <h1 className="text-3xl font-bold  text-center">{data.rewards} 1</h1> */}
     </div>
   );
-});
+};

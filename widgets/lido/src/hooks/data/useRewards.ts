@@ -1,10 +1,10 @@
-import { useContext } from "preact/hooks";
 import { LidoRewardsRequest } from "@/proto/etherean";
-import GrpcContext from "@/contexts/GrpcContext";
-import useGrpcQuery from "../useGrpcQuery";
+import { IGrpcContext } from "@/providers";
+import { useGrpcContext } from "@dwidget/shared/contexts";
+import { useGrpcQuery } from "@dwidget/shared/hooks";
 
 export const useRewards = (args: LidoRewardsRequest) => {
-  const { ethereanClient } = useContext(GrpcContext);
+  const { ethereanClient } = useGrpcContext<IGrpcContext>();
   const {
     data: rewards,
     isLoading,
