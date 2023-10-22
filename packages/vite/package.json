@@ -1,0 +1,19 @@
+{
+  "name": "@dwidget/vite",
+  "version": "1.0.0",
+  "description": "Default vite configs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "dependencies": {
+    "rollup-plugin-visualizer": "^5.9.2",
+    "vite-plugin-banner": "^0.7.1",
+    "vite-plugin-compression2": "^0.10.6",
+    "vite-plugin-progress": "^0.0.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

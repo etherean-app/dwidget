@@ -1,12 +1,16 @@
 {
   "name": "@dwidget/shared",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Shared codebase for dwidgets",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "@protobuf-ts/grpcweb-transport": "^2.9.1",
+    "@protobuf-ts/runtime-rpc": "^2.9.1",
+    "@tanstack/react-query": "^5.0.0",
+    "preact": "^10.16.0",
+    "viem": "^1.16.6",
+    "wagmi": "^1.4.5"
+  }
 }
