@@ -1,5 +1,4 @@
-import { createContext } from "preact";
-import { ReactNode } from "preact/compat";
+import { createContext, ComponentChildren } from "preact";
 import { useContext } from "preact/hooks";
 
 import { EthereanGrpcClient } from "@/proto/etherean.client";
@@ -24,7 +23,11 @@ const defaultValue: IGrpcContext = {
 
 const GrpcContext = createContext<IGrpcContext>(defaultValue);
 
-export const GrpcContextProvider = ({ children }: { children: ReactNode }) => (
+export const GrpcContextProvider = ({
+  children,
+}: {
+  children: ComponentChildren;
+}) => (
   <GrpcContext.Provider value={defaultValue}>{children}</GrpcContext.Provider>
 );
 

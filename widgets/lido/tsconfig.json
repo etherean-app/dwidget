@@ -22,6 +22,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    // "typeRoots": [
+    //   "./types"
+    // ],
+    "baseUrl": "./",
     "paths": {
       "@/*": [
         "./src/*"
@@ -31,11 +35,12 @@
       ],
       "react-dom": [
         "./node_modules/preact/compat/"
-      ]
+      ],
     }
   },
   "include": [
-    "src"
+    "src",
+    "typing/**/*.d.ts"
   ],
   "references": [
     {

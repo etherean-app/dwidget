@@ -320,6 +320,9 @@ importers:
       wagmi:
         specifier: ^1.4.4
         version: 1.4.4(react@18.2.0)(typescript@5.2.2)(viem@1.16.6)
+      windstitch:
+        specifier: ^0.3.0
+        version: 0.3.0(react@18.2.0)
     devDependencies:
       '@preact/preset-vite':
         specifier: ^2.5.0
@@ -6800,6 +6803,15 @@ packages:
     dependencies:
       isexe: 2.0.0
     dev: true
+
+  /windstitch@0.3.0(react@18.2.0):
+    resolution: {integrity: sha512-xn48NPYKCcj8QHfn2/sQGF/zWRuHfSweRkUnSQnL6Szoyp7L2D6b+XbjlQY8FW8BIzc2Rq3ltx0Z5KpfFLyJkw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /wrap-ansi@6.2.0:
     resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}

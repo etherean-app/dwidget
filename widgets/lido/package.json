@@ -22,7 +22,8 @@
     "@tanstack/react-query": "^5.0.0",
     "preact": "^10.16.0",
     "viem": "^1.16.6",
-    "wagmi": "^1.4.4"
+    "wagmi": "^1.4.4",
+    "windstitch": "^0.3.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
