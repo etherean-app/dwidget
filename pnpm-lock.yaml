@@ -183,7 +183,7 @@ importers:
         version: 0.10.6
       vite-plugin-progress:
         specifier: ^0.0.7
-        version: 0.0.7(vite@4.4.11)
+        version: 0.0.7(vite@4.5.0)
     devDependencies:
       typescript:
         specifier: ^5.2.2
@@ -280,17 +280,17 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
       '@tanstack/react-query':
-        specifier: ^5.0.0
-        version: 5.0.0(react@18.2.0)
+        specifier: ^5.0.5
+        version: 5.0.5(react@18.2.0)
       preact:
-        specifier: ^10.16.0
+        specifier: ^10.18.1
         version: 10.18.1
       viem:
         specifier: ^1.16.6
         version: 1.16.6(typescript@5.2.2)
       wagmi:
-        specifier: ^1.4.4
-        version: 1.4.4(react@18.2.0)(typescript@5.2.2)(viem@1.16.6)
+        specifier: ^1.4.5
+        version: 1.4.5(react@18.2.0)(typescript@5.2.2)(viem@1.16.6)
       windstitch:
         specifier: ^0.3.0
         version: 0.3.0(react@18.2.0)
@@ -2536,6 +2536,10 @@ packages:
     resolution: {integrity: sha512-Y1BpiA6BblJd/UlVqxEVeAG7IACn568YJuTTItAiecBI7En+33g780kg+/8lhgl+BzcUPN7o+NjBrSRGJoemyQ==}
     dev: false
 
+  /@tanstack/query-core@5.0.5:
+    resolution: {integrity: sha512-MThCETMkHDHTnFZHp71L+SqTtD5d6XHftFCVR1xRJdWM3qGrlQ2VCXaj0SKVcyJej2e1Opa2c7iknu1llxCDNQ==}
+    dev: false
+
   /@tanstack/query-persist-client-core@4.36.1:
     resolution: {integrity: sha512-eocgCeI7D7TRv1IUUBMfVwOI0wdSmMkBIbkKhqEdTrnUHUQEeOaYac8oeZk2cumAWJdycu6P/wB+WqGynTnzXg==}
     dependencies:
@@ -2605,6 +2609,22 @@ packages:
         optional: true
     dependencies:
       '@tanstack/query-core': 5.0.0
+      react: 18.2.0
+    dev: false
+
+  /@tanstack/react-query@5.0.5(react@18.2.0):
+    resolution: {integrity: sha512-ZG0Q4HZ0iuI8mWiZ2/MdVYPHbrmAVhMn7+gLOkxJh6zLIgCL4luSZlohzN5Xt4MjxfxxWioO1nemwpudaTsmQg==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 5.0.5
       react: 18.2.0
     dev: false
 
@@ -3077,7 +3097,7 @@ packages:
       eventemitter3: 4.0.7
       typescript: 5.2.2
       viem: 1.16.6(typescript@5.2.2)
-      zustand: 4.4.3(react@18.2.0)
+      zustand: 4.4.4(react@18.2.0)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - '@types/react'
@@ -6775,7 +6795,7 @@ packages:
       - rollup
     dev: false
 
-  /vite-plugin-progress@0.0.7(vite@4.4.11):
+  /vite-plugin-progress@0.0.7(vite@4.5.0):
     resolution: {integrity: sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==}
     engines: {node: '>=14', pnpm: '>=7.0.0'}
     peerDependencies:
@@ -6784,7 +6804,7 @@ packages:
       picocolors: 1.0.0
       progress: 2.0.3
       rd: 2.0.1
-      vite: 4.4.11(@types/node@20.8.7)
+      vite: 4.5.0
     dev: false
 
   /vite@4.4.11(@types/node@20.8.7):
@@ -6821,6 +6841,42 @@ packages:
       rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
+
+  /vite@4.5.0:
+    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.18.20
+      postcss: 8.4.31
+      rollup: 3.29.4
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: false
 
   /wagmi@0.12.19(ethers@5.7.2)(react-dom@18.2.0)(react@17.0.2)(typescript@5.2.2):
     resolution: {integrity: sha512-S/el9BDb/HNeQWh1v8TvntMPX/CgKLDAoJqDb8i7jifLfWPqFL7gor3vnI1Vs6ZlB8uh7m+K1Qyg+mKhbITuDQ==}
@@ -7132,6 +7188,25 @@ packages:
 
   /zustand@4.4.3(react@18.2.0):
     resolution: {integrity: sha512-oRy+X3ZazZvLfmv6viIaQmtLOMeij1noakIsK/Y47PWYhT8glfXzQ4j0YcP5i0P0qI1A4rIB//SGROGyZhx91A==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /zustand@4.4.4(react@18.2.0):
+    resolution: {integrity: sha512-5UTUIAiHMNf5+mFp7/AnzJXS7+XxktULFN0+D1sCiZWyX7ZG+AQpqs2qpYrynRij4QvoDdCD+U+bmg/cG3Ucxw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'
