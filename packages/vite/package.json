@@ -10,9 +10,12 @@
   "dependencies": {
     "@preact/preset-vite": "^2.5.0",
     "rollup-plugin-visualizer": "^5.9.2",
+    "unplugin-compression": "^0.0.5",
     "vite-plugin-banner": "^0.7.1",
     "vite-plugin-compression2": "^0.10.6",
-    "vite-plugin-progress": "^0.0.7"
+    "vite-plugin-generate-file": "^0.0.4",
+    "vite-plugin-progress": "^0.0.7",
+    "vite-plugin-turbo-console": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
