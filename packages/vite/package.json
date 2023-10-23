@@ -8,12 +8,17 @@
     "build": "tsc --build"
   },
   "dependencies": {
+    "@preact/preset-vite": "^2.5.0",
     "rollup-plugin-visualizer": "^5.9.2",
     "vite-plugin-banner": "^0.7.1",
     "vite-plugin-compression2": "^0.10.6",
     "vite-plugin-progress": "^0.0.7"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^4.4.5"
+  },
+  "peerDependencies": {
+    "vite": "^4.4.5"
   }
 }
