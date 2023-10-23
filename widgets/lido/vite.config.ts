@@ -7,7 +7,7 @@ import pkg from "./package.json";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: pkg.name.substring(1), // "dwidget/lido"
+  base: pkg.name.substring(1), //  "dwidget/lido"
   plugins: [preact(), plugins({ pkg })],
   resolve: {
     alias: {
