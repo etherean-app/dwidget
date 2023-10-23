@@ -8,13 +8,18 @@ interface Pkg {
   version: string;
   description: string;
   author: string;
-  homepage: string;
+  homepage?: string;
 }
 
 export const plugins = ({ pkg }: { pkg: Pkg }) => [
   progress(),
+  // TODO: use join
   banner({
-    content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`,
+    content: `/**\n * name: ${pkg.name}\n * version: v${
+      pkg.version
+    }\n * description: ${pkg.description}\n * author: ${pkg.author}${
+      pkg.homepage ? "\n * homepage: ${pkg.homepage}\n" : ""
+    }*/`,
   }),
   compression({
     algorithm: "gzip",
