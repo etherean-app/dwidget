@@ -338,6 +338,55 @@ importers:
         specifier: ^4.4.5
         version: 4.4.11(@types/node@20.8.7)
 
+  widgets/summerfi:
+    dependencies:
+      '@dwidget/shared':
+        specifier: workspace:^
+        version: link:../../packages/shared
+      '@protobuf-ts/runtime':
+        specifier: ^2.9.1
+        version: 2.9.1
+      '@protobuf-ts/runtime-rpc':
+        specifier: ^2.9.1
+        version: 2.9.1
+      '@tanstack/react-query':
+        specifier: ^5.0.0
+        version: 5.0.5(react@18.2.0)
+      preact:
+        specifier: ^10.16.0
+        version: 10.18.1
+      viem:
+        specifier: ^1.16.6
+        version: 1.16.6(typescript@5.2.2)
+      wagmi:
+        specifier: ^1.4.4
+        version: 1.4.5(react@18.2.0)(typescript@5.2.2)(viem@1.16.6)
+      windstitch:
+        specifier: ^0.3.0
+        version: 0.3.0(react@18.2.0)
+    devDependencies:
+      '@dwidget/vite':
+        specifier: workspace:^
+        version: link:../../packages/vite
+      '@preact/preset-vite':
+        specifier: ^2.5.0
+        version: 2.6.0(@babel/core@7.23.2)(preact@10.18.1)(vite@4.5.0)
+      autoprefixer:
+        specifier: ^10.4.16
+        version: 10.4.16(postcss@8.4.31)
+      postcss:
+        specifier: ^8.4.31
+        version: 8.4.31
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
+      typescript:
+        specifier: ^5.0.2
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.5
+        version: 4.5.0
+
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -1693,7 +1742,6 @@ packages:
     transitivePeerDependencies:
       - preact
       - supports-color
-    dev: false
 
   /@prefresh/babel-plugin@0.5.0:
     resolution: {integrity: sha512-joAwpkUDwo7ZqJnufXRGzUb+udk20RBgfA8oLPBh5aJH2LeStmV1luBfeJTztPdyCscC2j2SmZ/tVxFRMIxAEw==}
@@ -1740,7 +1788,6 @@ packages:
       vite: 4.5.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@protobuf-ts/grpcweb-transport@2.9.1:
     resolution: {integrity: sha512-42bvBX312qhPlosMNTZE9XI+lt58ISM5vEJKv/wOx2Fu70J0TdlLa4Bjz8xcuRlv4Pq1CA+94DC1IgNxNRsQdg==}
