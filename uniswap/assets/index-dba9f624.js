@@ -3,7 +3,7 @@
  * version: v0.0.1
  * description: Uniswap widget
  * author: Alexey Elizarov <alex.elizarov1@gmail.com>*/
-import{n as ve,s as qe,T as k,t as W,a as u,o as Q,R as jr,p as U,y as ne}from"./index-128359e8.js";import{a2 as Nr}from"./index-be72befc.js";/**
+import{n as ve,s as qe,T as k,t as W,a as u,o as Q,R as jr,p as U,y as ne}from"./index-9c418195.js";import{a3 as Nr}from"./index-d37e2ff0.js";/**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
