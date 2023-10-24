@@ -14,7 +14,7 @@ export const Widget: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="w-[343px] h-[339px] rounded-3xl flex-col justify-start items-start gap-px inline-flex">
+    <div className="w-full h-screen rounded-3xl flex-col justify-start items-start gap-px inline-flex">
       <div className="w-full p-4 bg-white justify-start items-center gap-2 inline-flex">
         <img className="w-12 h-12" src={curve} />
         <div className="grow shrink basis-0 flex-col justify-center items-start gap-2 inline-flex">
@@ -31,7 +31,7 @@ export const Widget: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[78px] p-4 bg-white flex-col justify-center items-start gap-2 flex">
+      <div className="w-full p-4 bg-white flex-col justify-center items-start gap-2 flex">
         <div className="text-zinc-800 text-[11px] font-semibold font-['SF Pro Text'] leading-3 tracking-tight">
           Base vAPY
         </div>
@@ -54,7 +54,7 @@ export const Widget: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[78px] p-4 bg-white flex-col justify-center items-start gap-2 flex">
+      <div className="w-full p-4 bg-white flex-col justify-center items-start gap-2 flex">
         <div className="text-zinc-800 text-[11px] font-semibold font-['SF Pro Text'] leading-3 tracking-tight">
           Reward tAPR
         </div>
@@ -77,7 +77,7 @@ export const Widget: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-4 bg-white justify-start items-start inline-flex">
+      <div className="w-full p-4 bg-white justify-start items-start inline-flex flex-1">
         <div className="grow shrink basis-0 flex-col justify-center items-start gap-2 inline-flex">
           <div className="text-slate-500 text-[11px] font-normal font-['SF Pro Text'] leading-3 tracking-tight">
             ETH
