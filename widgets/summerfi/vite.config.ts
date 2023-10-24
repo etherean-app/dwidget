@@ -9,7 +9,7 @@ export default mergeConfig(
     pkg,
     dirname: __dirname,
     metadata: {
-      name: "Name",
+      name: "Summerfi",
       version: pkg.version,
       description: pkg.description,
       longDescription: undefined,
@@ -17,7 +17,7 @@ export default mergeConfig(
       props: undefined,
       contact: pkg.author,
       entrypoints: {
-        default: "https://use.own.domain",
+        default: "https://etherean-app.github.io/dwidget/summerfi/",
       },
       screenshots: undefined,
     },
