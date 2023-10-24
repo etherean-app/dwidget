@@ -3,7 +3,7 @@
   "name": "@dwidget/template",
   "version": "0.0.1",
   "description": "Template for dWidgets",
-  "author": "Alexey Elizarov <alex.elizarov1@gmail.com>",
+  "author": "Satoshi Nakamoto <satoshi@nakamoto.bitcoin>",
   "homepage": "",
   "type": "module",
   "scripts": {
