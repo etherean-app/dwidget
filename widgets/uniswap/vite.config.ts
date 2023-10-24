@@ -1,5 +1,6 @@
 import { mergeConfig } from "vite";
 import { config } from "@dwidget/vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 import path from "path";
 
 import pkg from "./package.json";
@@ -24,6 +25,7 @@ export default mergeConfig(
     },
   }),
   {
+    plugins: [nodePolyfills()],
     resolve: {
       alias: {
         jsbi: path.resolve(__dirname, "./node_modules/jsbi/dist/jsbi-cjs.js"),
@@ -31,8 +33,10 @@ export default mergeConfig(
         "~@fontsource/inter": "@fontsource/inter",
       },
     },
-    define: {
-      global: "globalThis",
+    build: {
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
     },
   }
 );
