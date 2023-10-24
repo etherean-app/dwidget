@@ -1,12 +1,13 @@
+
 import { Plugin } from "vite";
 import progress from "vite-plugin-progress";
 import banner from "vite-plugin-banner";
 import compression from "vite-plugin-compression2";
 import turboConsole from "vite-plugin-turbo-console";
-// import archive from "unplugin-compression/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import { WidgetBuildJson, metadata as metadataPlugin } from "./metadata";
 import { Pkg } from "../../types";
+import { bundle } from "./bundle";
 
 export const plugins = ({
   pkg,
@@ -33,10 +34,7 @@ export const plugins = ({
     exclude: [/\.(br)$ /, /\.(gz)$/],
   }),
   metadataPlugin(metadata),
-  // archive({
-  //   adapter: "tar",
-  //   outDir: "./dist",
-  // }),
+  bundle(),
   turboConsole(),
   visualizer({
     open: true,

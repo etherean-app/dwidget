@@ -10,7 +10,7 @@
   "dependencies": {
     "@preact/preset-vite": "^2.5.0",
     "rollup-plugin-visualizer": "^5.9.2",
-    "unplugin-compression": "^0.0.5",
+    "unplugin-compression": "^0.0.6",
     "vite-plugin-banner": "^0.7.1",
     "vite-plugin-compression2": "^0.10.6",
     "vite-plugin-generate-file": "^0.0.4",
