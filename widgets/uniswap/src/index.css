@@ -1,0 +1,26 @@
+@import "@uniswap/widgets/fonts.css";
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.uniswap [color='container'] > div > div:nth-child(3) {
+  position: relative;
+}
+
+.uniswap > div:nth-child(1) {
+  height: 100vh;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.uniswap > div > div > div:nth-child(2) {
+  position: relative;
+  overflow: hidden;
+}
