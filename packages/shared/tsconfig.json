@@ -32,7 +32,6 @@
     }
   },
   "include": [
-    "./typing/**/*.d.ts",
-    "./providers.tsx"
+    "./typing/**/*.d.ts"
   ]
 }
