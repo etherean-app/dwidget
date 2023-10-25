@@ -27,9 +27,27 @@ jobs:
           pnpm install
           pnpm run build
 
+      - name: Build widget 🔧 
+        working-directory: widgets/curve
+        run: |
+          pnpm run build
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean: true
           folder: widgets/curve/dist
           target-folder: curve
+
+      - name: Indexer
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./scripts/indexer.js')
+            script({github, context, glob})
+
+      - name: Deploy index.json
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: false
+          folder: index
