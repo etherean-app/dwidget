@@ -1,1 +1,1 @@
-{"name":"Uniswap","version":"0.0.1","description":"Uniswap widget","website":"","contact":"Alexey Elizarov <alex.elizarov1@gmail.com>","entrypoints":{"default":"https://etherean-app.github.io/dwidget/uniswap/"}}
+{"name":"Uniswap","version":"0.0.1","description":"Uniswap widget","website":"","contact":"Alexey Elizarov <alex.elizarov1@gmail.com>","entrypoints":{"default":{"src":"https://etherean-app.github.io/dwidget/uniswap/","sizes":{"default":{"height":490}}}}}
