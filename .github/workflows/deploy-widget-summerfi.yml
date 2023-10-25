@@ -1,4 +1,5 @@
-name: Build and Deploy
+name: Deploy Summerfi
+
 
 on:
   push:
@@ -25,6 +26,11 @@ jobs:
       - name: Install and Build 🔧 
         run: |
           pnpm install
+          pnpm run build
+
+      - name: Build widget 🔧 
+        working-directory: widgets/summerfi
+        run: |
           pnpm run build
 
       - name: Deploy 🚀
