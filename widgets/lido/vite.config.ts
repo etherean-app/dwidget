@@ -17,7 +17,14 @@ export default mergeConfig(
       props: undefined,
       contact: pkg.author,
       entrypoints: {
-        default: "https://etherean-app.github.io/dwidget/lido/",
+        default: {
+          src: "https://etherean-app.github.io/dwidget/lido/",
+          sizes: {
+            default: {
+              height: 84,
+            },
+          },
+        },
       },
       screenshots: undefined,
     },

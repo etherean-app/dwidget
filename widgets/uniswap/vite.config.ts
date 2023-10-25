@@ -19,7 +19,14 @@ export default mergeConfig(
       props: undefined,
       contact: pkg.author,
       entrypoints: {
-        default: "https://etherean-app.github.io/dwidget/uniswap/",
+        default: {
+          src: "https://etherean-app.github.io/dwidget/uniswap/",
+          sizes: {
+            default: {
+              height: 490,
+            },
+          },
+        },
       },
       screenshots: undefined,
     },

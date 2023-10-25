@@ -17,7 +17,14 @@ export default mergeConfig(
       props: undefined,
       contact: pkg.author,
       entrypoints: {
-        default: "https://etherean-app.github.io/dwidget/summerfi/",
+        default: {
+          src: "https://etherean-app.github.io/dwidget/summerfi/",
+          sizes: {
+            default: {
+              height: 264,
+            },
+          },
+        },
       },
       screenshots: undefined,
     },

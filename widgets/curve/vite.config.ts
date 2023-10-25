@@ -17,7 +17,14 @@ export default mergeConfig(
       props: undefined,
       contact: pkg.author,
       entrypoints: {
-        default: "https://etherean-app.github.io/dwidget/curve/",
+        default: {
+          src: "https://etherean-app.github.io/dwidget/curve/",
+          sizes: {
+            default: {
+              height: 340,
+            },
+          },
+        },
       },
       screenshots: undefined,
     },

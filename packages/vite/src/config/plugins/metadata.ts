@@ -1,5 +1,18 @@
 import generateFile from "vite-plugin-generate-file";
 
+type Size = {
+  height?: number;
+  width?: number;
+};
+
+type Widget = {
+  src: string;
+  sizes?: {
+    default: Size;
+    [entry: string]: Size;
+  };
+};
+
 export type WidgetBuildJson = {
   /** 32 character limit for seed constraints */
   name: string;
@@ -15,8 +28,8 @@ export type WidgetBuildJson = {
   contact: string;
   /** Relative paths to the entrypoint files */
   entrypoints: {
-    default: string;
-    [entry: string]: string;
+    default: Widget;
+    [entry: string]: Widget;
   };
   /** Relative paths to asset files */
   screenshots?: string[];
