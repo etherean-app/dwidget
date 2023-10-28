@@ -38,3 +38,15 @@ jobs:
           clean: true
           folder: widgets/uniswap/dist
           target-folder: uniswap
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Create Index
+        uses: beautyfree/dwidget-indexer-github-action@42a7d780bba99b66facc88243b07714b9eb5edd4
+      - name: Deploy index.json
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: false
+          folder: index
