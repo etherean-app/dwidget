@@ -1,0 +1,27 @@
+syntax = "proto3";
+package etherean.uniswap;
+
+import "decimal.proto";
+import "money.proto";
+
+message Token {
+  string name = 1;
+  string symbol = 2;
+  uint32 decimals = 3;
+}
+
+message TokenFilter {
+  string name = 1;
+}
+
+message TokenInfo {
+  Token token = 1;
+
+  google.type.Decimal deposited_amount = 2;
+  google.type.Decimal collected_fees = 3;
+  google.type.Decimal withdrawn_fees = 4;
+
+  google.type.Money deposited_amount_fiat = 5;
+  google.type.Money collected_fees_fiat = 6;
+  google.type.Money withdrawn_fees_fiat = 7;
+}

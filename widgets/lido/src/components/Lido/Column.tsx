@@ -1,25 +1,30 @@
-import { FunctionComponent } from "preact";
+import { ComponentChildren, FunctionComponent } from "preact";
 import { w, W } from "windstitch";
+import { cn } from "@dwidget/shared/utils/cn";
 
-const Title = w.div("leading-3 tracking-[0.066px]");
+const Title = w.div("flex items-center h-[12px] leading-3 tracking-[0.066px]");
 
-const Value = w.div("text-[15px] font-semibold tracking-[-.5px]", {
-  variants: {
-    color: {
-      green: "text-emerald-500",
-      default: "text-zinc-800",
+const Value = w.div(
+  "flex items-center h-[22px] text-[15px] font-semibold tracking-[-.5px]",
+  {
+    variants: {
+      color: {
+        green: "text-emerald-500",
+        default: "text-zinc-800",
+      },
     },
-  },
-  defaultVariants: {
-    color: "default",
-  },
-});
+    defaultVariants: {
+      color: "default",
+    },
+  }
+);
 
 interface Props {
   color?: W.Infer<typeof Value>["color"];
   title: string;
-  value: string;
-  subvalue?: string;
+  value: ComponentChildren;
+  subvalue?: ComponentChildren;
+  className?: string;
 }
 
 export const Column: FunctionComponent<Props> = ({
@@ -27,9 +32,15 @@ export const Column: FunctionComponent<Props> = ({
   title,
   value,
   subvalue,
+  className,
 }) => {
   return (
-    <div className="flex-col justify-center items-start gap-0.5 inline-flex font-['SF Pro Text'] font-normal text-slate-500 text-[11px]">
+    <div
+      className={cn(
+        "flex-col gap-0.5 flex font-['SF Pro Text'] font-normal text-slate-500 text-[11px]",
+        className
+      )}
+    >
       <Title>{title}</Title>
       <Value color={color}>{value}</Value>
       {subvalue ? <Title>{subvalue}</Title> : null}

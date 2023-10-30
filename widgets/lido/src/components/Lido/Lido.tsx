@@ -1,7 +1,12 @@
 import useRewards from "@/hooks/data/useRewards";
 import { useEffect } from "preact/hooks";
 import { useAccount, useConnect } from "wagmi";
+import { w } from "windstitch";
 import { Column } from "./Column";
+
+const Skeleton = w.div(
+  "animate-pulse bg-gray-100 dark:bg-gray-300 rounded-full"
+);
 
 export const Lido = () => {
   const { address, isConnected } = useAccount();
@@ -9,28 +14,62 @@ export const Lido = () => {
 
   useEffect(() => {
     if (!isConnected) {
-      connect({ connector: connectors[0] });
+      connect({ connector: connectors[1] });
     }
   }, []);
 
-  const { data: _data } = useRewards({
-    userWallet: address ?? "",
-    limit: 2,
+  const { data, isLoading } = useRewards({
+    userWallet: {
+      walletAddress: address ?? "",
+    },
   });
 
+  console.log(data);
+
   return (
-    <div className="w-full h-screen px-4 pt-4 pb-2 bg-white flex-col justify-center items-start gap-2 inline-flex">
-      <div className="self-stretch justify-between items-start inline-flex">
+    <div className="w-full h-screen px-4 pt-4 pb-2 bg-white flex-col justify-center gap-2 flex">
+      <div className="justify-between flex">
         <Column
           color="green"
           title="stETH rewarded"
-          value="Ξ 0.2357"
-          subvalue="$ 345"
+          value={
+            isLoading ? (
+              <Skeleton className="h-[16px] w-28" />
+            ) : (
+              `Ξ ${data?.stethRewarded?.value}`
+            )
+          }
+          subvalue={
+            isLoading ? (
+              <Skeleton className="h-[12px] w-16" />
+            ) : (
+              `$ ${data?.stethRewardedInUsd?.units}.${data?.stethRewardedInUsd?.nanos}`
+            )
+          }
+          className="flex-1"
         />
-        <Column title="stETH price" value="$ 1,575.67" subvalue="Ξ 0.9999" />
-        <Column title="Average APR" value="4,7%" />
+        <Column
+          title="stETH price"
+          value={
+            isLoading ? <Skeleton className="h-[16px] w-20" /> : "$ 1,575.67"
+          }
+          subvalue={
+            isLoading ? <Skeleton className="h-[12px] w-14" /> : "Ξ 0.9999"
+          }
+          className="flex-1"
+        />
+        <Column
+          title="Average APR"
+          value={
+            isLoading ? (
+              <Skeleton className="h-[16px] w-12" />
+            ) : (
+              `${data?.averageApr?.value}%`
+            )
+          }
+        />
       </div>
-      <div className="self-stretch h-1 bg-white" />
+      <div className="h-1 bg-white" />
     </div>
   );
 };

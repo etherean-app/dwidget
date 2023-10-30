@@ -18,7 +18,7 @@
       "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions"
     },
     // https://github.com/withfig/features
-    "ghcr.io/withfig/features/fig:1": {},
+    // "ghcr.io/withfig/features/fig:1": {},
     // https://github.com/stuartleeks/dev-container-features/tree/main/src/shell-history
     "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
       "version": "latest"

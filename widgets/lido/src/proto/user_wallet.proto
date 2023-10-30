@@ -1,0 +1,6 @@
+syntax = "proto3";
+package etherean.type;
+
+message UserWallet {
+  string wallet_address = 1; // ethereum wallet address
+}

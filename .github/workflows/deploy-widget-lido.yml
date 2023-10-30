@@ -29,6 +29,8 @@ jobs:
 
       - name: Build widget 🔧 
         working-directory: widgets/lido
+        env:
+          VITE_DWIDGET_SERVICE_API_ENDPOINT: ${{ secrets.VITE_DWIDGET_SERVICE_API_ENDPOINT }}
         run: |
           pnpm run build
 

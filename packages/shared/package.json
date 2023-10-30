@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Shared codebase for dwidgets",
   "dependencies": {
-    "@protobuf-ts/grpcweb-transport": "^2.9.1"
+    "@protobuf-ts/grpcweb-transport": "^2.9.1",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0"
   },
   "peerDependencies": {
     "@protobuf-ts/runtime-rpc": "^2.9.1",
