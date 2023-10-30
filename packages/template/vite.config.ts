@@ -9,7 +9,7 @@ export default mergeConfig(
     pkg,
     dirname: __dirname,
     metadata: {
-      name: "Name",
+      name: "Name", // TODO: name
       version: pkg.version,
       description: pkg.description,
       longDescription: undefined,
@@ -17,7 +17,14 @@ export default mergeConfig(
       props: undefined,
       contact: pkg.author,
       entrypoints: {
-        default: "https://use.own.domain",
+        default: {
+          src: "https://use.own.domain", // TODO: url
+          sizes: {
+            default: {
+              height: 100, // TODO: change to your widget height
+            },
+          },
+        },
       },
       screenshots: undefined,
     },

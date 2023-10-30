@@ -14,7 +14,7 @@ export const Lido = () => {
 
   useEffect(() => {
     if (!isConnected) {
-      connect({ connector: connectors[1] });
+      connect({ connector: connectors[0] });
     }
   }, []);
 
