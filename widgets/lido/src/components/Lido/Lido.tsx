@@ -24,7 +24,10 @@ export const Lido = () => {
     },
   });
 
-  console.log(data);
+  const stethRewardedInUsd =
+    data?.stethRewardedInUsd?.units && data?.stethRewardedInUsd?.nanos
+      ? `${data?.stethRewardedInUsd?.units}.${data?.stethRewardedInUsd?.nanos}`
+      : 0;
 
   return (
     <div className="w-full h-screen px-4 pt-4 pb-2 bg-white flex-col justify-center gap-2 flex">
@@ -36,14 +39,14 @@ export const Lido = () => {
             isLoading ? (
               <Skeleton className="h-[16px] w-28" />
             ) : (
-              `Ξ ${data?.stethRewarded?.value}`
+              `Ξ ${data?.stethRewarded?.value ?? 0}`
             )
           }
           subvalue={
             isLoading ? (
               <Skeleton className="h-[12px] w-16" />
             ) : (
-              `$ ${data?.stethRewardedInUsd?.units}.${data?.stethRewardedInUsd?.nanos}`
+              `$ ${stethRewardedInUsd}`
             )
           }
           className="flex-1"
@@ -64,7 +67,7 @@ export const Lido = () => {
             isLoading ? (
               <Skeleton className="h-[16px] w-12" />
             ) : (
-              `${data?.averageApr?.value}%`
+              `${data?.averageApr?.value ?? 0}%`
             )
           }
         />
