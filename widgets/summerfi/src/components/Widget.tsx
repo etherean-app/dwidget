@@ -24,8 +24,6 @@ export const Widget: FunctionComponent = () => {
     market: "WSTETH-A",
   });
 
-  console.log(data);
-
   return (
     <div className="w-full h-screen grid gap-[1px]">
       <div className="flex">
@@ -100,7 +98,7 @@ export const Widget: FunctionComponent = () => {
               <Skeleton className="h-[10px] w-24 inline-block" />
             ) : (
               `${decimalToString(data?.collateral?.locked)} ${
-                data?.collateral?.tokenMeta?.symbol
+                data?.collateral?.tokenMeta?.symbol ?? ""
               }`
             )}
           </div>
@@ -114,7 +112,7 @@ export const Widget: FunctionComponent = () => {
                 <Skeleton className="h-[10px] w-24 inline-block" />
               ) : (
                 `${decimalToString(data?.vault?.tokenAmount)} ${
-                  data?.vault?.tokenMeta?.symbol
+                  data?.vault?.tokenMeta?.symbol ?? ""
                 }`
               )}
             </div>
@@ -123,7 +121,7 @@ export const Widget: FunctionComponent = () => {
               {isLoading ? (
                 <Skeleton className="h-[10px] w-6 inline-block" />
               ) : (
-                `${data?.vault?.tokenMeta?.symbol}`
+                `${data?.vault?.tokenMeta?.symbol ?? ""}`
               )}{" "}
               Debt
             </div>
@@ -134,7 +132,7 @@ export const Widget: FunctionComponent = () => {
                 <Skeleton className="h-[10px] w-24 inline-block" />
               ) : (
                 `${decimalToString(data?.available?.withdraw)} ${
-                  data?.collateral?.tokenMeta?.symbol
+                  data?.collateral?.tokenMeta?.symbol ?? ""
                 }`
               )}
             </div>
@@ -148,7 +146,7 @@ export const Widget: FunctionComponent = () => {
                 <Skeleton className="h-[10px] w-16 inline-block" />
               ) : (
                 `${decimalToString(data?.available?.generate)} ${
-                  data?.vault?.tokenMeta?.symbol
+                  data?.vault?.tokenMeta?.symbol ?? ""
                 }`
               )}
             </div>
