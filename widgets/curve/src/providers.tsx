@@ -1,7 +1,7 @@
 // TODO: uncomment and use own proto clients
 import { IGrpcClients /* createTransport */ } from "@dwidget/shared/contexts";
 import { DProviders } from "@dwidget/shared/providers";
-// import { EthereanGrpcClient } from "@/proto/etherean.client";
+// import { EthereanGrpcClient } from "@dwidget/shared/proto/etherean.client";
 // import { API_ENDPOINT } from "@/constants";
 import { ComponentChildren, FunctionComponent } from "preact";
 
