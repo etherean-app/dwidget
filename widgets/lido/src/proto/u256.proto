@@ -1,6 +1,0 @@
-syntax = "proto3";
-package etherean.type;
-
-message DecU256 {
-  string value = 1; // dec repr of u256
-}

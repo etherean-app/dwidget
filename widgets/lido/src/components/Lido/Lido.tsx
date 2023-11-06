@@ -1,12 +1,10 @@
+import { fiatMoneyToString, moneyToString } from "@dwidget/shared/utils/money";
+import { Skeleton } from "@dwidget/shared/components";
 import useRewards from "@/hooks/data/useRewards";
 import { useEffect } from "preact/hooks";
 import { useAccount, useConnect } from "wagmi";
-import { w } from "windstitch";
 import { Column } from "./Column";
-
-const Skeleton = w.div(
-  "animate-pulse bg-gray-100 dark:bg-gray-300 rounded-full"
-);
+import { decimalToString } from "@dwidget/shared/utils/decimal";
 
 export const Lido = () => {
   const { address, isConnected } = useAccount();
@@ -24,11 +22,6 @@ export const Lido = () => {
     },
   });
 
-  const stethRewardedInUsd =
-    data?.stethRewardedInUsd?.units && data?.stethRewardedInUsd?.nanos
-      ? `${data?.stethRewardedInUsd?.units}.${data?.stethRewardedInUsd?.nanos}`
-      : 0;
-
   return (
     <div className="w-full h-screen px-4 pt-4 pb-2 bg-white flex-col justify-center gap-2 flex">
       <div className="justify-between flex">
@@ -37,16 +30,16 @@ export const Lido = () => {
           title="stETH rewarded"
           value={
             isLoading ? (
-              <Skeleton className="h-[16px] w-28" />
+              <Skeleton className="h-[14px] w-28" />
             ) : (
-              `Ξ ${data?.stethRewarded?.value ?? 0}`
+              `Ξ ${decimalToString(data?.stethRewarded)}`
             )
           }
           subvalue={
             isLoading ? (
-              <Skeleton className="h-[12px] w-16" />
+              <Skeleton className="h-[10px] w-16" />
             ) : (
-              `$ ${stethRewardedInUsd}`
+              `$ ${fiatMoneyToString(data?.stethRewardedInUsd)}`
             )
           }
           className="flex-1"
@@ -54,10 +47,18 @@ export const Lido = () => {
         <Column
           title="stETH price"
           value={
-            isLoading ? <Skeleton className="h-[16px] w-20" /> : "$ 1,575.67"
+            isLoading ? (
+              <Skeleton className="h-[14px] w-20" />
+            ) : (
+              `$ ${fiatMoneyToString(data?.stethPriceFiat)}`
+            )
           }
           subvalue={
-            isLoading ? <Skeleton className="h-[12px] w-14" /> : "Ξ 0.9999"
+            isLoading ? (
+              <Skeleton className="h-[10px] w-14" />
+            ) : (
+              `Ξ ${moneyToString(data?.stethPriceEth)}` // TODO: not money - Decimal
+            )
           }
           className="flex-1"
         />
@@ -65,9 +66,9 @@ export const Lido = () => {
           title="Average APR"
           value={
             isLoading ? (
-              <Skeleton className="h-[16px] w-12" />
+              <Skeleton className="h-[14px] w-12" />
             ) : (
-              `${data?.averageApr?.value ?? 0}%`
+              `${decimalToString(data?.averageApr)}%`
             )
           }
         />

@@ -1,4 +1,7 @@
-import { LidoRewardsRequest, LidoRewardsWidgetReply } from "@/proto/etherean";
+import {
+  LidoRewardsRequest,
+  LidoRewardsWidgetReply,
+} from "@dwidget/shared/proto/etherean";
 import { IGrpcContext } from "@/providers";
 import { useGrpcContext } from "@dwidget/shared/contexts";
 import { useGrpcQuery } from "@dwidget/shared/hooks";

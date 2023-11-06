@@ -15,7 +15,6 @@
   "dependencies": {
     "@dwidget/shared": "workspace:^",
     "@dwidget/vite": "workspace:^",
-    "@protobuf-ts/runtime": "^2.9.1",
     "@protobuf-ts/runtime-rpc": "^2.9.1",
     "@tanstack/react-query": "^5.0.5",
     "preact": "^10.18.1",
@@ -25,7 +24,6 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
-    "@protobuf-ts/plugin": "^2.9.1",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
