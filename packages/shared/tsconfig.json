@@ -29,9 +29,10 @@
       "react-dom": [
         "./node_modules/preact/compat/"
       ],
-    }
-  },
-  "include": [
-    "./typing/**/*.d.ts"
-  ]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ]
+  }
 }

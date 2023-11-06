@@ -1,0 +1,38 @@
+syntax = "proto3";
+package etherean.uniswap;
+
+import "decimal.proto";
+import "money.proto";
+
+message Token {
+  string address = 1;
+  string name = 2;
+  string symbol = 3;
+  uint32 decimals = 4;
+}
+
+message Money {
+  string currency = 1;
+  google.type.Decimal value = 2;
+}
+
+message Amount {
+  google.type.Decimal ui_amount = 1;
+  etherean.uniswap.Money fiat_amount = 2;
+}
+
+message TokenFilter {
+  optional string address = 1;
+  optional string symbol = 2;
+}
+
+message Liquidity {
+  etherean.uniswap.Token token = 1;
+  etherean.uniswap.Amount amount = 2;
+  float percent = 3;
+}
+
+message Reward {
+  etherean.uniswap.Token token = 1;
+  etherean.uniswap.Amount amount = 2;
+}

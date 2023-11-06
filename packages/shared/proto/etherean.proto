@@ -1,0 +1,58 @@
+syntax = "proto3";
+package etherean;
+
+import "decimal.proto";
+import "money.proto";
+import "uniswap.proto";
+import "user_wallet.proto";
+import "assets.proto";
+import "summer_fi.proto";
+
+service EthereanGrpc {
+  rpc GetLidoRewardsWidget (LidoRewardsRequest)
+      returns (LidoRewardsWidgetReply);
+  rpc GetUniswapRewardsWidget (UniswapRewardsRequest)
+      returns (UniswapRewardsWidgetReply);
+  rpc GetSummerFiWidget(SumerFiRequest)
+      returns (SummerFiWidgetReply);
+}
+
+message LidoRewardsRequest {
+  etherean.type.UserWallet user_wallet = 1; 
+  optional uint32 limit = 2; // count of days for calculate rewards e.g.
+                             // 1/7/31 days if NULL then all days
+}
+
+message LidoRewardsWidgetReply {
+  google.type.Decimal steth_rewarded = 1;
+  google.type.Money steth_rewarded_in_usd = 2;
+  google.type.Decimal apr = 3;
+  google.type.Decimal average_apr = 4;
+  google.type.Money steth_price_eth = 5;
+  google.type.Money steth_price_fiat = 6;
+}
+
+message UniswapRewardsRequest {
+  etherean.type.UserWallet user_wallet = 1; 
+  // list of tokens e.g. ["ETH", "DAI", "USDC"]
+  repeated etherean.uniswap.TokenFilter tokens = 2;
+}
+
+message UniswapRewardsWidgetReply {
+  etherean.uniswap.Money deposited_amount_fiat = 1;
+  repeated etherean.uniswap.Reward unclaimed_rewards = 2;
+  repeated etherean.uniswap.Liquidity liquidity = 3;
+}
+
+message SumerFiRequest{
+  etherean.type.UserWallet user_wallet = 1; 
+  string market = 2;
+}
+
+message SummerFiWidgetReply {
+  etherean.type.Liquidation liquidation = 1;
+  etherean.type.Collateralization collateralization = 2;
+  etherean.type.Collateral collateral = 3;
+  etherean.type.Vault vault = 4;
+  etherean.type.Available available = 5;
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+package etherean.assets;
+
+import "decimal.proto";
+import "google/protobuf/timestamp.proto";
+import "money.proto";
+import "u256.proto";
+import "user_wallet.proto";
+
+service AssetService {
+  rpc GetAssets(AssetsRequest) returns (AssetsResponse);
+}
+
+message AssetsRequest {
+  etherean.type.UserWallet wallet = 1;
+}
+
+message AssetsResponse {
+  TokenAsset native = 1;
+  DomainName domain = 2;
+  map<string, TokenAsset> tokens = 3;
+}
+
+message DomainName {
+  string domain = 1;
+}
+
+message Amount {
+  etherean.type.DecU256 amount = 1;
+  google.type.Decimal ui_amount = 2;
+  google.type.Money fiat_amount = 3;
+}
+
+message Token {
+  optional string name = 1;
+  optional string symbol = 2;
+  optional uint32 decimals = 3;
+  optional string logo = 4;
+  optional string coingecko_id = 5;
+  optional string thumbnail = 6;
+}
+
+message TokenAsset {
+  Token meta = 1;
+  ExchangeRate price = 2;
+  Amount amount = 3;
+}
+
+message ExchangeRate {
+  google.type.Money exchange_rate = 1;
+  google.protobuf.Timestamp last_updated_at = 2;
+}

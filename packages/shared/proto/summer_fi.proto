@@ -1,0 +1,35 @@
+syntax = "proto3";
+package etherean.type;
+
+import "decimal.proto";
+import "uniswap.proto";
+import "assets.proto";
+
+message Liquidation {
+  etherean.uniswap.Money price = 1;
+  google.type.Decimal price_bellow = 2;
+}
+
+message Collateral {
+  google.type.Decimal locked = 1;
+  etherean.uniswap.Money locked_fiat = 2;
+  etherean.assets.Token token_meta = 3;
+}
+
+message Collateralization {
+  google.type.Decimal ratio = 1;
+  google.type.Decimal ratio_on_next_price = 2;
+
+}
+
+message Vault {
+  google.type.Decimal token_amount = 1;
+  etherean.assets.Token token_meta = 2;
+
+}
+
+message Available {
+  google.type.Decimal withdraw = 1;
+  google.type.Decimal generate = 2;
+
+}
