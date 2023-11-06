@@ -9,12 +9,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:proto": "pnpm dlx protoc -I src/proto --ts_out src/proto --ts_opt optimize_code_size etherean.proto",
     "preview": "vite preview"
   },
   "dependencies": {
     "@dwidget/shared": "workspace:^",
-    "@protobuf-ts/runtime": "^2.9.1",
     "@protobuf-ts/runtime-rpc": "^2.9.1",
     "@tanstack/react-query": "^5.0.0",
     "preact": "^10.16.0",
