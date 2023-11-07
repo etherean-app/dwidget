@@ -5,7 +5,7 @@ import uniswap from "@/assets/uniswap.png";
 import { useRewards } from "@/hooks";
 
 export const Widget: FunctionComponent = () => {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const Widget: FunctionComponent = () => {
     }
   }, []);
 
-  const { data, isLoading } = useRewards({
+  const { data } = useRewards({
     userWallet: {
       walletAddress: "0x8aD8b3874430aE7bDFe579Da5e4088787005F0ED",
     },
