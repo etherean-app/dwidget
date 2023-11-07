@@ -1,7 +1,5 @@
 import { mergeConfig } from "vite";
 import { config } from "@dwidget/vite";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
-import path from "path";
 
 import pkg from "./package.json";
 
@@ -11,7 +9,7 @@ export default mergeConfig(
     pkg,
     dirname: __dirname,
     metadata: {
-      name: "Uniswap",
+      name: "Name", // TODO: name
       version: pkg.version,
       description: pkg.description,
       longDescription: undefined,
@@ -20,10 +18,10 @@ export default mergeConfig(
       contact: pkg.author,
       entrypoints: {
         default: {
-          src: "https://etherean-app.github.io/dwidget/uniswap/",
+          src: "https://use.own.domain", // TODO: url
           sizes: {
             default: {
-              height: 490,
+              height: 100, // TODO: change to your widget height
             },
           },
         },
@@ -31,19 +29,5 @@ export default mergeConfig(
       screenshots: undefined,
     },
   }),
-  {
-    plugins: [nodePolyfills()],
-    resolve: {
-      alias: {
-        jsbi: path.resolve(__dirname, "./node_modules/jsbi/dist/jsbi-cjs.js"),
-        "~@fontsource/ibm-plex-mono": "@fontsource/ibm-plex-mono",
-        "~@fontsource/inter": "@fontsource/inter",
-      },
-    },
-    build: {
-      commonjsOptions: {
-        transformMixedEsModules: true,
-      },
-    },
-  }
+  {}
 );
