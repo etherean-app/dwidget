@@ -9,7 +9,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:proto": "pnpm dlx protoc -I src/proto --ts_out src/proto --ts_opt optimize_code_size etherean.proto",
     "preview": "vite preview"
   },
   "dependencies": {

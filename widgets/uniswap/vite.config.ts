@@ -9,7 +9,7 @@ export default mergeConfig(
     pkg,
     dirname: __dirname,
     metadata: {
-      name: "Name", // TODO: name
+      name: "Uniswap Widget",
       version: pkg.version,
       description: pkg.description,
       longDescription: undefined,
@@ -18,10 +18,10 @@ export default mergeConfig(
       contact: pkg.author,
       entrypoints: {
         default: {
-          src: "https://use.own.domain", // TODO: url
+          src: "https://etherean-app.github.io/dwidget/uniswap-swap/",
           sizes: {
             default: {
-              height: 100, // TODO: change to your widget height
+              height: 343,
             },
           },
         },
