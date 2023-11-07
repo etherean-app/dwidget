@@ -66,5 +66,22 @@
         }
       }
     }
+  },
+  {
+    "name": "Uniswap Swap",
+    "version": "0.0.1",
+    "description": "Uniswap Swap widget",
+    "website": "",
+    "contact": "Alexey Elizarov <alex.elizarov1@gmail.com>",
+    "entrypoints": {
+      "default": {
+        "src": "https://etherean-app.github.io/dwidget/uniswap-swap/",
+        "sizes": {
+          "default": {
+            "height": 490
+          }
+        }
+      }
+    }
   }
 ]
