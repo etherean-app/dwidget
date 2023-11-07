@@ -1,0 +1,19 @@
+{
+  "extends": "@dwidget/shared/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    },
+  },
+  "include": [
+    "src",
+    "tailwind.config.js",
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
