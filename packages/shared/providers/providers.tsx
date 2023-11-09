@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GrpcContextProvider, IGrpcClients } from "../contexts/GrpcContext";
 import { WagmiProvider } from "./wagmi";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 interface Props<Clients> {
   clients: Clients;

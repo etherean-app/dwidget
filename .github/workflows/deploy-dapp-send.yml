@@ -1,0 +1,40 @@
+name: Deploy Dapp Send 
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dapps/send/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.8.0
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧 
+        run: |
+          pnpm install
+          pnpm run build
+
+      - name: Build Dapp 🔧 
+        working-directory: dapps/send
+        run: |
+          pnpm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: true
+          folder: dapps/send/dist
+          target-folder: dapps/send

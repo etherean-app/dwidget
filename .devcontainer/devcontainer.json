@@ -40,7 +40,8 @@
         "esbenp.prettier-vscode",
         "bradlc.vscode-tailwindcss",
         "figma.figma-vscode-extension",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "statelyai.stately-vscode"
       ],
       "settings": {
         "dev.containers.copyGitConfig": true

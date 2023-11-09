@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Shared codebase for dwidgets",
   "scripts": {
-    "build:proto": "pnpm dlx protoc -I proto --ts_opt generate_dependencies --ts_out proto --ts_opt optimize_code_size etherean.proto"
+    "build:proto": "pnpm dlx protoc -I proto --ts_opt generate_dependencies --ts_out proto --ts_opt optimize_code_size etherean.proto assets.proto"
   },
   "dependencies": {
     "@protobuf-ts/grpcweb-transport": "^2.9.1",
