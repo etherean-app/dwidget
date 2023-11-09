@@ -5,6 +5,7 @@ import { TopAppBar } from "../../../common/TopAppBar";
 import { Button } from "../../../common/Button";
 import { Form } from "./Form";
 
+// TODO:
 export const Recepient = () => {
   const [state, send] = useStateMachine();
   const [network, setNetwork] = useState(state.context.network);
@@ -20,10 +21,7 @@ export const Recepient = () => {
     <div className="flex flex-col flex-1 justify-between">
       <TopAppBar onBackClick={() => send("back")} title="Recepient" />
       <Form value={network} onChange={handleNetworkChange} />
-      <Button
-        className="mx-4 mb-4"
-        onClick={() => send({ type: "back", value: network })}
-      >
+      <Button className="mx-4 mb-4" onClick={() => send({ type: "back" })}>
         Save
       </Button>
     </div>

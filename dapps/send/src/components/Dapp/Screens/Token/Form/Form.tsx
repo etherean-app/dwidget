@@ -34,7 +34,7 @@ export const Form: FunctionComponent<Props> = ({ value, onChange }) => {
   console.log(88888, native);
 
   const selectedToken = useMemo(
-    () => (value?.asset ? [value.asset] : null),
+    () => (value ? { [value.address]: value.asset } : null),
     [value]
   );
 
@@ -50,11 +50,13 @@ export const Form: FunctionComponent<Props> = ({ value, onChange }) => {
       {selectedToken ? (
         <div>
           <SectionHeader title="Selected token" />
+          {/* @ts-ignore */}
           <TokenList tokens={selectedToken} onClick={onChange} />
         </div>
       ) : null}
       <div>
         <SectionHeader title="Available tokens" />
+        {/* @ts-ignore */}
         <TokenList tokens={tokens} onClick={onChange} />
       </div>
     </div>

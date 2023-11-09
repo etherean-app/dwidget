@@ -1,7 +1,8 @@
 import { TokenAsset } from "@dwidget/shared/proto/assets";
+import { Address } from "viem";
 import { assign, createMachine } from "xstate";
 
-export type TokenContext = { address: `0x${string}`; asset: TokenAsset };
+export type TokenContext = { address: Address; asset: TokenAsset };
 
 export const machine = createMachine(
   {

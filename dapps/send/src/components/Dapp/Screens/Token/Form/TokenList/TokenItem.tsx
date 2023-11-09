@@ -1,9 +1,11 @@
 import { FunctionComponent } from "preact";
 import { TokenAsset } from "@dwidget/shared/proto/assets";
+import { Address } from "viem";
+
 import { TokenContext } from "@/machines";
 
 interface Props {
-  address: string;
+  address: Address;
   token: TokenAsset;
   onClick: (token: TokenContext) => void;
 }

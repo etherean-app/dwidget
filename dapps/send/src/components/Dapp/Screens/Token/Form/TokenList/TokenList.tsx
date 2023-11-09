@@ -3,6 +3,7 @@ import { TokenAsset } from "@dwidget/shared/proto/assets";
 
 import { TokenItem } from "./TokenItem";
 import { TokenContext } from "@/machines";
+import { Address } from "viem";
 
 interface Props {
   tokens: {
@@ -17,7 +18,7 @@ export const TokenList: FunctionComponent<Props> = ({ tokens, onClick }) => {
       {Object.entries(tokens).map(([address, token]) => (
         <TokenItem
           key={address}
-          address={address}
+          address={address as Address}
           token={token}
           onClick={onClick}
         />
