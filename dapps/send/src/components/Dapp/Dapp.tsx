@@ -16,8 +16,6 @@ export const Dapp = () => {
     }
   }, []);
 
-  console.log(state);
-
   return (
     <>
       <Screens />

@@ -14,8 +14,6 @@ export const Network = () => {
     []
   );
 
-  console.log(state);
-
   return (
     <div className="flex flex-col flex-1 justify-between">
       <TopAppBar

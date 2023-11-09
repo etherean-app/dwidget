@@ -35,10 +35,7 @@ export const TransactionDetails = () => {
           onClick={() => send("recepient")}
         />
       </div>
-      <div
-        className="grid gap-4 mt-4"
-        onClick={() => send("transactionSubmitted")}
-      >
+      <div className="grid gap-4 mt-4" onClick={() => send("back")}>
         <Button>Continue</Button>
       </div>
     </Sheet>

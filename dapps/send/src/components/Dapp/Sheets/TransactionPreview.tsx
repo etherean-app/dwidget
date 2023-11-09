@@ -20,7 +20,7 @@ export const TransactionPreview = () => {
 
   return (
     <Sheet
-      open={state.matches("TRANSACTION_PREVIEW")}
+      open={open}
       onClose={() => open && send("back")}
       icon="layers"
       title="Transaction preview"

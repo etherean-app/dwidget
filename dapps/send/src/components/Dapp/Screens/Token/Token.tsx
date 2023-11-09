@@ -15,8 +15,6 @@ export const Token = () => {
     []
   );
 
-  console.log(state);
-
   return (
     <div className="flex flex-col grow">
       <TopAppBar

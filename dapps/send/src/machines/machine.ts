@@ -107,6 +107,7 @@ export const machine = createMachine(
         },
       },
     },
+    predictableActionArguments: true,
   },
   {
     actions: {
