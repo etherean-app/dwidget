@@ -1,10 +1,10 @@
 import { FunctionComponent } from "preact";
 import { useMemo } from "preact/hooks";
-import { useAccount, useBalance } from "wagmi";
+import { useAccount } from "wagmi";
 
 import { useAssets } from "@/hooks";
 import { SectionHeader } from "./SectionHeader";
-import { data } from "./data";
+// import { data } from "./data";
 import { TokenList } from "./TokenList/TokenList";
 import { TokenContext } from "@/machines";
 
@@ -15,23 +15,13 @@ interface Props {
 
 export const Form: FunctionComponent<Props> = ({ value, onChange }) => {
   const { address } = useAccount();
-  const {
-    data: native,
-    isError,
-    isLoading,
-  } = useBalance({
-    address,
+  const { data, isLoading } = useAssets({
+    wallet: address
+      ? {
+          walletAddress: address,
+        }
+      : undefined,
   });
-
-  // const { data, isLoading } = useAssets({
-  //   wallet: address
-  //     ? {
-  //         walletAddress: address,
-  //       }
-  //     : undefined,
-  // });
-
-  console.log(88888, native);
 
   const selectedToken = useMemo(
     () => (value ? { [value.address]: value.asset } : null),
@@ -39,6 +29,10 @@ export const Form: FunctionComponent<Props> = ({ value, onChange }) => {
   );
 
   const tokens = useMemo(() => {
+    if (!data) {
+      return {};
+    }
+
     if (address) {
       return { [address]: data.native, ...data.tokens };
     }
