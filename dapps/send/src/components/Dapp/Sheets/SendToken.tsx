@@ -1,10 +1,9 @@
-import { useMemo } from "preact/hooks";
-
 import { useStateMachine } from "@/providers/stateMachine";
 import { ListItem } from "./components/ListItem";
 import { Button } from "../../common/Button";
 import { Sheet } from "./components/Sheet";
 import { ListItemToken } from "./components/ListItemToken";
+import { ListItemAccount } from "./components/ListItemAccount";
 
 export const SendToken = () => {
   const [state, send] = useStateMachine();
@@ -14,7 +13,7 @@ export const SendToken = () => {
   return (
     <Sheet
       open={open}
-      onClose={() => open && send("back")}
+      onClose={() => open && send("send")}
       icon="settings_ethernet"
       title="Send token"
     >
@@ -28,7 +27,7 @@ export const SendToken = () => {
           value={state.context.network}
           onClick={() => send("network")}
         />
-        <ListItem label="Account" value="0x5h6H...45yf5T" />
+        <ListItemAccount label="Account" />
         <ListItem
           label="Recepient"
           value="0x3fC...7FAD"

@@ -3,6 +3,7 @@ import { Button } from "../../common/Button";
 import { Sheet } from "./components/Sheet";
 import { useStateMachine } from "@/providers/stateMachine";
 import { ListItemToken } from "./components/ListItemToken";
+import { ListItemAccount } from "./components/ListItemAccount";
 
 export const TransactionDetails = () => {
   const [state, send] = useStateMachine();
@@ -22,7 +23,7 @@ export const TransactionDetails = () => {
           value={state.context.network}
           onClick={() => send("network")}
         />
-        <ListItem label="From account" value="0x5h6H...45yf5T" />
+        <ListItemAccount />
         <ListItem label="ERC-20" value="Gas fee 25$" />
         <ListItemToken
           token={state.context.token}
