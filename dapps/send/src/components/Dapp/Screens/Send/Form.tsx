@@ -16,7 +16,8 @@ export const Form: FunctionComponent<Props> = observer(({ token }) => {
   const { address } = useAccount();
   const { data, isError, isLoading } = useBalance({
     address,
-    token: token?.address,
+    token:
+      address && token && address !== token.address ? token.address : undefined,
   });
 
   const [width, setWidth] = useState(MIN_WIDTH);

@@ -4,7 +4,6 @@ import { useAccount } from "wagmi";
 
 import { useAssets } from "@/hooks";
 import { SectionHeader } from "./SectionHeader";
-// import { data } from "./data";
 import { TokenList } from "./TokenList/TokenList";
 import { TokenContext } from "@/machines";
 
