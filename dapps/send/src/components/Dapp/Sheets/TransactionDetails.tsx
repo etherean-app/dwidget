@@ -17,28 +17,28 @@ export const TransactionDetails = () => {
   return (
     <Sheet
       open={open}
-      onClose={() => open && send("back")}
+      onClose={() => open && send({ type: "back" })}
       icon="settings_ethernet"
       title="Transaction details"
     >
       <div className="grid gap-1">
         <ListItemNetwork
           network={state.context.network}
-          onClick={() => send("network")}
+          onClick={() => send({ type: "network" })}
         />
         <ListItemAccount />
         <ListItem label="ERC-20" value="Gas fee 25$" />
         <ListItemToken
           token={state.context.token}
-          onClick={() => send("token")}
+          onClick={() => send({ type: "token" })}
         />
         <ListItem label="Recipient gets" value="0.0556ETH" />
         <ListItemRecepient
           recepient={state.context.recepient}
-          onClick={() => send("recepient")}
+          onClick={() => send({ type: "recepient" })}
         />
       </div>
-      <div className="grid gap-4 mt-4" onClick={() => send("back")}>
+      <div className="grid gap-4 mt-4" onClick={() => send({ type: "back" })}>
         <Button>Continue</Button>
       </div>
     </Sheet>

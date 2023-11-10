@@ -14,6 +14,7 @@
     "@radix-ui/react-radio-group": "^1.1.3",
     "@xstate/react": "^3.2.2",
     "decimal.js": "^10.4.3",
+    "lodash": "^4.17.21",
     "material-symbols": "^0.13.2",
     "preact": "^10.16.0",
     "truncate-eth-address": "^1.0.2",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
+    "@types/lodash": "^4.14.201",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "tailwind-material-colors": "^1.1.2",

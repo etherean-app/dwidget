@@ -1,6 +1,6 @@
 import { FunctionComponent } from "preact";
 import { useCallback, useMemo, useState } from "preact/hooks";
-import { useEnsResolver, Address } from "wagmi";
+import { useEnsAddress, Address } from "wagmi";
 import { isAddress } from "viem";
 import { useDebounce } from "use-debounce";
 
@@ -22,7 +22,7 @@ export const Form: FunctionComponent<Props> = ({ recepient, onSave }) => {
   const [address, setAddress] = useState<Address | undefined>();
 
   const [debouncedNameOrAddress] = useDebounce(nameOrAddress, 500);
-  const { data } = useEnsResolver({
+  const { data } = useEnsAddress({
     name: debouncedNameOrAddress,
     enabled: isValidENS(debouncedNameOrAddress),
   });

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "preact";
 import { useMemo } from "preact/hooks";
-import { useAccount } from "wagmi";
+import { Address } from "wagmi";
 
 import { useAssets } from "@/hooks";
 import { SectionHeader } from "./SectionHeader";
@@ -8,12 +8,16 @@ import { TokenList } from "./TokenList/TokenList";
 import { TokenContext } from "@/machines";
 
 interface Props {
+  address?: Address;
   value?: TokenContext;
   onChange: (token: TokenContext) => void;
 }
 
-export const Form: FunctionComponent<Props> = ({ value, onChange }) => {
-  const { address } = useAccount();
+export const Form: FunctionComponent<Props> = ({
+  address,
+  value,
+  onChange,
+}) => {
   const { data, isLoading } = useAssets({
     wallet: address
       ? {

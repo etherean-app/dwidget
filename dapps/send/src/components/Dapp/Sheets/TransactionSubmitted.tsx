@@ -6,6 +6,7 @@ import {
   ListItemAccount,
   ListItemNetwork,
   ListItemRecepient,
+  ListItemAmount,
 } from "./components";
 
 export const TransactionSubmitted = () => {
@@ -23,9 +24,13 @@ export const TransactionSubmitted = () => {
       <div className="grid gap-1">
         <ListItemNetwork network={state.context.network} />
         <ListItemAccount />
-        <ListItem label="ERC-20" value="Gas fee 25$" />
-        <ListItem label="Amount" value="0.057 ETH" />
-        <ListItem label="Recipient gets" value="0.0556ETH" />
+        <ListItem label="ERC-20" value="Gas fee 25$" notImplmented />
+        <ListItemAmount
+          amount={state.context.amount}
+          token={state.context.token}
+          notImplmented
+        />
+        <ListItem label="Recipient gets" value="0.0556ETH" notImplmented />
         <ListItemRecepient recepient={state.context.recepient} />
       </div>
       <div className="grid gap-4 mt-4" onClick={() => send("back")}>

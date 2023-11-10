@@ -1,12 +1,13 @@
 import { useEffect } from "preact/hooks";
 import { useAccount, useConnect, useNetwork } from "wagmi";
+import { pick } from "lodash";
 
 import { useStateMachine } from "@/providers/stateMachine";
 import { Sheets } from "./Sheets";
 import { Screens } from "./Screens";
 
 export const Dapp = () => {
-  const { isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
   const [state, send] = useStateMachine();
 
@@ -20,6 +21,19 @@ export const Dapp = () => {
   useEffect(() => {
     send({ type: "SET_NETWORK", value: chain });
   }, [chain, send]);
+
+  useEffect(() => {
+    send({ type: "SET_ADDRESS", value: address });
+  }, [address, send]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "state-machine-context",
+      JSON.stringify(pick(state.context, ["recepient"]), (_, v) =>
+        typeof v === "bigint" ? v.toString() : v
+      )
+    );
+  }, [state]);
 
   return (
     <>

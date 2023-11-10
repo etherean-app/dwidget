@@ -13,13 +13,17 @@ export interface Typegen0 {
     services: never;
   };
   eventsCausingActions: {
+    saveAddress: "SET_ADDRESS";
     saveNetwork: "SET_NETWORK" | "backNetwork";
     saveRecepient: "backRecepient";
     saveToken: "backToken";
     setAmount: "SET_AMOUNT";
   };
   eventsCausingDelays: {};
-  eventsCausingGuards: {};
+  eventsCausingGuards: {
+    isReadyForSend: "send";
+    isReadyForSubmit: "transactionPreview" | "transactionSubmitted";
+  };
   eventsCausingServices: {};
   matchesStates:
     | "NETWORK"

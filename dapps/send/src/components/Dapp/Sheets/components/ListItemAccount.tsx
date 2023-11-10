@@ -1,20 +1,19 @@
 import { FunctionComponent, useMemo } from "preact/compat";
 import truncateEthAddress from "truncate-eth-address";
-import { useAccount } from "wagmi";
-import { Address } from "viem";
+import { Address } from "wagmi";
 
 import { ListItem, ListItemProps } from "./ListItem";
 
 interface Props extends Omit<ListItemProps, "label" | "value"> {
+  address?: Address;
   label?: string;
 }
 
 export const ListItemAccount: FunctionComponent<Props> = ({
+  address,
   label,
   onClick,
 }) => {
-  const { address } = useAccount();
-
   const account = useMemo(() => {
     if (!address) {
       return "Unknown account";

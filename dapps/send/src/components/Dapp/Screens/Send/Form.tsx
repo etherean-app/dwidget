@@ -1,62 +1,83 @@
 import { useRef, useState } from "preact/hooks";
-import { useAccount, useBalance } from "wagmi";
+import { Address, useBalance } from "wagmi";
 import { Icon } from "../../../common/Icon";
 import { FunctionComponent } from "preact";
 import { TokenContext } from "@/machines";
 import { fiatMoneyToString } from "@dwidget/shared/utils";
-import { BigNumberInput } from "@/components/common/NumberInput";
+
+function downscale(
+  length: number,
+  expectedMaxLength: number,
+  baseFontSize: number,
+  minFontSize: number
+) {
+  const scalingFactor = 1 - Math.min((1 / expectedMaxLength) * length, 1);
+  return Math.ceil(
+    Math.max(
+      scalingFactor * (baseFontSize - minFontSize) + minFontSize,
+      minFontSize
+    )
+  );
+}
 
 const MIN_WIDTH = "1ch";
 
 interface Props {
+  address?: Address;
   token?: TokenContext;
   amount: string;
   onChange: (amount: string) => void;
 }
 
-export const Form: FunctionComponent<Props> = ({ token, amount, onChange }) => {
-  const { address } = useAccount();
+export const Form: FunctionComponent<Props> = ({
+  address,
+  token,
+  amount,
+  onChange,
+}) => {
   const { data, isError, isLoading } = useBalance({
     address,
     token:
       address && token && address !== token.address ? token.address : undefined,
+    enabled: !!token,
   });
 
   const [width, setWidth] = useState(MIN_WIDTH);
+  const [fontSize, setFontSize] = useState(45);
   const span = useRef<HTMLSpanElement>(null);
 
+  const changeAmount = (amount: string) => {
+    setWidth(`${amount.length}ch`);
+    onChange(`${amount}`);
+    setFontSize(downscale(amount.length, 36, 45, 11));
+  };
+
   const handleAmountChange = (e: Event) => {
-    const value = (e.target as HTMLInputElement).value;
-    setWidth(`${value.length}ch`);
-    onChange(`${value}`);
+    changeAmount((e.target as HTMLInputElement).value);
   };
 
   const handleClearAmountClick = () => {
-    setWidth(`0ch`);
-    onChange("");
+    changeAmount("");
   };
 
-  const [value, setValue] = useState("1000000");
+  const handleMaxClick = () => {
+    if (data) {
+      changeAmount(data.formatted);
+    }
+  };
 
   if (isLoading) return <div>Fetching balance…</div>;
   if (isError) return <div>Error fetching balance</div>;
 
   return (
     <>
-      <div>
-        <BigNumberInput
-          decimals={token?.asset.meta?.decimals ?? 18}
-          onChange={setValue}
-          value={value}
-        />
-        <div>{value || "empty"}</div>
-      </div>
       <div className="h-[164px] flex-col justify-center items-center flex">
-        <div className="px-5 py-[18px] justify-center items-center gap-2.5 flex">
-          <div className="justify-start items-center gap-3 flex">
-            <div className="text-on-surface-variant text-sm font-medium font-['Roboto'] leading-tight">
-              Balance {data?.formatted} {data?.symbol}
-            </div>
+        <div className="px-5 py-[18px]">
+          <div
+            className="text-on-surface-variant text-sm font-medium font-['Roboto'] leading-tight"
+            onClick={handleMaxClick}
+          >
+            Balance {data?.formatted} {data?.symbol}
           </div>
         </div>
         <div className="self-stretch pr-5 justify-center items-center flex">
@@ -70,11 +91,11 @@ export const Form: FunctionComponent<Props> = ({ token, amount, onChange }) => {
                 autoFocus
                 placeholder="0"
                 value={amount}
-                style={{ width, minWidth: MIN_WIDTH }}
-                className="outline-none self-stretch text-right text-on-primary-container text-[45px] font-normal font-['Roboto'] leading-[52px]"
+                style={{ width, minWidth: MIN_WIDTH, fontSize }}
+                className="outline-none self-stretch text-right text-on-primary-container font-normal font-['Roboto'] leading-[52px]"
                 onChange={handleAmountChange}
               />
-              <span className="self-stretch text-center text-on-primary-container text-[45px] font-normal font-['Roboto'] leading-[52px]">
+              <span className="self-stretch text-center text-on-primary-container font-normal font-['Roboto'] leading-[52px]">
                 {data?.symbol}
               </span>
             </label>

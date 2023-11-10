@@ -22,7 +22,11 @@ export const Token = () => {
         title="Token"
       />
       <div className="flex flex-col grow justify-between overflow-y-auto">
-        <Form value={token} onChange={handleTokenChange} />
+        <Form
+          address={state.context.address}
+          value={token}
+          onChange={handleTokenChange}
+        />
         <Button
           className="mx-4 mb-4 mt-6"
           onClick={() => send({ type: "backToken", value: token })}
