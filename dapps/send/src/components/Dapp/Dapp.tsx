@@ -1,5 +1,5 @@
 import { useEffect } from "preact/hooks";
-import { useAccount, useConnect } from "wagmi";
+import { useAccount, useConnect, useNetwork } from "wagmi";
 
 import { useStateMachine } from "@/providers/stateMachine";
 import { Sheets } from "./Sheets";
@@ -15,6 +15,11 @@ export const Dapp = () => {
       connect({ connector: connectors[0] });
     }
   }, []);
+
+  const { chain } = useNetwork();
+  useEffect(() => {
+    send({ type: "SET_NETWORK", value: chain });
+  }, [chain, send]);
 
   return (
     <>

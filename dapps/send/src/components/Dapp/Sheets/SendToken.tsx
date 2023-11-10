@@ -1,9 +1,12 @@
 import { useStateMachine } from "@/providers/stateMachine";
-import { ListItem } from "./components/ListItem";
+import {
+  Sheet,
+  ListItemToken,
+  ListItemAccount,
+  ListItemNetwork,
+  ListItemRecepient,
+} from "./components";
 import { Button } from "../../common/Button";
-import { Sheet } from "./components/Sheet";
-import { ListItemToken } from "./components/ListItemToken";
-import { ListItemAccount } from "./components/ListItemAccount";
 
 export const SendToken = () => {
   const [state, send] = useStateMachine();
@@ -22,15 +25,13 @@ export const SendToken = () => {
           token={state.context.token}
           onClick={() => send("token")}
         />
-        <ListItem
-          label="Network"
-          value={state.context.network}
+        <ListItemNetwork
+          network={state.context.network}
           onClick={() => send("network")}
         />
         <ListItemAccount label="Account" />
-        <ListItem
-          label="Recepient"
-          value="0x3fC...7FAD"
+        <ListItemRecepient
+          recepient={state.context.recepient}
           onClick={() => send("recepient")}
         />
       </div>

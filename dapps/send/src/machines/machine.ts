@@ -1,18 +1,20 @@
-import { TokenAsset } from "@dwidget/shared/proto/assets";
-import { Address } from "viem";
+import { Address, Chain } from "wagmi";
 import { assign, createMachine } from "xstate";
+import { TokenAsset } from "@dwidget/shared/proto/assets";
 
 export type TokenContext = { address: Address; asset: TokenAsset };
 
 export const machine = createMachine(
   {
-    /** @xstate-layout N4IgpgJg5mDOIC5SzAOwgOgMoFEByAIgPoAqA8gNL7b7HlV4DEK6A2gAwC6ioADgPawAlgBch-VDxAAPRAFoAjAFZ2GJQGYA7AE52AJnUAOAGwLdmgDQgAnvPXq9GTYfUAWTevbaX2ha4C+-lYsmLiEpJTUYXSRTABOYADGYLxCaCIc3EggAsJiElKyCHKuSkoY9oZ6xtramuyexpY2iHquqoau2nrshl6aZkqGhoHBaKG0EQw04fT4jKhgIgDu-HEA1plSuaLiktlFJSoYxq562m7KOq7GVrYInoYYCsaGCsNu2qYKbqMgITMYtNolN5iJ+Os0Ftsjt8vtQIdXK4FBg9IZNK4+kjhm9tHdEH5ysjjKZzjVSgNjH8ASC5nhAYwRHEAIaoWDMxJwghLZlCAA2sGhfEEuwKBzsjh+L2G3RuRnUCnxxT0mmMqJcmIUUvsCvU1PGgNB9OijJZbI5cIACgkAG5pZZCnIiuGFRDqJSaJzGDR1Xx9Jp4lrK1XqtxvbX2H769CGukYEgAJQAgngsEmAMIkACSZDwRAIOBISazABksIwAEYczZcbbOvau4oKBpqdhNEwUrV6IZKuQqtVosNa3WRvVBf4G2mxePJ1MZ7O5-OF4tlxgJZKpdKO2EN8XFIwVHTeS7GdgKerNe5tDpdHp9OqDbQBcc0yZxxMptOZnN5gtF0vlosKxrDWWTCnku4IogrgYMiviPm0SjGHoZhKo8zyvO8GpfMOz5jDGU7TB+c7fouf4ruW4KQqg271mKUHFE0TgGN6DRGGY6J6Eq55PG8Z4-PUPwelSL4GnghYAOpkAmFCVtWeBLKsGy0RB9EyHYnQYFU3TnOeSjaB6Bm9uUKE3O8NQKgMCoifhmAJjg6Y4JaWb4CQcmJKBdaqfC6n7mYGDsM4Sgquw7RIR2SrogF7AqO0+hfBorzRpgxFfgueaWvZABqLkSaarLspyexYAArhWAC2ogiJAKmij5RTouoGC+BimgGF4Zg1L2aIor0uIYk0rV+MlM6fvOP5EJlOA5TgeVVh5tUunuNSONe7ruDcXRPr27pquoT7ON2bibacI2peNi5YAAqgAQgAslmJAkDgBDuZ5MJ0fVBLnmqNSvK8x3NiSO3eBUZyUgqZT6AoZ2xG9JAQlCtYfd5jZ9mih77YJuinttQZyCZhJvAYZJtJoSiBOOqD8BAcBSCEXl1WjKhNZU1S1PUjSXvISjns8PwxeiuiuPtI2EfgjNLQxchaE1zadKeVSlG0Bi9mc2gnALukuB67pjrZsbTuLeCS5Bvky22FRvCSyH6MhhiBvcMsOE4Otnt4JJtCYYtvtOAAWQiwCIptqYcDjlPLNy9IhKvqL2ZiegN7j7V0WiGGUPuzEbtAh19CDKFp7R1FUDhaO0XH424koC1oDQ1NKNkTgRvtEbOaUTeRAG58zctmHUKpIs43q3PjKEDhq4YjgqI3iSQUkyd3e7oxH7AxfY3Yby8rhob0GFvB8XTfL8okxvZjnOa5i-S3oGMaND3q8+6uiGEq16F90vT9I+eFNylbcXRlbKuUr6+WMAqZ43g2rtV8F8R28g0SOEqAnG4mgho-wBOdUieZrr3Ues9AgICihan0M8JEDRMQdS+NzZUVQKjsTqCgtBsMGCEPgQoRwbUyjdnPChdh5NuLOC0s2ZsXRcRon0JTfwQA */
+    /** @xstate-layout N4IgpgJg5mDOIC5SzAOwgYgMoFEAqA+gHL4DqA8gEoDSA2gAwC6ioADgPawCWALl+6hYgAHogC0ANgDsAZgB0siQCYJAThn0AjPS0AOADQgAnuM3a5ZgCwBWJfWWaJWy5oC+rwynRzcRACIEeOTUOEQ+oQFBIUQYXhAMzEggHNx8AkKiCGKa1vRyLkqqllISVvS6loYmWTIySgq6MsUaqo2qmpbunmgQ4f6BwaF9kYMxAE5gAMZgrFxoPAlCKbz8gkmZYjbWckqatTmaqta2lqdViEqWeRWqdrr0qlKH1rq6XSBxwwPRX1GhGKgwDwAO7sMYAa0WSWWaTWoA2Njy1k0Uke6kajhkUnOCA0ugsEl0mleTVUpT2nQ8Hx6v1GtOiGB47HBaChbE4K3S63Ep00BKUtms0iuqjJlWMiA62xcElKhTUNieEnen18Ix+asZYwAhqhYNrJrC-EDtVwADawNnJDmwjLiOpyHTSJodVpC+gyHFiJQlHaNSxEvZ7fYyFU0tXfIaang6vUG2EABQmADc5sCrTDVnbcdYpHJdKoPbY1EpdLklF6fRI-U1AzJg-XQ1TVRFI2FNbhCABBACy5AAqkQ8BmbVnuTU8wXjrpLkKzDJZdYvZY1H6OlJXg8JAGVGHvBG-mE8JQu0QsF2AMJ4ACS5CIBD8+C714AMlgMAAjA2QphLUdc+FTA9OQZCJDFCSUWoPUrX1S1recGz2PdegPOlj1Pc8r1ve9HzwZ83wwCZplmeYR1SMdAJqfEBXLXRt00SDilUHFLmuSxbnKB4niOIpkPpIZ0LPS8bzvB8n1fd9ARBMEf0SdlyIAkREEsORrFOegpEsBcpEgsstBxPECTA-0yXnSlun3VtDzkQTMJEnDxIIpkWVQMjOThJSsmkVTWjUY4JBdbdxWqFF8SJLQ9ikLQZFzZVmxpEg8AoGhP2-IggVBCE3NtccxFA+RCyxYky0uM4JQQaxVFU2VSjJW41C3PjKBwC8cATa9QjwVLJnBSgphmOZUAWX9oX-DyNnrfFalzDSormjTKxUybHFyK5t3oFw+Ns4TsIIBNmoANQ60gtV1fVDVWLAAFcPwAW14HhIGyijPN0TTHUsS4fXKGQ0QrcrvSJR1XkOTTpE0p5zOpbxtqw0T9pwI6cBOr8euexTMhLECJGsFpbAYolsQBmLq1+4oZ1x05t23LaTyEuH7ywfsACEe2vPA8BwPxutkv8FPGyUUWrGdiUgsxXgLL1fqmz6lXrY56F2LbRh5vBmVZEb5Pc7NsiOR11BUWsnGOBivUeCwtMLCLdlLMl3CpVB2AgOAhDiPntdy3J5F2fZkSOE4yuqSRTjXF4NsJWRaj41DondnLKLynS5FaGL7A2x4XCOL1-IaHJhQzz63niyz+msmPQjjl6JvsHYhSeDofQqWUpYdDdU8OOjlADOKLJQqy6QACy4WAeErjH7UuZPGlyJx2M054vVBhQV2aIp1A3Y5o-7jUIjHgWEByZOcfUDQNLzjR-qDpp6nnD0ooXdpCR76G+9LtC6bs3bcPwrA9512xk5HC0KiKKOhC6VkcDWAMCFaj1j4olZK1A-65SUJPR4xwNzFCkLIdQEgDLlCMsVUk5ImhNRam1DqQ5kEJ1QfiK4xYUQlFigYcqrF8zsTuFxZ4vFi69FhvZPah1jrUM8gFPkdRtJRTaKiS+4hSz1FqESDO4NigdFphhHaokmas3ZpzPwIjMhmEVjsQkrQjjSOYgDeRIFQKgxXNg1RUNPiHgMXIhicgnD0Bmr9SOG0iYhQ3PmbQ2h2JKNLIre2rggA */
     tsTypes: {} as import("./machine.typegen").Typegen0,
+
     schema: {
       context: {} as {
-        // address?: string;
-        network: string;
+        network?: Chain;
         token?: TokenContext;
+        recepient?: Address;
+        amount?: number;
       },
       events: {} as
         | { type: "send" }
@@ -23,18 +25,26 @@ export const machine = createMachine(
         | { type: "transactionPreview" }
         | { type: "transactionSubmitted" }
         | { type: "back" }
-        | { type: "backNetwork"; value?: string }
-        | { type: "backToken"; value?: TokenContext },
+        | { type: "backNetwork"; value?: Chain }
+        | { type: "backToken"; value?: TokenContext }
+        | { type: "backRecepient"; value?: Address }
+        | { type: "SET_NETWORK"; value?: Chain }
+        | { type: "SET_AMOUNT"; value?: number },
     },
+
     id: "send",
     initial: "SEND_TOKEN",
+
     context: {
-      // address: undefined,
-      network: "mainnet",
+      network: undefined,
       token: undefined,
+      recepient: undefined,
+      amount: undefined,
     },
+
     states: {
       SEND_TOKEN: {
+        initial: "SEND_TOKEN",
         states: {
           SEND_TOKEN: {
             on: {
@@ -54,6 +64,11 @@ export const machine = createMachine(
             on: {
               transactionDetails: "TRANSACTION_DETAILS",
               transactionPreview: "#send.TRANSACTION_PREVIEW",
+
+              SET_AMOUNT: {
+                actions: ["setAmount"],
+                target: "SEND",
+              },
             },
           },
 
@@ -66,8 +81,6 @@ export const machine = createMachine(
             },
           },
         },
-
-        initial: "SEND_TOKEN",
       },
 
       NETWORK: {
@@ -81,7 +94,10 @@ export const machine = createMachine(
 
       RECEPIENT: {
         on: {
-          back: "SEND_TOKEN.hist",
+          backRecepient: {
+            actions: ["saveRecepient"],
+            target: "SEND_TOKEN.hist",
+          },
         },
       },
 
@@ -107,6 +123,14 @@ export const machine = createMachine(
         },
       },
     },
+
+    on: {
+      SET_NETWORK: {
+        actions: ["saveNetwork"],
+        target: "#send",
+      },
+    },
+
     predictableActionArguments: true,
   },
   {
@@ -116,6 +140,12 @@ export const machine = createMachine(
       }),
       saveToken: assign({
         token: (ctx, event) => event.value ?? ctx.token,
+      }),
+      saveRecepient: assign({
+        recepient: (ctx, event) => event.value ?? ctx.recepient,
+      }),
+      setAmount: assign({
+        amount: (ctx, event) => event.value ?? ctx.amount,
       }),
     },
     // services: {

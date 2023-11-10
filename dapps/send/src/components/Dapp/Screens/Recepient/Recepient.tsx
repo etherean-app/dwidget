@@ -1,27 +1,27 @@
 import { useCallback, useState } from "preact/hooks";
-import { useStateMachine } from "@/providers/stateMachine";
+import { Address } from "wagmi";
+import { isAddress } from "viem";
 
+import { useStateMachine } from "@/providers/stateMachine";
 import { TopAppBar } from "../../../common/TopAppBar";
-import { Button } from "../../../common/Button";
 import { Form } from "./Form";
 
 // TODO:
 export const Recepient = () => {
   const [state, send] = useStateMachine();
-  const [network, setNetwork] = useState(state.context.network);
 
-  const handleNetworkChange = useCallback(
-    (network: string) => setNetwork(network),
-    []
+  const handleSaveClick = useCallback(
+    (recepient: Address) => send({ type: "backRecepient", value: recepient }),
+    [send]
   );
 
   return (
-    <div className="flex flex-col flex-1 justify-between">
-      <TopAppBar onBackClick={() => send("back")} title="Recepient" />
-      <Form value={network} onChange={handleNetworkChange} />
-      <Button className="mx-4 mb-4" onClick={() => send({ type: "back" })}>
-        Save
-      </Button>
+    <div className="flex flex-col grow">
+      <TopAppBar
+        onBackClick={() => send({ type: "backRecepient" })}
+        title="Recepient"
+      />
+      <Form recepient={state.context.recepient} onSave={handleSaveClick} />
     </div>
   );
 };

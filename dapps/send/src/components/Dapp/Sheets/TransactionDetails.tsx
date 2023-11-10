@@ -1,9 +1,13 @@
-import { ListItem } from "./components/ListItem";
 import { Button } from "../../common/Button";
-import { Sheet } from "./components/Sheet";
 import { useStateMachine } from "@/providers/stateMachine";
-import { ListItemToken } from "./components/ListItemToken";
-import { ListItemAccount } from "./components/ListItemAccount";
+import {
+  Sheet,
+  ListItem,
+  ListItemToken,
+  ListItemAccount,
+  ListItemNetwork,
+  ListItemRecepient,
+} from "./components";
 
 export const TransactionDetails = () => {
   const [state, send] = useStateMachine();
@@ -18,9 +22,8 @@ export const TransactionDetails = () => {
       title="Transaction details"
     >
       <div className="grid gap-1">
-        <ListItem
-          label="Network"
-          value={state.context.network}
+        <ListItemNetwork
+          network={state.context.network}
           onClick={() => send("network")}
         />
         <ListItemAccount />
@@ -30,9 +33,8 @@ export const TransactionDetails = () => {
           onClick={() => send("token")}
         />
         <ListItem label="Recipient gets" value="0.0556ETH" />
-        <ListItem
-          label="Recepient"
-          value="0x3fC6...7FA6gD"
+        <ListItemRecepient
+          recepient={state.context.recepient}
           onClick={() => send("recepient")}
         />
       </div>

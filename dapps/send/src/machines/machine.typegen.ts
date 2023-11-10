@@ -13,8 +13,10 @@ export interface Typegen0 {
     services: never;
   };
   eventsCausingActions: {
-    saveNetwork: "backNetwork";
+    saveNetwork: "SET_NETWORK" | "backNetwork";
+    saveRecepient: "backRecepient";
     saveToken: "backToken";
+    setAmount: "SET_AMOUNT";
   };
   eventsCausingDelays: {};
   eventsCausingGuards: {};

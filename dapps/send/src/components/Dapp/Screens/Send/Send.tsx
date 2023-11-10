@@ -1,3 +1,5 @@
+import { useCallback, useState } from "preact/hooks";
+
 import { Icon } from "@/components/common/Icon";
 import { Button } from "../../../common/Button";
 import { TopAppBar } from "../../../common/TopAppBar";
@@ -6,6 +8,12 @@ import { useStateMachine } from "@/providers/stateMachine";
 
 export const Send = () => {
   const [state, send] = useStateMachine();
+  const [amount, setAmount] = useState("");
+
+  const handleAmountChange = useCallback((amount: string) => {
+    setAmount(amount);
+    // send({ type: "SET_AMOUNT", value: amount });
+  }, []);
 
   return (
     <div className="flex flex-col flex-1 justify-between">
@@ -18,7 +26,11 @@ export const Send = () => {
           </div>
         }
       />
-      <Form token={state.context.token} />
+      <Form
+        token={state.context.token}
+        amount={amount}
+        onChange={handleAmountChange}
+      />
       <Button className="mx-4 mb-4" onClick={() => send("transactionPreview")}>
         Continue
       </Button>

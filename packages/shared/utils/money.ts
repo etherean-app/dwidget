@@ -8,8 +8,6 @@ export const fiatMoneyToString = (money?: Money | UniswapMoney) => {
     return "0";
   }
 
-  console.log(money);
-
   if ("currencyCode" in money) {
     const units = beautifyAmount(money.units.toString());
     const nanos = money.nanos.toString().substring(0, 2);

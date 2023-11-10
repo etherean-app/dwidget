@@ -1,25 +1,32 @@
 import { RadioGroup } from "@/components/common/RadioGroup";
 import { FunctionComponent } from "preact";
-
-const elements = [
-  { label: "Mainnet", value: "mainnet" },
-  { label: "Goerli", value: "goerli" },
-  { label: "Sepolia", value: "sepolia" },
-];
+import { useMemo } from "preact/hooks";
+import { useNetwork } from "wagmi";
 
 interface Props {
-  value: string;
-  onChange: (network: string) => void;
+  chainId?: string;
+  onChainChange: (chainId: string) => void;
 }
 
-export const Form: FunctionComponent<Props> = ({ value, onChange }) => {
+export const Form: FunctionComponent<Props> = ({ chainId, onChainChange }) => {
+  const { chains } = useNetwork();
+
+  const elements = useMemo(
+    () =>
+      chains.map((chain) => ({
+        label: chain.name,
+        value: `${chain.id}`,
+      })),
+    [chains]
+  );
+
   return (
     <div className="px-4">
       <RadioGroup
         label="Network"
         elements={elements}
-        value={value}
-        onValueChange={onChange}
+        value={chainId}
+        onValueChange={onChainChange}
       />
     </div>
   );

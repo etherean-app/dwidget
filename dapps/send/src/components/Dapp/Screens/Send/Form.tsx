@@ -1,18 +1,20 @@
 import { useRef, useState } from "preact/hooks";
 import { useAccount, useBalance } from "wagmi";
 import { Icon } from "../../../common/Icon";
-import { store } from "../../store";
 import { FunctionComponent } from "preact";
 import { TokenContext } from "@/machines";
-import { observer } from "@legendapp/state/react";
+import { fiatMoneyToString } from "@dwidget/shared/utils";
+import { BigNumberInput } from "@/components/common/NumberInput";
 
 const MIN_WIDTH = "1ch";
 
 interface Props {
   token?: TokenContext;
+  amount: string;
+  onChange: (amount: string) => void;
 }
 
-export const Form: FunctionComponent<Props> = observer(({ token }) => {
+export const Form: FunctionComponent<Props> = ({ token, amount, onChange }) => {
   const { address } = useAccount();
   const { data, isError, isLoading } = useBalance({
     address,
@@ -23,24 +25,32 @@ export const Form: FunctionComponent<Props> = observer(({ token }) => {
   const [width, setWidth] = useState(MIN_WIDTH);
   const span = useRef<HTMLSpanElement>(null);
 
-  const amount = store.amount.get();
-
   const handleAmountChange = (e: Event) => {
     const value = (e.target as HTMLInputElement).value;
     setWidth(`${value.length}ch`);
-    store.amount.set(`${value}`);
+    onChange(`${value}`);
   };
 
   const handleClearAmountClick = () => {
     setWidth(`0ch`);
-    store.amount.set("");
+    onChange("");
   };
+
+  const [value, setValue] = useState("1000000");
 
   if (isLoading) return <div>Fetching balance…</div>;
   if (isError) return <div>Error fetching balance</div>;
 
   return (
     <>
+      <div>
+        <BigNumberInput
+          decimals={token?.asset.meta?.decimals ?? 18}
+          onChange={setValue}
+          value={value}
+        />
+        <div>{value || "empty"}</div>
+      </div>
       <div className="h-[164px] flex-col justify-center items-center flex">
         <div className="px-5 py-[18px] justify-center items-center gap-2.5 flex">
           <div className="justify-start items-center gap-3 flex">
@@ -80,11 +90,11 @@ export const Form: FunctionComponent<Props> = observer(({ token }) => {
         <div className="px-5 py-[18px] justify-center items-center gap-2.5 flex">
           <div className="justify-start items-center gap-3 flex">
             <div className="text-on-surface-variant text-sm font-medium font-['Roboto'] leading-tight">
-              $425.56
+              ${fiatMoneyToString(token?.asset.price?.exchangeRate)}
             </div>
           </div>
         </div>
       </div>
     </>
   );
-});
+};

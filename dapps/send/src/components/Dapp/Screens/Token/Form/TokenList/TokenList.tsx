@@ -1,9 +1,9 @@
 import { FunctionComponent } from "preact";
+import { Address } from "wagmi";
 import { TokenAsset } from "@dwidget/shared/proto/assets";
 
 import { TokenItem } from "./TokenItem";
 import { TokenContext } from "@/machines";
-import { Address } from "viem";
 
 interface Props {
   tokens: {

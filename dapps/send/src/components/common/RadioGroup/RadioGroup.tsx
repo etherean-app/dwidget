@@ -9,7 +9,7 @@ type ElementType = {
 interface Props {
   label: string;
   elements: ElementType[];
-  value: string;
+  value?: string;
   onValueChange: (value: string) => void;
 }
 
