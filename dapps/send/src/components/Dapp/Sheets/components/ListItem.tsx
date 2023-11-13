@@ -7,13 +7,13 @@ export interface ListItemProps
   extends Pick<HTMLProps<HTMLDivElement>, "onClick"> {
   label: string;
   value: string;
-  notImplmented?: boolean;
+  notImplemented?: boolean;
 }
 
 export const ListItem: FunctionComponent<ListItemProps> = ({
   label,
   value,
-  notImplmented,
+  notImplemented,
   ...props
 }) => {
   return (
@@ -21,7 +21,7 @@ export const ListItem: FunctionComponent<ListItemProps> = ({
       className={cn(
         "h-[72px] bg-[#E6EEFF] rounded-3xl flex-col justify-center items-center flex",
         {
-          "opacity-50": notImplmented,
+          "opacity-50": notImplemented,
         }
       )}
       {...props}
