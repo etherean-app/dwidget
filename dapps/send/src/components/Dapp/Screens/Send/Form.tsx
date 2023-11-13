@@ -21,6 +21,7 @@ function downscale(
 }
 
 const MIN_WIDTH = "1ch";
+const REGEX_AMOUNT = /^(\d+(\.\d*)?|\.|)$/;
 
 interface Props {
   address?: Address;
@@ -53,7 +54,18 @@ export const Form: FunctionComponent<Props> = ({
   };
 
   const handleAmountChange = (e: Event) => {
-    changeAmount((e.target as HTMLInputElement).value);
+    let nextValue = (e.target as HTMLInputElement).value;
+
+    if (REGEX_AMOUNT.test(nextValue)) {
+      nextValue = nextValue.replace(/^0(\d+)/, "$1");
+      if (nextValue === ".") {
+        nextValue = "0.";
+      }
+
+      changeAmount(nextValue);
+    } else {
+      changeAmount(amount);
+    }
   };
 
   const handleClearAmountClick = () => {
