@@ -26,7 +26,7 @@ export const TransactionDetails = () => {
           network={state.context.network}
           onClick={() => send({ type: "network" })}
         />
-        <ListItemAccount />
+        <ListItemAccount address={state.context.address} />
         <ListItem label="ERC-20" value="Gas fee 25$" />
         <ListItemToken
           token={state.context.token}
