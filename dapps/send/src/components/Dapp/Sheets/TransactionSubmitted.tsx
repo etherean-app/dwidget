@@ -23,7 +23,7 @@ export const TransactionSubmitted = () => {
     >
       <div className="grid gap-1">
         <ListItemNetwork network={state.context.network} />
-        <ListItemAccount />
+        <ListItemAccount address={state.context.address} />
         <ListItem label="ERC-20" value="Gas fee 25$" notImplmented />
         <ListItemAmount
           amount={state.context.amount}
