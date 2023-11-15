@@ -1,8 +1,12 @@
-import { erc20ABI, useFeeData, usePrepareContractWrite } from "wagmi";
+import {
+  erc20ABI,
+  useFeeData,
+  usePrepareContractWrite,
+  useContractWrite,
+} from "wagmi";
 import { parseUnits } from "viem";
 
 import { useStateMachine } from "@/providers/stateMachine";
-import { useErc20Transfer } from "@/generated";
 import { Button } from "../../../../common/Button";
 import { useCallback } from "preact/hooks";
 import { Details } from "./Details";
@@ -16,7 +20,8 @@ export const FormERC20 = () => {
     gasPrice: dataFee?.gasPrice ?? undefined,
     address: state.context.token?.address,
     // @ts-ignore
-    abi: state.context.token?.asset.meta?.symbol === "USDT" ? usdtABI : erc20ABI,
+    abi:
+      state.context.token?.asset.meta?.symbol === "USDT" ? usdtABI : erc20ABI,
     functionName: "transfer",
     args:
       state.context.recepient &&
@@ -30,11 +35,11 @@ export const FormERC20 = () => {
             ),
           ]
         : undefined,
-    enabled: !!state.context.recepient && !!state.context.amount,
+    enabled:
+      !!state.context.recepient && !!state.context.amount && isSuccessFee,
   });
 
-  // @ts-ignore
-  const { data, write: sendTransactionAsync } = useErc20Transfer(config);
+  const { data, write: sendTransactionAsync } = useContractWrite(config);
 
   const handleContinueClick = useCallback(async () => {
     if (sendTransactionAsync) {

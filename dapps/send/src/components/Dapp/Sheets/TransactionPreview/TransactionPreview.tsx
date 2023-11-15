@@ -6,7 +6,7 @@ export const TransactionPreview = () => {
   const [state, send] = useStateMachine();
   const open = state.matches("TRANSACTION_PREVIEW");
 
-  const isETH = state.context.address === state.context.token;
+  const isETH = state.context.address === state.context.token?.address;
 
   return (
     <Sheet
