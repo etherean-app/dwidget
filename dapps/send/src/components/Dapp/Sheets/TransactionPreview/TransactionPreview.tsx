@@ -1,11 +1,12 @@
 import { useStateMachine } from "@/providers/stateMachine";
 import { Sheet } from "../components";
-import { Form } from "./Form";
+import { FormETH, FormERC20 } from "./Form";
 
 export const TransactionPreview = () => {
   const [state, send] = useStateMachine();
-
   const open = state.matches("TRANSACTION_PREVIEW");
+
+  const isETH = state.context.address === state.context.token;
 
   return (
     <Sheet
@@ -14,7 +15,7 @@ export const TransactionPreview = () => {
       icon="layers"
       title="Transaction preview"
     >
-      <Form />
+      {isETH ? <FormETH /> : <FormERC20 />}
     </Sheet>
   );
 };

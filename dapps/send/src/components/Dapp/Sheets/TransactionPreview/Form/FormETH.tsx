@@ -6,19 +6,13 @@ import {
 import { parseEther } from "viem";
 
 import { useStateMachine } from "@/providers/stateMachine";
-import { Button } from "../../../common/Button";
-import {
-  ListItem,
-  ListItemAccount,
-  ListItemNetwork,
-  ListItemRecepient,
-  ListItemAmount,
-} from "../components";
+import { Button } from "../../../../common/Button";
+
 import { useCallback } from "preact/hooks";
+import { Details } from "./Details";
 
-export const Form = () => {
+export const FormETH = () => {
   const [state, send] = useStateMachine();
-
   const { data: dataFee, isSuccess: isSuccessFee } = useFeeData();
 
   const { config, error } = usePrepareSendTransaction({
@@ -34,30 +28,13 @@ export const Form = () => {
   const handleContinueClick = useCallback(async () => {
     if (sendTransactionAsync) {
       const result = await sendTransactionAsync();
-      console.log("result", result);
       send({ type: "transactionSubmitted" });
     }
   }, [sendTransactionAsync, send]);
 
   return (
     <>
-      <div className="grid gap-1">
-        <ListItemNetwork
-          network={state.context.network}
-          onClick={() => send({ type: "network" })}
-        />
-        <ListItemAccount address={state.context.address} />
-        <ListItem label="ERC-20" value="Gas fee 25$" notImplemented />
-        <ListItemAmount
-          amount={state.context.amount}
-          token={state.context.token}
-        />
-        <ListItem label="Recipient gets" value="0.0556ETH" notImplemented />
-        <ListItemRecepient
-          recepient={state.context.recepient}
-          onClick={() => send({ type: "recepient" })}
-        />
-      </div>
+      <Details />
       <div className="grid gap-4 ">
         <Button
           disabled={

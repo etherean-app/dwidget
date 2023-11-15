@@ -28,6 +28,7 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
     "@types/lodash": "^4.14.201",
+    "@wagmi/cli": "^1.5.2",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "tailwind-material-colors": "^1.1.3",

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "preact/hooks";
+import { useCallback } from "preact/hooks";
 
 import { Icon } from "@/components/common/Icon";
 import { Button } from "../../../common/Button";
