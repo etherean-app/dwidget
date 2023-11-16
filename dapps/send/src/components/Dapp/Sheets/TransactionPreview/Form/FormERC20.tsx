@@ -1,23 +1,27 @@
+import { useCallback } from "preact/hooks";
 import {
   erc20ABI,
+  useContractWrite,
   useFeeData,
   usePrepareContractWrite,
-  useContractWrite,
 } from "wagmi";
 import { parseUnits } from "viem";
 
 import { useStateMachine } from "@/providers/stateMachine";
+import { useGasEstimate } from "@/hooks";
 import { Button } from "../../../../common/Button";
-import { useCallback } from "preact/hooks";
 import { Details } from "./Details";
 import { usdtABI } from "./usdtABI";
+
+// multiplier 150 -> 1.5
+const getSafeGasLimit = (gas: bigint, multiplier = 150n) =>
+  (gas * multiplier) / 100n;
 
 export const FormERC20 = () => {
   const [state, send] = useStateMachine();
   const { data: dataFee, isSuccess: isSuccessFee } = useFeeData();
 
-  const { config, error, isError } = usePrepareContractWrite({
-    gasPrice: dataFee?.gasPrice ?? undefined,
+  const { config, isSuccess, error } = usePrepareContractWrite({
     address: state.context.token?.address,
     // @ts-ignore
     abi:
@@ -36,10 +40,22 @@ export const FormERC20 = () => {
           ]
         : undefined,
     enabled:
-      !!state.context.recepient && !!state.context.amount && isSuccessFee,
+      !!state.context.recepient &&
+      !!state.context.amount &&
+      !!state.context.token?.asset.meta?.decimals &&
+      isSuccessFee,
   });
+  const gas = useGasEstimate(isSuccess ? config.request : null);
 
-  const { data, write: sendTransactionAsync } = useContractWrite(config);
+  const { data, writeAsync: sendTransactionAsync } = useContractWrite({
+    ...config,
+    request: {
+      ...config.request,
+      gas: gas.result ? getSafeGasLimit(gas.result) : undefined,
+      // @ts-ignore
+      gasPrice: dataFee?.gasPrice ?? undefined,
+    },
+  });
 
   const handleContinueClick = useCallback(async () => {
     if (sendTransactionAsync) {

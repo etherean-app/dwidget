@@ -1,3 +1,4 @@
+import { useCallback } from "preact/hooks";
 import {
   useSendTransaction,
   usePrepareSendTransaction,
@@ -6,10 +7,8 @@ import {
 import { parseEther } from "viem";
 
 import { useStateMachine } from "@/providers/stateMachine";
-import { Button } from "../../../../common/Button";
-
-import { useCallback } from "preact/hooks";
 import { Details } from "./Details";
+import { Button } from "../../../../common/Button";
 
 export const FormETH = () => {
   const [state, send] = useStateMachine();
