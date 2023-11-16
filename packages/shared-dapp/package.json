@@ -1,0 +1,15 @@
+{
+  "name": "@dwidget/shared-dapp",
+  "version": "1.0.0",
+  "description": "Shared codebase for dapps",
+  "dependencies": {
+    "@dwidget/shared": "workspace:^",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0",
+    "vaul": "^0.7.7",
+    "windstitch": "^0.3.0"
+  },
+  "peerDependencies": {
+    "preact": "^10.16.0"
+  }
+}

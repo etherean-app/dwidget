@@ -1,10 +1,7 @@
 {
   "private": true,
-  "name": "@dwidget/template",
+  "name": "template-dapp",
   "version": "0.0.1",
-  "description": "Template for dWidgets",
-  "author": "Satoshi Nakamoto <satoshi@nakamoto.bitcoin>",
-  "homepage": "",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,6 +19,7 @@
   },
   "devDependencies": {
     "@dwidget/vite": "workspace:^",
+    "@dwidget/vite-dapp": "workspace:^",
     "@preact/preset-vite": "^2.5.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",

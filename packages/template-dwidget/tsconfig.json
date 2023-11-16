@@ -1,0 +1,26 @@
+{
+  "extends": "@dwidget/shared/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "react": [
+        "./node_modules/preact/compat/"
+      ],
+      "react-dom": [
+        "./node_modules/preact/compat/"
+      ],
+    },
+  },
+  "include": [
+    "node_modules/@dwidget/shared/types/",
+    "src",
+    "tailwind.config.js",
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
