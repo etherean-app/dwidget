@@ -7,6 +7,6 @@ export default mergeConfig(
     dirname: __dirname,
   }),
   {
-    base: "dwidget/dapps/send",
+    base: "/dwidget/dapps/send",
   }
 );

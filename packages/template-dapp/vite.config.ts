@@ -7,6 +7,6 @@ export default mergeConfig(
     dirname: __dirname,
   }),
   {
-    base: "dwidget/dapps/template-dapp", // TODO: change name of dapp
+    base: "/dwidget/dapps/template-dapp", // TODO: change name of dapp
   }
 );
