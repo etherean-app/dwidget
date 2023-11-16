@@ -178,9 +178,6 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(react@18.2.0)
     devDependencies:
-      '@dwidget/vite':
-        specifier: workspace:^
-        version: link:../vite
       '@dwidget/vite-dapp':
         specifier: workspace:^
         version: link:../vite-dapp
@@ -227,9 +224,9 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(react@18.2.0)
     devDependencies:
-      '@dwidget/vite':
+      '@dwidget/vite-dwidget':
         specifier: workspace:^
-        version: link:../vite
+        version: link:../vite-dwidget
       '@preact/preset-vite':
         specifier: ^2.5.0
         version: 2.6.0(@babel/core@7.23.3)(preact@10.18.1)(vite@4.4.11)
@@ -248,40 +245,6 @@ importers:
       vite:
         specifier: ^4.4.5
         version: 4.4.11
-
-  packages/vite:
-    dependencies:
-      '@preact/preset-vite':
-        specifier: ^2.5.0
-        version: 2.6.0(@babel/core@7.23.3)(preact@10.19.2)(vite@4.5.0)
-      rollup-plugin-visualizer:
-        specifier: ^5.9.2
-        version: 5.9.2
-      unplugin-compression:
-        specifier: ^0.0.6
-        version: 0.0.6
-      vite-plugin-banner:
-        specifier: ^0.7.1
-        version: 0.7.1
-      vite-plugin-compression2:
-        specifier: ^0.10.6
-        version: 0.10.6
-      vite-plugin-generate-file:
-        specifier: ^0.0.4
-        version: 0.0.4
-      vite-plugin-progress:
-        specifier: ^0.0.7
-        version: 0.0.7(vite@4.5.0)
-      vite-plugin-turbo-console:
-        specifier: ^0.1.0
-        version: 0.1.0(vite@4.5.0)
-    devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-      vite:
-        specifier: ^4.4.5
-        version: 4.5.0
 
   packages/vite-dapp:
     dependencies:
@@ -311,6 +274,40 @@ importers:
         specifier: ^4.4.5
         version: 4.5.0
 
+  packages/vite-dwidget:
+    dependencies:
+      '@preact/preset-vite':
+        specifier: ^2.5.0
+        version: 2.6.0(@babel/core@7.23.3)(preact@10.19.2)(vite@4.4.11)
+      rollup-plugin-visualizer:
+        specifier: ^5.9.2
+        version: 5.9.2
+      unplugin-compression:
+        specifier: ^0.0.6
+        version: 0.0.6
+      vite-plugin-banner:
+        specifier: ^0.7.1
+        version: 0.7.1
+      vite-plugin-compression2:
+        specifier: ^0.10.6
+        version: 0.10.6
+      vite-plugin-generate-file:
+        specifier: ^0.0.4
+        version: 0.0.4
+      vite-plugin-progress:
+        specifier: ^0.0.7
+        version: 0.0.7(vite@4.4.11)
+      vite-plugin-turbo-console:
+        specifier: ^0.1.0
+        version: 0.1.0(vite@4.4.11)
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.5
+        version: 4.4.11
+
   widgets/curve:
     dependencies:
       '@dwidget/shared':
@@ -338,9 +335,9 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(react@18.2.0)
     devDependencies:
-      '@dwidget/vite':
+      '@dwidget/vite-dwidget':
         specifier: workspace:^
-        version: link:../../packages/vite
+        version: link:../../packages/vite-dwidget
       '@preact/preset-vite':
         specifier: ^2.5.0
         version: 2.6.0(@babel/core@7.23.3)(preact@10.18.1)(vite@4.5.0)
@@ -365,9 +362,9 @@ importers:
       '@dwidget/shared':
         specifier: workspace:^
         version: link:../../packages/shared
-      '@dwidget/vite':
+      '@dwidget/vite-dwidget':
         specifier: workspace:^
-        version: link:../../packages/vite
+        version: link:../../packages/vite-dwidget
       '@protobuf-ts/runtime-rpc':
         specifier: ^2.9.1
         version: 2.9.1
@@ -430,9 +427,9 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(react@18.2.0)
     devDependencies:
-      '@dwidget/vite':
+      '@dwidget/vite-dwidget':
         specifier: workspace:^
-        version: link:../../packages/vite
+        version: link:../../packages/vite-dwidget
       '@preact/preset-vite':
         specifier: ^2.5.0
         version: 2.6.0(@babel/core@7.23.3)(preact@10.18.1)(vite@4.5.0)
@@ -476,9 +473,9 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(react@18.2.0)
     devDependencies:
-      '@dwidget/vite':
+      '@dwidget/vite-dwidget':
         specifier: workspace:^
-        version: link:../../packages/vite
+        version: link:../../packages/vite-dwidget
       '@preact/preset-vite':
         specifier: ^2.5.0
         version: 2.6.0(@babel/core@7.23.3)(preact@10.18.1)(vite@4.5.0)
@@ -522,9 +519,9 @@ importers:
         specifier: ^1.4.4
         version: 1.4.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.16.6)
     devDependencies:
-      '@dwidget/vite':
+      '@dwidget/vite-dwidget':
         specifier: workspace:^
-        version: link:../../packages/vite
+        version: link:../../packages/vite-dwidget
       '@preact/preset-vite':
         specifier: ^2.5.0
         version: 2.6.0(@babel/core@7.23.3)(preact@10.18.1)(vite@4.5.0)
@@ -817,7 +814,7 @@ packages:
       eth-rpc-errors: 4.0.2
       json-rpc-engine: 6.1.0
       keccak: 3.0.4
-      preact: 10.19.1
+      preact: 10.19.2
       qs: 6.11.2
       rxjs: 6.6.7
       sha.js: 2.4.11
@@ -2271,6 +2268,27 @@ packages:
       - supports-color
     dev: true
 
+  /@preact/preset-vite@2.6.0(@babel/core@7.23.3)(preact@10.19.2)(vite@4.4.11):
+    resolution: {integrity: sha512-5nztNzXbCpqyVum/K94nB2YQ5PTnvWdz4u7/X0jc8+kLyskSSpkNUxLQJeI90zfGSFIX1Ibj2G2JIS/mySHWYQ==}
+    peerDependencies:
+      '@babel/core': 7.x
+      vite: 2.x || 3.x || 4.x
+    dependencies:
+      '@babel/core': 7.23.3
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.3)
+      '@babel/plugin-transform-react-jsx-development': 7.22.5(@babel/core@7.23.3)
+      '@prefresh/vite': 2.4.1(preact@10.19.2)(vite@4.4.11)
+      '@rollup/pluginutils': 4.2.1
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.23.3)
+      debug: 4.3.4(supports-color@8.1.1)
+      kolorist: 1.8.0
+      resolve: 1.22.8
+      vite: 4.4.11
+    transitivePeerDependencies:
+      - preact
+      - supports-color
+    dev: false
+
   /@preact/preset-vite@2.6.0(@babel/core@7.23.3)(preact@10.19.2)(vite@4.5.0):
     resolution: {integrity: sha512-5nztNzXbCpqyVum/K94nB2YQ5PTnvWdz4u7/X0jc8+kLyskSSpkNUxLQJeI90zfGSFIX1Ibj2G2JIS/mySHWYQ==}
     peerDependencies:
@@ -2372,6 +2390,23 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@prefresh/vite@2.4.1(preact@10.19.2)(vite@4.4.11):
+    resolution: {integrity: sha512-vthWmEqu8TZFeyrBNc9YE5SiC3DVSzPgsOCp/WQ7FqdHpOIJi7Z8XvCK06rBPOtG4914S52MjG9Ls22eVAiuqQ==}
+    peerDependencies:
+      preact: ^10.4.0
+      vite: '>=2.0.0'
+    dependencies:
+      '@babel/core': 7.23.3
+      '@prefresh/babel-plugin': 0.5.0
+      '@prefresh/core': 1.5.2(preact@10.19.2)
+      '@prefresh/utils': 1.2.0
+      '@rollup/pluginutils': 4.2.1
+      preact: 10.19.2
+      vite: 4.4.11
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@prefresh/vite@2.4.1(preact@10.19.2)(vite@4.5.0):
     resolution: {integrity: sha512-vthWmEqu8TZFeyrBNc9YE5SiC3DVSzPgsOCp/WQ7FqdHpOIJi7Z8XvCK06rBPOtG4914S52MjG9Ls22eVAiuqQ==}
@@ -3306,7 +3341,7 @@ packages:
   /@types/connect@3.4.36:
     resolution: {integrity: sha512-P63Zd/JUGq+PdrM1lv0Wv5SBYeA2+CORvbrXbngriYY0jzLUWfQMQQxOhjONEz/wlHOAxOdY7CY65rgQdTjq2w==}
     dependencies:
-      '@types/node': 20.8.8
+      '@types/node': 20.9.0
 
   /@types/debug@4.1.9:
     resolution: {integrity: sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==}
@@ -3345,16 +3380,10 @@ packages:
     resolution: {integrity: sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==}
     dev: false
 
-  /@types/node@20.8.8:
-    resolution: {integrity: sha512-YRsdVxq6OaLfmR9Hy816IMp33xOBjfyOgUd77ehqg96CFywxAPbDbXvAsuN2KVg2HOT8Eh6uAfU+l4WffwPVrQ==}
-    dependencies:
-      undici-types: 5.25.3
-
   /@types/node@20.9.0:
     resolution: {integrity: sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==}
     dependencies:
       undici-types: 5.26.5
-    dev: false
 
   /@types/parse-json@4.0.1:
     resolution: {integrity: sha512-3YmXzzPAdOTVljVMkTMBdBEvlOLg2cDQaDhnnhT3nT9uDbnJzjWhKlzb+desT12Y7tGqaN6d+AbozcKzyL36Ng==}
@@ -3409,7 +3438,7 @@ packages:
   /@types/ws@7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
-      '@types/node': 20.8.8
+      '@types/node': 20.9.0
 
   /@uniswap/conedison@1.8.0(@uniswap/sdk-core@4.0.9)(ethers@5.7.2):
     resolution: {integrity: sha512-EeC37bbrd4sJnqW3TxNhExdWUBvzyJDhbTXcbDzFdBh/bg5sOCu1NbYJEnrjwBHEfewc9nF2OjEzejJFyJUx9A==}
@@ -4067,7 +4096,7 @@ packages:
       '@walletconnect/legacy-types': 2.0.0
       '@walletconnect/legacy-utils': 2.0.0
       copy-to-clipboard: 3.3.3
-      preact: 10.19.1
+      preact: 10.19.2
       qrcode: 1.5.3
 
   /@walletconnect/legacy-provider@2.0.0:
@@ -7932,7 +7961,6 @@ packages:
 
   /preact@10.19.2:
     resolution: {integrity: sha512-UA9DX/OJwv6YwP9Vn7Ti/vF80XL+YA5H2l7BpCtUr3ya8LWHFzpiO5R+N7dN16ujpIxhekRFuOOF82bXX7K/lg==}
-    dev: false
 
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
@@ -9140,12 +9168,8 @@ packages:
     dependencies:
       multiformats: 9.9.0
 
-  /undici-types@5.25.3:
-    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
-
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: false
 
   /undici@5.27.2:
     resolution: {integrity: sha512-iS857PdOEy/y3wlM3yRp+6SNQQ6xU0mmZcwRSriqk+et/cwWAtwmIGf6WkoDN2EK/AMdCO/dfXzIwi+rFMrjjQ==}
@@ -9402,6 +9426,18 @@ packages:
       - rollup
     dev: true
 
+  /vite-plugin-progress@0.0.7(vite@4.4.11):
+    resolution: {integrity: sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==}
+    engines: {node: '>=14', pnpm: '>=7.0.0'}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      picocolors: 1.0.0
+      progress: 2.0.3
+      rd: 2.0.1
+      vite: 4.4.11
+    dev: false
+
   /vite-plugin-progress@0.0.7(vite@4.5.0):
     resolution: {integrity: sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==}
     engines: {node: '>=14', pnpm: '>=7.0.0'}
@@ -9412,6 +9448,17 @@ packages:
       progress: 2.0.3
       rd: 2.0.1
       vite: 4.5.0
+    dev: false
+
+  /vite-plugin-turbo-console@0.1.0(vite@4.4.11):
+    resolution: {integrity: sha512-EaiM8tmTejbfAzqobN6EE8oAoNjZ0HFcVc8kuDyNbZD58zpy9LFDLXtLiVZV7DFXBRjlvyJCwGNT4rR9PnZZXw==}
+    peerDependencies:
+      vite: ^4.0.0 || ^3.0.0
+    dependencies:
+      acorn-walk: 8.2.0
+      magic-string: 0.30.5
+      source-map: 0.7.4
+      vite: 4.4.11
     dev: false
 
   /vite-plugin-turbo-console@0.1.0(vite@4.5.0):
@@ -9458,7 +9505,6 @@ packages:
       rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
 
   /vite@4.5.0:
     resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}

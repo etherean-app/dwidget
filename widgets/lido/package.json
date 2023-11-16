@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@dwidget/shared": "workspace:^",
-    "@dwidget/vite": "workspace:^",
+    "@dwidget/vite-dwidget": "workspace:^",
     "@protobuf-ts/runtime-rpc": "^2.9.1",
     "@tanstack/react-query": "^5.0.5",
     "preact": "^10.18.1",

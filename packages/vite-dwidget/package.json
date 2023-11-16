@@ -1,5 +1,5 @@
 {
-  "name": "@dwidget/vite",
+  "name": "@dwidget/vite-dwidget",
   "version": "1.0.0",
   "description": "Default vite configs",
   "main": "dist/index.js",

@@ -9,7 +9,7 @@ import { useGrpcQuery } from "@dwidget/shared/hooks";
 export const useRewards = (args: UniswapRewardsRequest) => {
   const { ethereanClient } = useGrpcContext<IGrpcContext>();
   return useGrpcQuery<UniswapRewardsWidgetReply>({
-    queryKey: ["getLidoRewards", JSON.stringify(args)],
+    queryKey: ["getUniswapRewardsWidget", JSON.stringify(args)],
     queryFn: async () => {
       const { response } = await ethereanClient.getUniswapRewardsWidget(args);
       return response;

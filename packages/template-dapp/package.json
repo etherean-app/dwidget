@@ -18,7 +18,6 @@
     "windstitch": "^0.3.0"
   },
   "devDependencies": {
-    "@dwidget/vite": "workspace:^",
     "@dwidget/vite-dapp": "workspace:^",
     "@preact/preset-vite": "^2.5.0",
     "autoprefixer": "^10.4.16",

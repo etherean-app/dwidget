@@ -9,7 +9,7 @@ import { useGrpcQuery } from "@dwidget/shared/hooks";
 export const useSummerFi = (args: SumerFiRequest) => {
   const { ethereanClient } = useGrpcContext<IGrpcContext>();
   return useGrpcQuery<SummerFiWidgetReply>({
-    queryKey: ["getLidoRewards", JSON.stringify(args)],
+    queryKey: ["getSummerFiWidget", JSON.stringify(args)],
     queryFn: async () => {
       const { response } = await ethereanClient.getSummerFiWidget(args);
       return response;

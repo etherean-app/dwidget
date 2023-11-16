@@ -9,7 +9,7 @@ import { useGrpcQuery } from "@dwidget/shared/hooks";
 export const useRewards = (args: LidoRewardsRequest) => {
   const { ethereanClient } = useGrpcContext<IGrpcContext>();
   return useGrpcQuery<LidoRewardsWidgetReply>({
-    queryKey: ["getLidoRewards", JSON.stringify(args)],
+    queryKey: ["getLidoRewardsWidget", JSON.stringify(args)],
     queryFn: async () => {
       const { response } = await ethereanClient.getLidoRewardsWidget(args);
       return response;

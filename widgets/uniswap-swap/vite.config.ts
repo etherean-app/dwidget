@@ -1,5 +1,5 @@
 import { mergeConfig } from "vite";
-import { config } from "@dwidget/vite";
+import { config } from "@dwidget/vite-dwidget";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import path from "path";
 

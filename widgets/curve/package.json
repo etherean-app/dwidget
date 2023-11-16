@@ -22,7 +22,7 @@
     "windstitch": "^0.3.0"
   },
   "devDependencies": {
-    "@dwidget/vite": "workspace:^",
+    "@dwidget/vite-dwidget": "workspace:^",
     "@preact/preset-vite": "^2.5.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",

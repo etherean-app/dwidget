@@ -27,8 +27,6 @@ export const Widget: FunctionComponent = () => {
     ],
   });
 
-  console.log(data);
-
   return (
     <div className="w-full h-screen rounded-3xl flex-col justify-start items-start gap-px inline-flex">
       <div className="w-full p-4 bg-white justify-start items-center gap-2 inline-flex">
