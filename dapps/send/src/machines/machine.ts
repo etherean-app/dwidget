@@ -6,7 +6,7 @@ export type TokenContext = { address: Address; asset: TokenAsset };
 
 export const machine = createMachine(
   {
-    /** @xstate-layout N4IgpgJg5mDOIC5SzAOwgYgMoFEAqA+gHL4DqA8gEoDSA2gAwC6ioADgPawCWALl+6hYgAHogC0AdgCsANgB0MgIwBOAExLFAZkWKAHIoAsAGhABPcTvpydBqavozVimfUOKAvu5Mp0c3EQARAjxyahwiP3CgkLCiDAAnMABjMFYuNB4GZiQQDm4+ASFRBDFbKTknTW0pFSk7AwaTcwRVAytdAzV6XXplCVrdXU9vNAhIwODQ8PHoqbjUMB4Ad3Z4gGssoTzefkEc4tKpKxqJPuVNXW0ZTQkmxE1u6xl9Qc1OjTfhkB8x-1nYmaTWIYHjsNZoTY5bYFPagA4NRRPVR2WQSNrKZQyYxmRCGcoGZxKVSY5S2foyL4-QExaZ-IHhDA-SFsTg7Qr7cQPVRyeiaKRVM6uZyKKR3EpVbkSS4GCQPZSXZSGSmjalzGYg+IAQ1QsE1SRhAUWmq4ABtYMzcqyYUVOdz6A5ZQTOrpZLyxWJVBJ5KppfotFoqlplb46TSIn8NdrdfrdgAFRIAN3SSwt0N2NpaigkCgMHWJUgxugknvdb25OgedVaMix9Fkwd+UXp4ai2HwBAAggBZcgAVSIeFTVvTHJKih91m6Ba5UsxfPdBhkygq+hlg16WN06gbqoBeEoHaIWA7AGE8ABJchEAgBfAd88AGSwGAARnqNkwtsP2XCLLy5BcehXFuVRujiJSet6voVgG2iaDuoZqvuh7Hmel7XreeD3k+CTJKk6SoJkn5Qt+sIiJyugVHU9A+li45vKcYqtO0nT2D0fS1KSCFNmGcjIUep4XleN53o+z4LMsqwftkLL5COv4IAYchSA09BopoMjFhcRyKGKDyUc4LzSpiFYGNxEy8fxqFCRhok4aC4KoEOck-uRJSacp8pLnU1wEli2LNFmlH6EKNyuHyXo7iQeAUDQr7vkQiwrOszlsmRBwXJocjKLy-SDPUjTgQWyk1koJLqDlmI7pQOAnjgsbnuEeDxUkayUHhaQZKl1qjmI2iUVUUgSGpw2jWp7qtABejOEcbS1gSO5WYJ6EELGNUAGqNaQLXSV+LnpYgBZWPQBKqFyRw3D6C4itlfI0ac+jaFK8FeN8KpLWhwlrTgm04NtPBajqeowlgACuL4ALa8DwkDdfJbk9OWbT8ionqYrIpYGOWWh1vUNbIxSr1Uh9NkEFgvYAEJdueeB4DgAQ7XDrnFDoNbWHdqieroWJvKK4GlDd5xHGjj1BS9Iy+GGO14GCELEbJaUZmItQ8uc6hvNzuPju6fTWAYmg5UKTg+lVROjG2hAdgEAQ1VgWBMwdJTSFlGJY-0uVZl6E2ODy7FSnWuP+Z4r2oOwEBwEIPx7YrvV1FlBsykumjq90mjuv5K6GNcLrOLmQxmyGPFzNHPUKWIRzlAnXpq9cqcBeIPlyFKeLjrlyLi29hcWWqAAWXCwDwJfwxlk3yndLidGitTuio2ZolisqkucUp1OZ-y0kXsRD8z4hkgBpLV8ntfSqWydN9Ksq9AqSoF423cAn82+O4LMjTg8akirXqiY9jDxhRpipniEwlnfdeEQSYrUwthLAT8lZ2GysoHSpxhr2ixroCazgVwaxglUbQUUyBUGoLA3qnMlJ9DqFKGUEhF4aT0o8QyehjIfDMrfOQNU6oNSasQsunNKLI3UJ7V+Xp0HgWYnIDoXQ-acRYSAviB4BKfWvN9X6pBuFuTqJRL0nQVAnVfsnH+1gcb-yXIZYBncxgQOEuTKmNM6YBDUSzEU5Riz61fnOPktD+ZlkMZWPGtZ6ysLDA48QxsFD2iGryPooEZRiiCuIxQrgTrylRojYO7ggA */
+    /** @xstate-layout N4IgpgJg5mDOIC5SzAOwgYgMoFEAqA+gHL4DqA8gEoDSA2gAwC6ioADgPawCWALl+6hYgAHogC0AdgCsANgB0MgIwBOAExLFAZkWKAHIoAsAGhABPcTvpydBqavozVimfUOKAvu5Mp02fAQBBABEgyhwsLAZmJBAObj4BIVEESSlNOWVlA1UJRXpNXIkJGRNzFPVVOXpdemUJGql6KVkDA09vNAg5XCIggjxyahwibuG+gaGiDAAnMABjMFYuNB4ooTjefkEY5LFbKTknTW0pFWbVVuMzRAurXQM1atrc5SldXXaQHy6e8cHh0a9fr-KaoMA8ADu7GmAGs1jENgltqBdrYrKcJHVlJpdNoZAVSohNNVrDJ9O9NA8NJTPt9AX9JvTgZMMDx2DC0PC2JxNokduJWopSapTvjNE5dJjCQhnEKdGSDPj6A5dKdaZ0mRMAb9mcMMN8ubEeUikuJiZV8mlNFjXLKpNKxMdKvVKRJicpccpDOr0JqQfTWdMAIaoWBBuZIoLgoNcAA2sENiK2ppS4qqDjdBkMHtk+QdOXkqlxBn0Wi0xy0Pp+Y11I1+gZDYYjWwACrMAG7LCGJ43J-kyiQGORSV66ItvFz0TFXMqO4rWLMGbSS5T4mRSKt+xn13CEAIAWXIAFUiHge-E+yiLEXrNUR+b6qvNPbrilFcpDvoDPUaquS+pNx1LURjwSgAiILAAgAYTwABJcgiAIIJ8ACWCABksAwAAjcM4SYdZez5K8UjydIcT0PEx2OPNXzEAtP0pUttGOZjAJrYC5FA8DIJg+DEOQvBUIwmZ5kWZZUFWfCEUI5ERAFD9GKKHIVHLEVpVUYlP0UJw8icEVlTaLwvg1ID-S4iDoLghCkJQ9DMLBSFoTw6JuQvIi5IQIdlCaPRlTqa0vXFaUDFcBRalqdQHhqGQJDYoEOPMnirP42zhLZDlUHPXlZN2GLhw9GRXlkSlnFaaVFHqOR9FtApXGfYo4oZAFEssviCBbMIADVYJwUhsNwrKTX7a0rEVRiM2kDSJAdJcrGKRVFGaMc9GURra04sCLN46yOpwbreobUNwyRLAAFcsIAW14HhIEGy8PO8yoYsxPRZGU+oHWtIdlS0Ip12xcc1oSzakra3b9r6hyoVhO73OSFwDlqXFdA9ZbFWC0KXG8tQZCijMgbMkHWp2rqer62YFiWFZYZyxA7AOQqRzsL0dAkegZxuWoqhLEd2ZC-zcc3YD+rmGE8HZTkpNc7KUzEFQh00dcKW005tNUaUR2HGRtZUQr1Gx59NxIPAKBoEWYSIcFoecgi3Np1NcQyfJcneOxLg1j9ZB11ccexmRNzCKCcBbHrT3NyhRKpiSadl5cqmfU57CzapnE0T6hWKYkKuaXJCsMf2jLpFrtsQrAjwAIX3WC8DwHAgnNmP+y0V4FB0NIpz0kd1doxUrEcGLznqdvYs+VB2AgOAhG+W2Zf7MRmjIrJigBpVcQdXGhyLbNiSaarNAJyYZ6G4j56aOQvuX8VV8pB1mnkepDFyPI9FyDdC5M9j-QACy4WAeCP+6uxxReVxI0FwDxBxnAdCoCQchBy4zdFkbEQ834dF9KZbcn9D7STtrLWwsCL6FSvsSYsn00wum-O6T03p37oKwdqMYAC4aIGcOfHIDhn7NGqB6T6843BLhfk+XGBc0HVnioTbixMUqCTskw+289KiZEaBVOoyp2ZFnzKwosjEdDMQrAfZqRMS7tVJr1ORKY7CwKis0V4S5+bd1nAUeQ-DlyYjXIqIWIJzFzxyEOSUSglDEhioEtOr5nDolxKoC4mJmZHCNmQKg1BvEn18VVYosognpOOBjIUWMIq4w9PjWhXRA7B1DngZJHk6KDjSQErQGYQnqUqriaQBRWhjlWsUjakjjFl0rtXWuQRKnJDLM6CKjRVRFVUMoT6WR0y-WKPeIsthPCeCAA */
     tsTypes: {} as import("./machine.typegen").Typegen0,
 
     schema: {
@@ -70,7 +70,7 @@ export const machine = createMachine(
             on: {
               transactionDetails: "TRANSACTION_DETAILS",
               transactionPreview: {
-                target: "#send.TRANSACTION_PREVIEW",
+                target: "TRANSACTION_PREVIEW",
                 cond: "isReadyForSubmit",
               },
 
@@ -88,6 +88,29 @@ export const machine = createMachine(
               network: "#send.NETWORK",
               token: "#send.TOKEN",
             },
+          },
+
+          TRANSACTION_PREVIEW: {
+            on: {
+              back: "SEND",
+
+              transactionSubmitted: {
+                target: "#send.TRANSACTION_SUBMITTED",
+                cond: "isReadyForSubmit",
+              },
+
+              network: "#send.NETWORK",
+              recepient: "#send.RECEPIENT",
+            },
+          },
+        },
+      },
+
+      TOKEN: {
+        on: {
+          backToken: {
+            actions: ["saveToken"],
+            target: "SEND_TOKEN.hist",
           },
         },
       },
@@ -110,28 +133,9 @@ export const machine = createMachine(
         },
       },
 
-      TRANSACTION_PREVIEW: {
-        on: {
-          back: "SEND_TOKEN.SEND",
-          transactionSubmitted: {
-            target: "TRANSACTION_SUBMITTED",
-            cond: "isReadyForSubmit",
-          },
-        },
-      },
-
       TRANSACTION_SUBMITTED: {
         on: {
           back: "SEND_TOKEN.SEND",
-        },
-      },
-
-      TOKEN: {
-        on: {
-          backToken: {
-            actions: ["saveToken"],
-            target: "SEND_TOKEN.hist",
-          },
         },
       },
     },

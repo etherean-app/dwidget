@@ -32,9 +32,15 @@ export interface Typegen0 {
     | "SEND_TOKEN.SEND"
     | "SEND_TOKEN.SEND_TOKEN"
     | "SEND_TOKEN.TRANSACTION_DETAILS"
+    | "SEND_TOKEN.TRANSACTION_PREVIEW"
     | "TOKEN"
-    | "TRANSACTION_PREVIEW"
     | "TRANSACTION_SUBMITTED"
-    | { SEND_TOKEN?: "SEND" | "SEND_TOKEN" | "TRANSACTION_DETAILS" };
+    | {
+        SEND_TOKEN?:
+          | "SEND"
+          | "SEND_TOKEN"
+          | "TRANSACTION_DETAILS"
+          | "TRANSACTION_PREVIEW";
+      };
   tags: never;
 }
