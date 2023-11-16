@@ -1,8 +1,8 @@
+import { Sheet, ListItem } from "@dwidget/shared-dapp/components";
+
 import { useStateMachine } from "@/providers/stateMachine";
 import { Button } from "../../common/Button";
 import {
-  Sheet,
-  ListItem,
   ListItemAccount,
   ListItemNetwork,
   ListItemRecepient,

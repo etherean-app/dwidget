@@ -1,8 +1,10 @@
 import { FunctionComponent, useMemo } from "preact/compat";
 import truncateEthAddress from "truncate-eth-address";
 import { Address } from "wagmi";
-
-import { ListItem, ListItemProps } from "./ListItem";
+import {
+  ListItem,
+  ListItemProps,
+} from "@dwidget/shared-dapp/components/ListItem";
 
 interface Props extends Omit<ListItemProps, "label" | "value"> {
   address?: Address;

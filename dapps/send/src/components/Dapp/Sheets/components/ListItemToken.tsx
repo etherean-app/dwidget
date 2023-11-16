@@ -1,6 +1,9 @@
 import { FunctionComponent, useMemo } from "preact/compat";
+import {
+  ListItem,
+  ListItemProps,
+} from "@dwidget/shared-dapp/components/ListItem";
 
-import { ListItem, ListItemProps } from "./ListItem";
 import { TokenContext } from "@/machines";
 
 interface Props extends Omit<ListItemProps, "label" | "value"> {

@@ -1,5 +1,6 @@
+import { Sheet } from "@dwidget/shared-dapp/components";
+
 import { useStateMachine } from "@/providers/stateMachine";
-import { Sheet } from "../components";
 import { FormETH, FormERC20 } from "./Form";
 
 export const TransactionPreview = () => {

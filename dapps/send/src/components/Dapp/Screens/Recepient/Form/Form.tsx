@@ -4,7 +4,7 @@ import { useEnsAddress, Address } from "wagmi";
 import { isAddress } from "viem";
 import { useDebounce } from "use-debounce";
 
-import { Icon } from "@/components/common/Icon";
+import { Icon } from "@dwidget/shared/components";
 import { AddressList } from "./AddressList";
 import { Button } from "@/components/common/Button";
 import { isValidENS } from "./utils";

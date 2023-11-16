@@ -1,5 +1,5 @@
 import { ComponentChildren, FunctionComponent } from "preact";
-import { Icon } from "./Icon";
+import { Icon } from "@dwidget/shared/components";
 
 interface Props {
   onBackClick: () => void;

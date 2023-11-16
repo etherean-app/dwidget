@@ -16,7 +16,7 @@
   "include": [
     "node_modules/@dwidget/shared/types/",
     "src",
-    "tailwind.config.js",
+    "tailwind.config.js"
   ],
   "exclude": [
     "./**/____*"

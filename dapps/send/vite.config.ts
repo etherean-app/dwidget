@@ -1,14 +1,12 @@
-import path from "path";
-import { defineConfig } from "vite";
-import preact from "@preact/preset-vite";
+import { mergeConfig } from "vite";
+import { config } from "@dwidget/vite-dapp";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: "dwidget/dapps/send",
-  plugins: [preact()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src/"),
-    },
-  },
-});
+export default mergeConfig(
+  config({
+    dirname: __dirname,
+  }),
+  {
+    base: "dwidget/dapps/send",
+  }
+);

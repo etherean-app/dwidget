@@ -1,6 +1,6 @@
 import { useRef, useState } from "preact/hooks";
 import { Address, useBalance } from "wagmi";
-import { Icon } from "../../../common/Icon";
+import { Icon } from "@dwidget/shared/components";
 import { FunctionComponent } from "preact";
 import { TokenContext } from "@/machines";
 import { fiatMoneyToString } from "@dwidget/shared/utils";

@@ -1,7 +1,8 @@
+import { ListItem } from "@dwidget/shared-dapp/components";
+
 import { FunctionalComponent } from "preact";
 import { useStateMachine } from "@/providers/stateMachine";
 import {
-  ListItem,
   ListItemAccount,
   ListItemNetwork,
   ListItemRecepient,
