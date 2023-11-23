@@ -24,3 +24,13 @@ export function useStateMachine() {
   }
   return context;
 }
+
+export function useStateMachineRef() {
+  const context = StateMachineContext.useActorRef();
+  if (context === undefined) {
+    throw new Error(
+      "useStateMachine must be used within a StateMachineProvider"
+    );
+  }
+  return context;
+}

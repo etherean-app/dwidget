@@ -5,10 +5,10 @@ import {
   useFeeData,
 } from "wagmi";
 import { parseEther } from "viem";
+import { Button } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers/stateMachine";
+import { useStateMachine } from "@/providers";
 import { Details } from "./Details";
-import { Button } from "../../../../common/Button";
 
 export const FormETH = () => {
   const [state, send] = useStateMachine();

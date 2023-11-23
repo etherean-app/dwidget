@@ -1,9 +1,8 @@
 import { useCallback } from "preact/hooks";
 import { Icon } from "@dwidget/shared/components";
+import { TopAppBar, Button } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers/stateMachine";
-import { Button } from "../../../common/Button";
-import { TopAppBar } from "../../../common/TopAppBar";
+import { useStateMachine } from "@/providers";
 import { Form } from "./Form";
 
 export const Send = () => {

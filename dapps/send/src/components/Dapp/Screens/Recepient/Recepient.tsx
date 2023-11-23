@@ -1,12 +1,10 @@
-import { useCallback, useState } from "preact/hooks";
+import { useCallback } from "preact/hooks";
 import { Address } from "wagmi";
-import { isAddress } from "viem";
+import { TopAppBar } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers/stateMachine";
-import { TopAppBar } from "../../../common/TopAppBar";
+import { useStateMachine } from "@/providers";
 import { Form } from "./Form";
 
-// TODO:
 export const Recepient = () => {
   const [state, send] = useStateMachine();
 

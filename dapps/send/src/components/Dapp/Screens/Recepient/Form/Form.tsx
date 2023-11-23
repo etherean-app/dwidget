@@ -3,10 +3,10 @@ import { useCallback, useMemo, useState } from "preact/hooks";
 import { useEnsAddress, Address } from "wagmi";
 import { isAddress } from "viem";
 import { useDebounce } from "use-debounce";
-
 import { Icon } from "@dwidget/shared/components";
+import { Button } from "@dwidget/shared-dapp/components";
+
 import { AddressList } from "./AddressList";
-import { Button } from "@/components/common/Button";
 import { isValidENS } from "./utils";
 
 interface Props {

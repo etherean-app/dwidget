@@ -1,9 +1,8 @@
 import { useCallback, useState } from "preact/hooks";
 import { useSwitchNetwork } from "wagmi";
-import { useStateMachine } from "@/providers/stateMachine";
+import { Button, TopAppBar } from "@dwidget/shared-dapp/components";
 
-import { TopAppBar } from "../../../common/TopAppBar";
-import { Button } from "../../../common/Button";
+import { useStateMachine } from "@/providers/stateMachine";
 import { Form } from "./Form";
 
 export const Network = () => {

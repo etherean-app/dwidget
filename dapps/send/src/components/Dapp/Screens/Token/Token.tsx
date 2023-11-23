@@ -1,9 +1,8 @@
 import { useCallback, useState } from "preact/hooks";
-import { useStateMachine } from "@/providers/stateMachine";
+import { Button, TopAppBar } from "@dwidget/shared-dapp/components";
 
+import { useStateMachine } from "@/providers";
 import { TokenContext } from "@/machines";
-import { TopAppBar } from "../../../common/TopAppBar";
-import { Button } from "../../../common/Button";
 import { Form } from "./Form";
 
 export const Token = () => {
@@ -12,7 +11,7 @@ export const Token = () => {
 
   const handleTokenChange = useCallback(
     (token: TokenContext) => setToken(token),
-    []
+    [setToken]
   );
 
   return (

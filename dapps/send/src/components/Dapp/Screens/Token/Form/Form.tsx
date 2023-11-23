@@ -1,11 +1,12 @@
 import { FunctionComponent } from "preact";
 import { useMemo } from "preact/hooks";
-import { Address } from "wagmi";
+import { Address, useNetwork } from "wagmi";
 
 import { useAssets } from "@/hooks";
 import { SectionHeader } from "./SectionHeader";
 import { TokenList } from "./TokenList/TokenList";
 import { TokenContext } from "@/machines";
+import { Skeleton } from "@dwidget/shared/components";
 
 interface Props {
   address?: Address;
@@ -18,12 +19,14 @@ export const Form: FunctionComponent<Props> = ({
   value,
   onChange,
 }) => {
+  const { chain, chains } = useNetwork();
   const { data, isLoading } = useAssets({
     wallet: address
       ? {
           walletAddress: address,
         }
       : undefined,
+    chainId: chain?.id ?? chains[0].id,
   });
 
   const selectedToken = useMemo(
@@ -37,7 +40,10 @@ export const Form: FunctionComponent<Props> = ({
     }
 
     if (address) {
-      return { [address]: data.native, ...data.tokens };
+      return {
+        ...(data.native ? { [address]: data.native } : {}),
+        ...data.tokens,
+      };
     }
     return data.tokens;
   }, [address, data]);
@@ -47,14 +53,13 @@ export const Form: FunctionComponent<Props> = ({
       {selectedToken ? (
         <div>
           <SectionHeader title="Selected token" />
-          {/* @ts-ignore */}
           <TokenList tokens={selectedToken} onClick={onChange} />
         </div>
       ) : null}
       <div>
         <SectionHeader title="Available tokens" />
-        {/* @ts-ignore */}
         <TokenList tokens={tokens} onClick={onChange} />
+        {isLoading ? <Skeleton className="h-16 w-full" /> : null}
       </div>
     </div>
   );

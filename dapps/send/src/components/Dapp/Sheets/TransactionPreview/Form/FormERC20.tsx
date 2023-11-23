@@ -6,10 +6,10 @@ import {
   usePrepareContractWrite,
 } from "wagmi";
 import { parseUnits } from "viem";
+import { Button } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers/stateMachine";
+import { useStateMachine } from "@/providers";
 import { useGasEstimate } from "@/hooks";
-import { Button } from "../../../../common/Button";
 import { Details } from "./Details";
 import { usdtABI } from "./usdtABI";
 

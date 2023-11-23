@@ -1,13 +1,12 @@
-import { Sheet } from "@dwidget/shared-dapp/components";
+import { Sheet, Button } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers/stateMachine";
+import { useStateMachine } from "@/providers";
 import {
   ListItemToken,
   ListItemAccount,
   ListItemNetwork,
   ListItemRecepient,
 } from "./components";
-import { Button } from "../../common/Button";
 
 export const SendToken = () => {
   const [state, send] = useStateMachine();
