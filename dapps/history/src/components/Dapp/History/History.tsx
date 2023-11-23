@@ -15,10 +15,11 @@ export const History = () => {
     (state) => state.context.history.entries
   );
 
-  const isLoading = useStateMachineSelector(
-    (state) =>
-      state.matches("HISTORY.LOAD.loading") ||
-      state.matches("HISTORY.LOAD.loadMore")
+  const isLoading = useStateMachineSelector((state) =>
+    state.matches("HISTORY.LOAD.loading")
+  );
+  const isLoadingMore = useStateMachineSelector((state) =>
+    state.matches("HISTORY.LOAD.loadMore")
   );
 
   const handleHistoryItemClick = useCallback(
@@ -73,8 +74,17 @@ export const History = () => {
       onFetchMore={async () => send({ type: "FETCH_HISTORY_MORE" })}
     >
       <div className="flex flex-col gap-2">
-        {history}
-        {isLoading && (
+        {isLoading ? (
+          <>
+            <Skeleton className="h-4 mb-4 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+          </>
+        ) : (
+          history
+        )}
+        {isLoadingMore && (
           <>
             <Skeleton className="h-4 mb-4 w-full" />
             <Skeleton className="h-12 w-full" />

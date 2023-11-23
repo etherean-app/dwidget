@@ -6,6 +6,7 @@ import { historyClient } from "@/providers";
 
 function getQueryArgs(args: HistoryRequest) {
   return {
+    staleTime: 5000,
     queryKey: ["getWalletHistory", JSON.stringify(args)],
     queryFn: async () => {
       const { response } = await historyClient.getWalletHistory(args);
