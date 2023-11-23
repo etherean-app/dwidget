@@ -1,0 +1,42 @@
+name: Deploy Dapp History
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dapps/history/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.8.0
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧
+        run: |
+          pnpm install
+          pnpm run build
+
+      - name: Build Dapp 🔧
+        working-directory: dapps/history
+        env:
+          VITE_HISTORY_SERVICE_API_ENDPOINT: ${{ secrets.VITE_HISTORY_SERVICE_API_ENDPOINT }}
+        run: |
+          pnpm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: true
+          folder: dapps/history/dist
+          target-folder: dapps/history

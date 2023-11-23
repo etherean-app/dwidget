@@ -11,6 +11,73 @@ importers:
         specifier: ^0.1.3
         version: 0.1.3
 
+  dapps/history:
+    dependencies:
+      '@dwidget/shared':
+        specifier: workspace:^
+        version: link:../../packages/shared
+      '@dwidget/shared-dapp':
+        specifier: workspace:^
+        version: link:../../packages/shared-dapp
+      '@protobuf-ts/runtime-rpc':
+        specifier: ^2.9.1
+        version: 2.9.1
+      '@tanstack/react-query':
+        specifier: ^5.0.0
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
+      '@xstate/cli':
+        specifier: ^0.5.11
+        version: 0.5.11
+      '@xstate/react':
+        specifier: ^3.2.2
+        version: 3.2.2(react@18.2.0)(xstate@4.38.3)
+      material-symbols:
+        specifier: ^0.13.2
+        version: 0.13.2
+      preact:
+        specifier: ^10.18.1
+        version: 10.18.1
+      react-simple-pull-to-refresh:
+        specifier: ^1.3.3
+        version: 1.3.3(react-dom@18.2.0)(react@18.2.0)
+      truncate-eth-address:
+        specifier: ^1.0.2
+        version: 1.0.2
+      viem:
+        specifier: ^1.16.6
+        version: 1.16.6(typescript@5.2.2)(zod@3.22.4)
+      wagmi:
+        specifier: ^1.4.4
+        version: 1.4.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.16.6)
+      windstitch:
+        specifier: ^0.3.0
+        version: 0.3.0(react@18.2.0)
+      xstate:
+        specifier: ^4.38.3
+        version: 4.38.3
+    devDependencies:
+      '@dwidget/vite-dapp':
+        specifier: workspace:^
+        version: link:../../packages/vite-dapp
+      '@preact/preset-vite':
+        specifier: ^2.5.0
+        version: 2.6.0(@babel/core@7.23.3)(preact@10.18.1)(vite@4.4.11)
+      autoprefixer:
+        specifier: ^10.4.16
+        version: 10.4.16(postcss@8.4.31)
+      postcss:
+        specifier: ^8.4.31
+        version: 8.4.31
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
+      typescript:
+        specifier: ^5.0.2
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.5
+        version: 4.4.11
+
   dapps/send:
     dependencies:
       '@dwidget/shared':
@@ -110,6 +177,9 @@ importers:
       decimal.js:
         specifier: ^10.4.3
         version: 10.4.3
+      material-symbols:
+        specifier: ^0.13.2
+        version: 0.13.2
       preact:
         specifier: ^10.16.0
         version: 10.18.1
@@ -141,6 +211,9 @@ importers:
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
+      material-symbols:
+        specifier: ^0.13.2
+        version: 0.13.2
       preact:
         specifier: ^10.16.0
         version: 10.18.1
@@ -148,7 +221,7 @@ importers:
         specifier: ^1.14.0
         version: 1.14.0
       vaul:
-        specifier: ^0.7.7
+        specifier: ^0.7.8
         version: 0.7.8(react-dom@18.2.0)(react@18.2.0)
       windstitch:
         specifier: ^0.3.0
@@ -159,12 +232,18 @@ importers:
       '@dwidget/shared':
         specifier: workspace:^
         version: link:../shared
+      '@dwidget/shared-dapp':
+        specifier: workspace:^
+        version: link:../shared-dapp
       '@protobuf-ts/runtime-rpc':
         specifier: ^2.9.1
         version: 2.9.1
       '@tanstack/react-query':
         specifier: ^5.0.0
-        version: 5.0.5(react@18.2.0)
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
+      material-symbols:
+        specifier: ^0.13.2
+        version: 0.13.2
       preact:
         specifier: ^10.16.0
         version: 10.19.1
@@ -210,7 +289,7 @@ importers:
         version: 2.9.1
       '@tanstack/react-query':
         specifier: ^5.0.0
-        version: 5.0.5(react@18.2.0)
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
       preact:
         specifier: ^10.16.0
         version: 10.18.1
@@ -321,7 +400,7 @@ importers:
         version: 2.9.1
       '@tanstack/react-query':
         specifier: ^5.0.0
-        version: 5.0.5(react@18.2.0)
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
       preact:
         specifier: ^10.16.0
         version: 10.18.1
@@ -370,7 +449,7 @@ importers:
         version: 2.9.1
       '@tanstack/react-query':
         specifier: ^5.0.5
-        version: 5.0.5(react@18.2.0)
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
       preact:
         specifier: ^10.18.1
         version: 10.18.1
@@ -413,7 +492,7 @@ importers:
         version: 2.9.1
       '@tanstack/react-query':
         specifier: ^5.0.0
-        version: 5.0.5(react@18.2.0)
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
       preact:
         specifier: ^10.16.0
         version: 10.18.1
@@ -459,7 +538,7 @@ importers:
         version: 2.9.1
       '@tanstack/react-query':
         specifier: ^5.0.0
-        version: 5.0.5(react@18.2.0)
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
       preact:
         specifier: ^10.16.0
         version: 10.18.1
@@ -3306,7 +3385,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-query@5.0.5(react@18.2.0):
+  /@tanstack/react-query@5.0.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ZG0Q4HZ0iuI8mWiZ2/MdVYPHbrmAVhMn7+gLOkxJh6zLIgCL4luSZlohzN5Xt4MjxfxxWioO1nemwpudaTsmQg==}
     peerDependencies:
       react: ^18.0.0
@@ -3320,6 +3399,7 @@ packages:
     dependencies:
       '@tanstack/query-core': 5.0.5
       react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@tokenizer/token@0.3.0:
@@ -4394,6 +4474,39 @@ packages:
       - utf-8-validate
     dev: false
 
+  /@xstate/cli@0.5.11:
+    resolution: {integrity: sha512-RqpOaUS0KSUfeJDn8wk+QzRbfxO0XxDg0nFGxA9L/XTuu504leJ3SVh3TqX11IqEo54Sr+qtJaWTtTJVKCc1UA==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.23.3
+      '@xstate/machine-extractor': 0.13.0(xstate@5.0.0-beta.45)
+      '@xstate/tools-shared': 4.0.5(prettier@2.8.8)(xstate@5.0.0-beta.45)
+      chokidar: 3.5.3
+      commander: 8.3.0
+      dotenv: 16.3.1
+      isomorphic-fetch: 3.0.0
+      prettier: 2.8.8
+      xstate: 4.38.3
+      xstate-beta: /xstate@5.0.0-beta.45
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
+
+  /@xstate/machine-extractor@0.13.0(xstate@5.0.0-beta.45):
+    resolution: {integrity: sha512-4basKJWMZmOe6LZu/x8y/fzt6lOEfkO2qTSr2QWSZ0bmaLf964U7lN7nPNIzcj//I5HEnGMtF/cVFBMdN6hIJg==}
+    peerDependencies:
+      xstate: ^4
+    dependencies:
+      '@babel/parser': 7.23.3
+      '@babel/traverse': 7.23.3
+      '@babel/types': 7.23.3
+      recast: 0.23.4
+      xstate: 5.0.0-beta.45
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@xstate/react@3.2.2(react@18.2.0)(xstate@4.38.3):
     resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
     peerDependencies:
@@ -4412,6 +4525,19 @@ packages:
       xstate: 4.38.3
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@xstate/tools-shared@4.0.5(prettier@2.8.8)(xstate@5.0.0-beta.45):
+    resolution: {integrity: sha512-A9xdk1Aw7bDmRIK6cv5yy+1vmK3S0neDrbeoS/B/A0JnYdhQJqPFB16qa8UrUmbaz79mjccAiqAxE5HNEOgm9A==}
+    peerDependencies:
+      prettier: ^2
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.13.0(xstate@5.0.0-beta.45)
+      prettier: 2.8.8
+      xstate: 5.0.0-beta.45
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /JSONStream@1.3.5:
@@ -4636,7 +4762,13 @@ packages:
       object-is: 1.1.5
       object.assign: 4.1.4
       util: 0.12.5
-    dev: true
+
+  /ast-types@0.16.1:
+    resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
+    engines: {node: '>=4'}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
 
   /async-mutex@0.2.6:
     resolution: {integrity: sha512-Hs4R+4SPgamu6rSGW8C7cV9gaWUKEHykfzCCvIRuaVv636Ju10ZdeUbvb4TBEW0INuq2DHZqXbK4Nd3yG4RaRw==}
@@ -5306,6 +5438,11 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
+  /commander@8.3.0:
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
+    engines: {node: '>= 12'}
+    dev: false
+
   /compressing@1.10.0:
     resolution: {integrity: sha512-k2vpbZLaJoHe9euyUZjYYE8vOrbR19aU3HcWIYw5EBXiUs34ygfDVnXU+ubI41JXMriHutnoiu0ZFdwCkH6jPA==}
     engines: {node: '>= 4.0.0'}
@@ -5522,7 +5659,6 @@ packages:
       get-intrinsic: 1.2.2
       gopd: 1.0.1
       has-property-descriptors: 1.0.1
-    dev: true
 
   /define-lazy-prop@2.0.0:
     resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
@@ -5536,7 +5672,6 @@ packages:
       define-data-property: 1.1.1
       has-property-descriptors: 1.0.1
       object-keys: 1.1.1
-    dev: true
 
   /delay@5.0.0:
     resolution: {integrity: sha512-ReEBKkIfe4ya47wlPYf/gu5ib6yUG0/Aez0JQZQz94kiWtRQvZIQbTiehsnwHvLSWJnQdhVeqYue7Id1dKr0qw==}
@@ -5636,7 +5771,6 @@ packages:
   /dotenv@16.3.1:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
-    dev: true
 
   /dtrace-provider@0.8.8:
     resolution: {integrity: sha512-b7Z7cNtHPhH9EJhNNbbeqTcXB8LGFFZhq1PGgEvpeHlzd36bhbdTWoE/Ba/YguqpBSlAPKnARWhVlhunCMwfxg==}
@@ -5795,6 +5929,12 @@ packages:
   /esm@3.2.25:
     resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
     engines: {node: '>=6'}
+    dev: false
+
+  /esprima@4.0.1:
+    resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
+    engines: {node: '>=4'}
+    hasBin: true
     dev: false
 
   /estree-walker@2.0.2:
@@ -6425,7 +6565,6 @@ packages:
     resolution: {integrity: sha512-VsX8eaIewvas0xnvinAe9bw4WfIeODpGYikiWYLH+dma0Jw6KHYqWiWfhQlgOVK8D6PvjubK5Uc4P0iIhIcNVg==}
     dependencies:
       get-intrinsic: 1.2.2
-    dev: true
 
   /has-proto@1.0.1:
     resolution: {integrity: sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==}
@@ -6693,7 +6832,6 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.1
-    dev: true
 
   /is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
@@ -6754,6 +6892,15 @@ packages:
 
   /isnumber@1.0.0:
     resolution: {integrity: sha512-JLiSz/zsZcGFXPrB4I/AGBvtStkt+8QmksyZBZnVXnnK9XdTEyz0tX8CRYljtwYDuIuZzih6DpHQdi+3Q6zHPw==}
+    dev: false
+
+  /isomorphic-fetch@3.0.0:
+    resolution: {integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==}
+    dependencies:
+      node-fetch: 2.7.0(encoding@0.1.13)
+      whatwg-fetch: 3.6.19
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /isomorphic-timers-promises@1.0.1:
@@ -7512,12 +7659,10 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.1
-    dev: true
 
   /object-keys@1.1.1:
     resolution: {integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==}
     engines: {node: '>= 0.4'}
-    dev: true
 
   /object.assign@4.1.4:
     resolution: {integrity: sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==}
@@ -7527,7 +7672,6 @@ packages:
       define-properties: 1.2.1
       has-symbols: 1.0.3
       object-keys: 1.1.1
-    dev: true
 
   /obliterator@2.0.4:
     resolution: {integrity: sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==}
@@ -7966,7 +8110,6 @@ packages:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -8203,6 +8346,16 @@ packages:
       use-sidecar: 1.1.2(react@18.2.0)
     dev: false
 
+  /react-simple-pull-to-refresh@1.3.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-6qXsa5RtNVmKJhLWvDLIX8UK51HFtCEGjdqQGf+M1Qjrcc4qH4fki97sgVpGEFBRwbY7DiVDA5N5p97kF16DTw==}
+    peerDependencies:
+      react: ^16.10.2 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.10.2 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-style-singleton@2.2.1(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
@@ -8297,6 +8450,17 @@ packages:
     dependencies:
       react: 18.2.0
       reflexbox: 4.0.6(react@18.2.0)
+    dev: false
+
+  /recast@0.23.4:
+    resolution: {integrity: sha512-qtEDqIZGVcSZCHniWwZWbRy79Dc6Wp3kT/UmDA2RJKBPg7+7k51aQBZirHmUGn5uvHf2rg8DkjizrN26k61ATw==}
+    engines: {node: '>= 4'}
+    dependencies:
+      assert: 2.1.0
+      ast-types: 0.16.1
+      esprima: 4.0.1
+      source-map: 0.6.1
+      tslib: 2.6.2
     dev: false
 
   /redux-thunk@2.4.2(redux@4.2.1):
@@ -9611,6 +9775,10 @@ packages:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: false
 
+  /whatwg-fetch@3.6.19:
+    resolution: {integrity: sha512-d67JP4dHSbm2TrpFj8AbO8DnL1JXL5J9u0Kq2xW6d0TFDbCA3Muhdt8orXC22utleTVj7Prqt82baN6RBvnEgw==}
+    dev: false
+
   /whatwg-url@5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
     dependencies:
@@ -9763,6 +9931,10 @@ packages:
 
   /xstate@4.38.3:
     resolution: {integrity: sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==}
+    dev: false
+
+  /xstate@5.0.0-beta.45:
+    resolution: {integrity: sha512-JN1I9f/eHnr9Y2Bmd4i7gYnhIUmo6gZXj2PJv3byMQmNm2W9+qqil8mr+qV7pSMqiR1vFRsyM+p5M15R3TEIeg==}
     dev: false
 
   /xtend@4.0.2:
