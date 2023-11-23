@@ -17,6 +17,23 @@
     }
   },
   {
+    "name": "History",
+    "version": "0.0.1",
+    "description": "History widget",
+    "website": "",
+    "contact": "Alexey Elizarov <alex.elizarov1@gmail.com>",
+    "entrypoints": {
+      "default": {
+        "src": "https://etherean-app.github.io/dwidget/history/",
+        "sizes": {
+          "default": {
+            "height": 164
+          }
+        }
+      }
+    }
+  },
+  {
     "name": "Lido",
     "version": "0.0.2",
     "description": "Lido widget",
