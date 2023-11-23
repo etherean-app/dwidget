@@ -7,6 +7,7 @@ import {
   HistoryResponse,
   HistoryEntry,
   HistoryEntryResponse,
+  Filter,
   FilterStatus,
 } from "@dwidget/shared/proto/history";
 
@@ -15,6 +16,7 @@ import { HISTORY_LIMIT } from "@/constants";
 import { safeCall } from "./utils";
 
 type HistoryContext = {
+  filter?: Filter;
   entries: HistoryEntry[];
   cursor?: Cursor;
   error?: string | null;
@@ -27,7 +29,7 @@ type HistoryEntryContext = {
 
 export const machine = createMachine(
   {
-    /** @xstate-layout N4IgpgJg5mDOIC5QAsCWsAuB7ATgTwGIBlAUQBUB9AQQBEaAlEoogbQAYBdRUABy1lQZUWAHbcQAD0QBaAOwBmAGwA6AJwBGRbIBMAFkUAONgfUaANCDwz5stfNMGArOt1sb69Y90BfbxbSYuISklGQAGgASVEQR7FxIIHwCQqLiUgiyqvLKugYG8kaKWrqyuvIWVghyqsryjvXyqrr6snmysr7+6Nj4yhEAkkRkAPL0AJrKqBAANmAEAGLkAMIRFANDo2Nx4kmCwmIJ6dKOsurK+WwaBrKGxrkVMoqOOY7a8nqnqiaq2qqdIAEeng+oMRuNlAAZYa0ZTTLAAQwgqBEUAIEFEYEmIgAblgANaYsAiDA4VBwbYJXYpA6gI5KFTqAy5UpsbTtQoPBDaRwGc4uNivdTabRM1QdPwA7pBEEbcFQmFwxHI1FgHA4XDKHjTeEYABmuAAtsoiSSybAKbx+HtUocZMLbJ4vDpVIp7JlHIpOdzeSZXILhaKDP9AdL1mCJvKaLCERAALK4ObokSY5G4gnKEO9MObSHQqOKuMJhCprAAYx1+ziFsSVupaRk6lsRlewsU2jYuh59S9PL5unUbAHbldWWDUqzoJzkejiPjODmqvVOE12r1hoz4+B2bleZnhfnxZxZYroirnB2tf29YQnm0OUu-ddzKy+h7PpcA6HSka2jHgQnsoTLAACupalnAsALMsqzbls56UpeNq0jIJS6MoijGM27xKLoqgCpy+jPJ2Bhtj82haJc5F-kCMrhsoIFgRBUFkCsayTuMFCxqMJDVlSV62ggBTZC02ieKoYqKE0Wicj8yg6KJbjyGwsjGCcv4SpmW7sRMurwqg0zAfOBClnCsBgBEm7zHpBnzrxiE0pIMg8mwOQaB2WifEp6icicvIiuRuG+myjjyNRobacoun6YZczziSeAWf+eB2ck-HIVUYpqGwHZ6E8bCusK5SWIgIXZG4+UlF8Q5imFvQ0OQVD9BCRDGaZ5mbiQxL4Cl1oOek6jyIN5zvKyHqnANSictILi2Kc8ido4TQdiFQq1cC9VkI1zWTDMcyLCxMHaRQJAAHJkOMPV1gJHjtjkjKGDodxOJ6xVVEycnthh1wFJJHqhRpm7KBtW1EHuypohiWJpoSXXJfBlqpUhjk3r8NSMnUGgek8z2cgOaGNnolWOB2CiKOoa1Aw1TWgwW4OLhqWo6vqOBGia3XwzWiN9YgHgDcorzKajQplI4uMdsoBPNO6JNKOTANJZTm3U5F1kxQQcX4IlQKdfFl1pcjeRofYqiLbhNhtoyPbPORPyKLoIqUcp4pdArwPK1FNlzCZ-DtUlOv4FZ0W2RzfFI+kYr46JeivKK+GvfdcnZW5rKuAYbK+BKIhYBAcDiJpF5c9ecjvRoWi5UY3zea90jvCoptFIKGgis0FOwQXvVF22vK4XjHmmF5U1vDUD6uu8-b1AorcRVMszt1d6XHG8yjZUUBgR6crqyFNnhnPXg7kY0JFyy7NGwbmtBz-rdL1BLi0ugKmR4Vv1educXyDVk7b5RhdtT4B5-5hjMqS+YdrDKVvuJDCJxxLKQImcDCmghJaAwtlf6J9wr-2nAWOcYAQHcwQLhc4pQVKZFaCRYmqg4HoUHA9PQ+Q148j-nRacgI8FFzwhLE2op7pl08LjQhuVOw-BIvYCeTCcwMXArAeACFC7XWePSYo3I2wKTcJyRoKgJL1CTiKTQshHDiPBB7GKbCBLSCMBLQwZsMbcn0doTkGFbDCJsAoV4G9FAUzds1Ux6V8gqGNqbLINxRIGEHnUZQok6jGAKkE1kniqbbRnrg2RHdroDTvLkPCbhmj23IqLauM05IDRKA3EK2NnaSldgkmmQCUQ+ORjdH09QeQBj9Dobe2QPS-FaO0OobxHHxKVttSREF6n9XeNbVsJg3BCneM-So3JraSQCg7H4TtBkgxVkHZJCNUnpQ8Bhc41wsivCaEVBZN8bYrKMGs8UvggA */
+    /** @xstate-layout N4IgpgJg5mDOIC5QAsCWsAuB7ATgTwGIBlAUQBUB9AQQBEaAlEoogbQAYBdRUABy1lQZUWAHbcQAD0QBaABwB2AIwA6AGxtFbWQCYAnABZVAZlWzZAGhB4Zi-crbbtRo3sUBWNvIOzFAX1+WaJi4hKSUZAAaABJURFHsXEggfAJCouJSCF5GyvpmRrJsqqry+qVGltYI0l7KRm4NRgaG8mby8v6B6Nj4xOQUAGIAkgAyZCT0CeIpgsJiSZk16vatsvomPhq62pUyurp1+vrNOoryTaranSBBPXjKUUNEZADy9ACayqgQADZgBANyABhKIUR7PN7vKZJGZpeagRZuJTKWRGNi6RQKUxaPK7aqqNy5NxObRlRS6HzbXTXW4hB5PV4fZQjF60ZQ-LAAQwgqBEUAIEFEYC+IgAblgANbCsAiDA4VBwaG8fizdILGQmVTKTF5UoOdqFVR47RuWQo2xsYmKRxrXQdAI3bp08GMz4stkc7m8-lgHA4XDKHg-TkYABmuAAtsoZXKFbAlckVXCMjJHPJtQ0ynpjGddG4jVZECazT59JbtNbtLbZDSnfh6RCme6aOyuRAALK4f6CkTC3niqXKWn1l2Q5msluejtdhD9rAAYxDcwSCdhcxT1TOKPLjkubH0poaxtN5v0mk0bBMTSMteCI4ZY+bre5nZw-19-pwgeDYcjQ7r9yjk2E7PtOb6zmKC5LqIK6cNMSbruqCDuNouTomexi6roRiGMeJa2OebCXsY2y3ncDausosAAK7zvOcCwACwKgkBUJwTCCFqgiMhlHY6hmJaLgmMclp4oYhIHrIlzbNoJTorJZHOg+TI0XRDFMWQIJgsp7wUO2bwkKunHwpIiAFDkLQVm4+zyKoBglHi2zKPIjiaM4nhaEiVwOsOgE6cooacqgPzUW+BDzhysBgFEAEDEFIVvkZqSIdx1SmmwuQYvuJRKNhGh4kiZpVrJxylto8huDePkARRY6BcFoX-G+cp4DFd54ElqomYsdrKLoRH6KSBJFC4TgFc49hoqoZQUhedqKfWNDkFQoxEOFkXRQBJCyvgnXJkhtjHGo-H9UJbR4tI7iEtsBqydoRStAt9xLWQK0jEQXy-P8gKaSxOkUCQAByZAfHtKWmchZxmtsxRlqSChuO4F2yAcmIYuoQ06OWT3KC9b0fVO3oCkKIoDtKO0dexyrJVxEMEYSGikvmFbYU0iiOddprWta8gOLq+g43jq2gUTH4BkGIbhjgUYxrtVOJjT3WIJWBw4XmBj5ojZhuBzfVcxW5V8woAvVe1uPLcL9UJU1YAtW1dzbS1YO05kF4ZbYazWdZl4VTshYIKS6aWscRi2URdnWYLFvvQF8WNet-Cbe1jv4HFDWJfLa4u8rWgHHmGjothtmHniUO5FJprOOssiFVVDoiFgEBwOIvnwYrG7SBiBzqJoOj2RsFj+9I7l9eVhTyaHEc46xbddR3lxmscmgtLlaLs0PTgHOh6hEelFXrNP-nfH8s-7al0jEjk4emHaZLGPIF3uCo1mGIzJFSX4pvkax460Kf4OLHqISZwrMvIo2wjrIeB4UQUkNi4FGqJEYmy6GbH+T5CZ8n-tnaoaJ0wgOcGA-Y9QxIqB7qYFyeQCh5hrF-JSjY3QgSnK+MAWClYICOsbXmXhVjDV0CQtQGhyHwyoaaQ+9Df4tluKwju-VtTUKXlJEoVlS5HSGgebYUkjBXXtCg7+-lVL0VgPADi7cDrAOKCUQazMKxEQqP7C4fVi4eHkj4EobgxGUSto1aRSE5Du1MCHeo2wkTEjxOodMGjQ7nGJEoYoUdXqrR8alPMqEPbqO9qHUJG91i5DHg4a0uhsSf10XSIWMdj4sJMXPA68M6hQ2xIUikj8Gij1aJeAh3tSjxPxiLTBVSz501JHxNYRw7IbE0A-DeKh2jnGDpVUoawaElMWtHD6BiGJJLpkcFQlp3AHlME0KSfsqiB3sG4EOYcijq26ZbOOb5Nmu3KlqWJXh9hlEEpAk5ZQzkXJ3hHNY-h-BAA */
     tsTypes: {} as import("./machine.typegen").Typegen0,
 
     schema: {
@@ -55,6 +57,7 @@ export const machine = createMachine(
         | { type: "FETCH_HISTORY" }
         | { type: "FETCH_HISTORY_MORE" }
         | { type: "FETCH_HISTORY_ENTRY" }
+        | { type: "SET_FILTER"; filter?: Omit<Filter, "chainId"> }
         | { type: "SET_ADDRESS"; address?: Address }
         | { type: "SET_TXHASH"; txHash?: TransactionId },
     },
@@ -66,6 +69,7 @@ export const machine = createMachine(
       address: undefined,
       txHash: undefined,
       history: {
+        filter: undefined,
         entries: [],
         cursor: undefined,
         error: undefined,
@@ -84,6 +88,12 @@ export const machine = createMachine(
       SET_TXHASH: {
         actions: "saveTxHash",
         target: ".DETAILS.loading",
+        internal: false,
+      },
+
+      SET_FILTER: {
+        actions: "saveFilter",
+        target: ".HISTORY.LOAD.loading",
         internal: false,
       },
     },
@@ -200,6 +210,17 @@ export const machine = createMachine(
       hasMoreHistory: (ctx) => !!ctx.history.cursor?.value,
     },
     actions: {
+      saveFilter: assign({
+        history: (ctx, event) => ({
+          ...ctx.history,
+          filter: {
+            chainId: ChainID.CHAIN_ID_UNSPECIFIED,
+            status: FilterStatus.UNSPECIFIED,
+            ...ctx.history.filter,
+            ...event.filter,
+          },
+        }),
+      }),
       saveAddress: assign({
         address: (ctx, event) => event.address ?? ctx.address,
       }),
@@ -211,7 +232,8 @@ export const machine = createMachine(
        * History
        */
       setHistory: assign({
-        history: (_, event) => ({
+        history: (ctx, event) => ({
+          ...ctx.history,
           entries: event.data.entries,
           cursor: event.data.cursor,
           error: null,
@@ -219,6 +241,7 @@ export const machine = createMachine(
       }),
       setMoreHistory: assign({
         history: (ctx, event) => ({
+          ...ctx.history,
           entries: [...ctx.history.entries, ...event.data.entries],
           cursor: event.data.cursor,
           error: null,
@@ -257,10 +280,7 @@ export const machine = createMachine(
         return safeCall(
           getHistory({
             wallet,
-            filter: {
-              chainId: ChainID.CHAIN_ID_UNSPECIFIED,
-              status: FilterStatus.UNSPECIFIED,
-            },
+            filter: ctx.history.filter,
             cursor: {
               ...(meta.meta?.loadMore ? ctx.history.cursor : undefined),
               limit: HISTORY_LIMIT,

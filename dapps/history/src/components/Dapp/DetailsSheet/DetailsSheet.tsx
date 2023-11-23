@@ -1,10 +1,13 @@
 import { Skeleton } from "@dwidget/shared/components";
 import { Sheet, Button } from "@dwidget/shared-dapp/components";
 import { EntryStatus } from "@dwidget/shared/proto/history";
+import { nameMap } from "@dwidget/shared/utils/history";
 
-import { useStateMachine } from "@/providers";
+import {
+  useStateMachineRef,
+  useStateMachineSelector,
+} from "@/providers";
 import { Details } from "./Details";
-import { nameMap } from "@/utils";
 
 const statusMap: { [status in EntryStatus]: string } = {
   [EntryStatus.UNSPECIFIED]: "",
@@ -14,13 +17,19 @@ const statusMap: { [status in EntryStatus]: string } = {
 };
 
 export const DetailsSheet = () => {
-  const [state, send] = useStateMachine();
+  const { send } = useStateMachineRef();
 
-  const open =
-    state.matches("DETAILS.loading") || state.matches("DETAILS.success");
-  const isLoading = state.matches("DETAILS.loading");
+  const open = useStateMachineSelector(
+    (state) =>
+      state.matches("DETAILS.loading") || state.matches("DETAILS.success")
+  );
+  const isLoading = useStateMachineSelector((state) =>
+    state.matches("DETAILS.loading")
+  );
 
-  const entry = state.context.historyEntry?.entry;
+  const entry = useStateMachineSelector(
+    (state) => state.context.historyEntry?.entry
+  );
   const title = entry
     ? `${nameMap[entry.category]}${statusMap[entry.status]}`
     : "";

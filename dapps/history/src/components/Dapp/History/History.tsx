@@ -2,11 +2,11 @@ import { useCallback, useMemo } from "preact/hooks";
 import PullToRefresh from "react-simple-pull-to-refresh";
 import { HistoryEntry } from "@dwidget/shared/proto/history";
 import { Timestamp } from "@dwidget/shared/proto/google/protobuf/timestamp";
+import { HistoryItem } from "@dwidget/shared/components/history";
+import { Skeleton } from "@dwidget/shared/components";
 
 import { useStateMachineRef, useStateMachineSelector } from "@/providers";
-import { HistoryItem } from "./HistoryItem";
 import { HistoryDate } from "./HistoryDate";
-import { Skeleton } from "@dwidget/shared/components";
 
 export const History = () => {
   const { send } = useStateMachineRef();
@@ -45,7 +45,7 @@ export const History = () => {
       return (
         <>
           <HistoryDate date={date} />
-          <div className="date-group">
+          <div>
             {entries.map((entry) => (
               <HistoryItem
                 key={entry.txHash}

@@ -40,6 +40,7 @@ export interface Typegen0 {
   };
   eventsCausingActions: {
     saveAddress: "SET_ADDRESS";
+    saveFilter: "SET_FILTER";
     saveTxHash: "SET_TXHASH";
     setHistory: "done.invoke.entries";
     setHistoryEntry: "done.invoke.entry";
@@ -54,7 +55,11 @@ export interface Typegen0 {
     hasMoreHistory: "FETCH_HISTORY_MORE";
   };
   eventsCausingServices: {
-    fetchHistory: "FETCH_HISTORY" | "FETCH_HISTORY_MORE" | "SET_ADDRESS";
+    fetchHistory:
+      | "FETCH_HISTORY"
+      | "FETCH_HISTORY_MORE"
+      | "SET_ADDRESS"
+      | "SET_FILTER";
     fetchHistoryEntry:
       | "FETCH_HISTORY_ENTRY"
       | "SET_TXHASH"
