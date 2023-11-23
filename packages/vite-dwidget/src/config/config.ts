@@ -16,7 +16,7 @@ export const config = ({
   metadata: WidgetBuildJson;
 }) =>
   defineConfig({
-    base: pkg.name.replace("@", ""),
+    base: `/${pkg.name.replace("@", "")}`,
     plugins: [preact(), plugins({ pkg, metadata })],
     resolve: {
       alias: {

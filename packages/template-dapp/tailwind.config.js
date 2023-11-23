@@ -1,3 +1,3 @@
-import { tailwind } from "@dwidget/vite-dapp";
+import { tailwind } from "@dwidget/shared/config/tailwind";
 
 export default tailwind();
