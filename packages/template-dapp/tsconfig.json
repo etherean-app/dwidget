@@ -18,6 +18,9 @@
     "src",
     "tailwind.config.js",
   ],
+  "exclude": [
+    "./**/____*"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"
