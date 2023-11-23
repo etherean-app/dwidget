@@ -1,0 +1,56 @@
+name: Deploy History Widget
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/deploy-widget-history.yml'
+      - 'widgets/history/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.8.0
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Install and Build 🔧
+        run: |
+          pnpm install
+          pnpm run build
+
+      - name: Build widget 🔧
+        working-directory: widgets/history
+        env:
+          VITE_HISTORY_SERVICE_API_ENDPOINT: ${{ secrets.VITE_HISTORY_SERVICE_API_ENDPOINT }}
+          VITE_HISTORY_DAPP_URL: ${{ secrets.VITE_HISTORY_DAPP_URL }}
+        run: |
+          pnpm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: true
+          folder: widgets/history/dist
+          target-folder: history
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Create Index
+        uses: beautyfree/dwidget-indexer-github-action@42a7d780bba99b66facc88243b07714b9eb5edd4
+      - name: Deploy index.json
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: false
+          folder: index
