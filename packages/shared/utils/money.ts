@@ -1,16 +1,16 @@
 import { Money } from "./../proto/money";
-import { Money as UniswapMoney } from "./../proto/uniswap";
+import { Money as AmountMoney } from "./../proto/amount";
 import { fiatDecimalToString } from "./decimal";
 import { beautifyAmount } from "./string";
 
-export const fiatMoneyToString = (money?: Money | UniswapMoney) => {
+export const fiatMoneyToString = (money?: Money | AmountMoney) => {
   if (!money) {
     return "0";
   }
 
   if ("currencyCode" in money) {
     const units = beautifyAmount(money.units.toString());
-    const nanos = money.nanos.toString().substring(0, 2);
+    const nanos = money.nanos.toString(); //.substring(0, 2);
     return `${units}.${nanos}`;
   }
 

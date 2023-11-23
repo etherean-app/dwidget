@@ -1,18 +1,18 @@
 syntax = "proto3";
-package etherean.type;
+package etherean.summerfi;
 
-import "decimal.proto";
-import "uniswap.proto";
+import "amount.proto";
 import "assets.proto";
+import "decimal.proto";
 
 message Liquidation {
-  etherean.uniswap.Money price = 1;
+  etherean.type.Money price = 1;
   google.type.Decimal price_bellow = 2;
 }
 
 message Collateral {
   google.type.Decimal locked = 1;
-  etherean.uniswap.Money locked_fiat = 2;
+  etherean.type.Money locked_fiat = 2;
   etherean.assets.Token token_meta = 3;
 }
 

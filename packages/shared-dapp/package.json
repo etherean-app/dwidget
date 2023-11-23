@@ -5,8 +5,9 @@
   "dependencies": {
     "@dwidget/shared": "workspace:^",
     "clsx": "^2.0.0",
+    "material-symbols": "^0.13.2",
     "tailwind-merge": "^1.14.0",
-    "vaul": "^0.7.7",
+    "vaul": "^0.7.8",
     "windstitch": "^0.3.0"
   },
   "peerDependencies": {

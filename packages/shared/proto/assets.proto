@@ -1,6 +1,7 @@
 syntax = "proto3";
 package etherean.assets;
 
+import "chain_id.proto";
 import "decimal.proto";
 import "google/protobuf/timestamp.proto";
 import "money.proto";
@@ -13,6 +14,7 @@ service AssetService {
 
 message AssetsRequest {
   etherean.type.UserWallet wallet = 1;
+  etherean.type.ChainID chain_id = 2;
 }
 
 message AssetsResponse {

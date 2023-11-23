@@ -7,13 +7,18 @@ toFormat(Decimal);
 
 export const fiatDecimalToString = (
   decimal?: ProtoDecimal,
-  options: { dp: number } = { dp: 2 }
+  options?: { dp?: number } // = { dp: 2 }
 ) => {
   if (!decimal) {
     return "0";
   }
 
-  const value = new Decimal(decimal.value).toFormat(options.dp);
+  let value = new Decimal(decimal.value);
+
+  if (options?.dp) {
+    return value.toFormat(options.dp);
+  }
+
   return `${value}`;
 };
 

@@ -1,12 +1,15 @@
 syntax = "proto3";
 package etherean;
 
+import "amount.proto";
+import "assets.proto";
+import "chain_id.proto";
+import "curve.proto";
 import "decimal.proto";
 import "money.proto";
+import "summer_fi.proto";
 import "uniswap.proto";
 import "user_wallet.proto";
-import "assets.proto";
-import "summer_fi.proto";
 
 service EthereanGrpc {
   rpc GetLidoRewardsWidget (LidoRewardsRequest)
@@ -15,6 +18,8 @@ service EthereanGrpc {
       returns (UniswapRewardsWidgetReply);
   rpc GetSummerFiWidget(SumerFiRequest)
       returns (SummerFiWidgetReply);
+  rpc GetCurveWidget(CurveRequest)
+      returns (CurveWidgetReply);
 }
 
 message LidoRewardsRequest {
@@ -39,20 +44,38 @@ message UniswapRewardsRequest {
 }
 
 message UniswapRewardsWidgetReply {
-  etherean.uniswap.Money deposited_amount_fiat = 1;
+  etherean.type.Money deposited_amount_fiat = 1;
   repeated etherean.uniswap.Reward unclaimed_rewards = 2;
+  // protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
   repeated etherean.uniswap.Liquidity liquidity = 3;
 }
 
 message SumerFiRequest{
   etherean.type.UserWallet user_wallet = 1; 
+  // Market name from here https://summer.fi/borrow?protocol=maker
+  // (We've currently debugged WSTETH-A, other markets should be tested)
   string market = 2;
+  etherean.type.ChainID chain_id = 3;
 }
 
 message SummerFiWidgetReply {
-  etherean.type.Liquidation liquidation = 1;
-  etherean.type.Collateralization collateralization = 2;
-  etherean.type.Collateral collateral = 3;
-  etherean.type.Vault vault = 4;
-  etherean.type.Available available = 5;
+  etherean.summerfi.Liquidation liquidation = 1;
+  etherean.summerfi.Collateralization collateralization = 2;
+  etherean.summerfi.Collateral collateral = 3;
+  etherean.summerfi.Vault vault = 4;
+  etherean.summerfi.Available available = 5;
+}
+
+message CurveRequest{
+  etherean.type.UserWallet user_wallet = 1; 
+  // LP token symbol can be taken from here
+  // https://curve.fi/#/ethereum/pools/steth/deposit -> Token (e.g. 'steCRV')
+  string pool = 2;
+}
+
+message CurveWidgetReply {
+  string pool = 1;
+  repeated etherean.type.CurveBalance balances = 2;
+  repeated etherean.type.CurveBalance rewards = 3;
+  etherean.type.Money sum_amount = 4;
 }

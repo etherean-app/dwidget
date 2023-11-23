@@ -2,54 +2,8 @@
 // @generated from protobuf file "uniswap.proto" (package "etherean.uniswap", syntax proto3)
 // tslint:disable
 import { MessageType } from "@protobuf-ts/runtime";
-import { Decimal } from "./decimal";
-/**
- * @generated from protobuf message etherean.uniswap.Token
- */
-export interface Token {
-    /**
-     * @generated from protobuf field: string address = 1;
-     */
-    address: string;
-    /**
-     * @generated from protobuf field: string name = 2;
-     */
-    name: string;
-    /**
-     * @generated from protobuf field: string symbol = 3;
-     */
-    symbol: string;
-    /**
-     * @generated from protobuf field: uint32 decimals = 4;
-     */
-    decimals: number;
-}
-/**
- * @generated from protobuf message etherean.uniswap.Money
- */
-export interface Money {
-    /**
-     * @generated from protobuf field: string currency = 1;
-     */
-    currency: string;
-    /**
-     * @generated from protobuf field: google.type.Decimal value = 2;
-     */
-    value?: Decimal;
-}
-/**
- * @generated from protobuf message etherean.uniswap.Amount
- */
-export interface Amount {
-    /**
-     * @generated from protobuf field: google.type.Decimal ui_amount = 1;
-     */
-    uiAmount?: Decimal;
-    /**
-     * @generated from protobuf field: etherean.uniswap.Money fiat_amount = 2;
-     */
-    fiatAmount?: Money;
-}
+import { Amount } from "./amount";
+import { Token } from "./token";
 /**
  * @generated from protobuf message etherean.uniswap.TokenFilter
  */
@@ -68,11 +22,11 @@ export interface TokenFilter {
  */
 export interface Liquidity {
     /**
-     * @generated from protobuf field: etherean.uniswap.Token token = 1;
+     * @generated from protobuf field: etherean.type.Token token = 1;
      */
     token?: Token;
     /**
-     * @generated from protobuf field: etherean.uniswap.Amount amount = 2;
+     * @generated from protobuf field: etherean.type.Amount amount = 2;
      */
     amount?: Amount;
     /**
@@ -85,55 +39,14 @@ export interface Liquidity {
  */
 export interface Reward {
     /**
-     * @generated from protobuf field: etherean.uniswap.Token token = 1;
+     * @generated from protobuf field: etherean.type.Token token = 1;
      */
     token?: Token;
     /**
-     * @generated from protobuf field: etherean.uniswap.Amount amount = 2;
+     * @generated from protobuf field: etherean.type.Amount amount = 2;
      */
     amount?: Amount;
 }
-// @generated message type with reflection information, may provide speed optimized methods
-class Token$Type extends MessageType<Token> {
-    constructor() {
-        super("etherean.uniswap.Token", [
-            { no: 1, name: "address", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "symbol", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "decimals", kind: "scalar", T: 13 /*ScalarType.UINT32*/ }
-        ]);
-    }
-}
-/**
- * @generated MessageType for protobuf message etherean.uniswap.Token
- */
-export const Token = new Token$Type();
-// @generated message type with reflection information, may provide speed optimized methods
-class Money$Type extends MessageType<Money> {
-    constructor() {
-        super("etherean.uniswap.Money", [
-            { no: 1, name: "currency", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 2, name: "value", kind: "message", T: () => Decimal }
-        ]);
-    }
-}
-/**
- * @generated MessageType for protobuf message etherean.uniswap.Money
- */
-export const Money = new Money$Type();
-// @generated message type with reflection information, may provide speed optimized methods
-class Amount$Type extends MessageType<Amount> {
-    constructor() {
-        super("etherean.uniswap.Amount", [
-            { no: 1, name: "ui_amount", kind: "message", T: () => Decimal },
-            { no: 2, name: "fiat_amount", kind: "message", T: () => Money }
-        ]);
-    }
-}
-/**
- * @generated MessageType for protobuf message etherean.uniswap.Amount
- */
-export const Amount = new Amount$Type();
 // @generated message type with reflection information, may provide speed optimized methods
 class TokenFilter$Type extends MessageType<TokenFilter> {
     constructor() {

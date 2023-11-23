@@ -19,7 +19,7 @@ export const ListItem: FunctionComponent<ListItemProps> = ({
   return (
     <div
       className={cn(
-        "h-[72px] bg-[#E6EEFF] rounded-3xl flex-col justify-center items-center flex",
+        "h-[72px] bg-[#E6EEFF] rounded-[24px] flex-col justify-center items-center flex",
         {
           "opacity-50": notImplemented,
         }

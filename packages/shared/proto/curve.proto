@@ -1,0 +1,12 @@
+syntax = "proto3";
+package etherean.type;
+
+import "amount.proto";
+import "decimal.proto";
+
+message CurveBalance {
+  string token = 1;
+  etherean.type.Money amount = 2;
+  etherean.type.Money fiat = 3;
+  google.type.Decimal percentage = 4;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package etherean.type;
+
+import "decimal.proto";
+
+message Money {
+  string currency = 1;
+  google.type.Decimal value = 2;
+}
+
+message Amount {
+  google.type.Decimal ui_amount = 1;
+  etherean.type.Money fiat_amount = 2;
+}

@@ -3,14 +3,16 @@
 // tslint:disable
 import { ServiceType } from "@protobuf-ts/runtime-rpc";
 import { MessageType } from "@protobuf-ts/runtime";
+import { CurveBalance } from "./curve";
 import { Available } from "./summer_fi";
 import { Vault } from "./summer_fi";
 import { Collateral } from "./summer_fi";
 import { Collateralization } from "./summer_fi";
 import { Liquidation } from "./summer_fi";
+import { ChainID } from "./chain_id";
 import { Liquidity } from "./uniswap";
 import { Reward } from "./uniswap";
-import { Money as Money$ } from "./uniswap";
+import { Money as Money$ } from "./amount";
 import { TokenFilter } from "./uniswap";
 import { Money } from "./money";
 import { Decimal } from "./decimal";
@@ -77,7 +79,7 @@ export interface UniswapRewardsRequest {
  */
 export interface UniswapRewardsWidgetReply {
     /**
-     * @generated from protobuf field: etherean.uniswap.Money deposited_amount_fiat = 1;
+     * @generated from protobuf field: etherean.type.Money deposited_amount_fiat = 1;
      */
     depositedAmountFiat?: Money$;
     /**
@@ -85,6 +87,8 @@ export interface UniswapRewardsWidgetReply {
      */
     unclaimedRewards: Reward[];
     /**
+     * protolint:disable REPEATED_FIELD_NAMES_PLURALIZED
+     *
      * @generated from protobuf field: repeated etherean.uniswap.Liquidity liquidity = 3;
      */
     liquidity: Liquidity[];
@@ -98,34 +102,78 @@ export interface SumerFiRequest {
      */
     userWallet?: UserWallet;
     /**
+     * Market name from here https://summer.fi/borrow?protocol=maker
+     * (We've currently debugged WSTETH-A, other markets should be tested)
+     *
      * @generated from protobuf field: string market = 2;
      */
     market: string;
+    /**
+     * @generated from protobuf field: etherean.type.ChainID chain_id = 3;
+     */
+    chainId: ChainID;
 }
 /**
  * @generated from protobuf message etherean.SummerFiWidgetReply
  */
 export interface SummerFiWidgetReply {
     /**
-     * @generated from protobuf field: etherean.type.Liquidation liquidation = 1;
+     * @generated from protobuf field: etherean.summerfi.Liquidation liquidation = 1;
      */
     liquidation?: Liquidation;
     /**
-     * @generated from protobuf field: etherean.type.Collateralization collateralization = 2;
+     * @generated from protobuf field: etherean.summerfi.Collateralization collateralization = 2;
      */
     collateralization?: Collateralization;
     /**
-     * @generated from protobuf field: etherean.type.Collateral collateral = 3;
+     * @generated from protobuf field: etherean.summerfi.Collateral collateral = 3;
      */
     collateral?: Collateral;
     /**
-     * @generated from protobuf field: etherean.type.Vault vault = 4;
+     * @generated from protobuf field: etherean.summerfi.Vault vault = 4;
      */
     vault?: Vault;
     /**
-     * @generated from protobuf field: etherean.type.Available available = 5;
+     * @generated from protobuf field: etherean.summerfi.Available available = 5;
      */
     available?: Available;
+}
+/**
+ * @generated from protobuf message etherean.CurveRequest
+ */
+export interface CurveRequest {
+    /**
+     * @generated from protobuf field: etherean.type.UserWallet user_wallet = 1;
+     */
+    userWallet?: UserWallet;
+    /**
+     * LP token symbol can be taken from here
+     * https://curve.fi/#/ethereum/pools/steth/deposit -> Token (e.g. 'steCRV')
+     *
+     * @generated from protobuf field: string pool = 2;
+     */
+    pool: string;
+}
+/**
+ * @generated from protobuf message etherean.CurveWidgetReply
+ */
+export interface CurveWidgetReply {
+    /**
+     * @generated from protobuf field: string pool = 1;
+     */
+    pool: string;
+    /**
+     * @generated from protobuf field: repeated etherean.type.CurveBalance balances = 2;
+     */
+    balances: CurveBalance[];
+    /**
+     * @generated from protobuf field: repeated etherean.type.CurveBalance rewards = 3;
+     */
+    rewards: CurveBalance[];
+    /**
+     * @generated from protobuf field: etherean.type.Money sum_amount = 4;
+     */
+    sumAmount?: Money$;
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class LidoRewardsRequest$Type extends MessageType<LidoRewardsRequest> {
@@ -189,7 +237,8 @@ class SumerFiRequest$Type extends MessageType<SumerFiRequest> {
     constructor() {
         super("etherean.SumerFiRequest", [
             { no: 1, name: "user_wallet", kind: "message", T: () => UserWallet },
-            { no: 2, name: "market", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 2, name: "market", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "chain_id", kind: "enum", T: () => ["etherean.type.ChainID", ChainID] }
         ]);
     }
 }
@@ -213,11 +262,40 @@ class SummerFiWidgetReply$Type extends MessageType<SummerFiWidgetReply> {
  * @generated MessageType for protobuf message etherean.SummerFiWidgetReply
  */
 export const SummerFiWidgetReply = new SummerFiWidgetReply$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class CurveRequest$Type extends MessageType<CurveRequest> {
+    constructor() {
+        super("etherean.CurveRequest", [
+            { no: 1, name: "user_wallet", kind: "message", T: () => UserWallet },
+            { no: 2, name: "pool", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        ]);
+    }
+}
+/**
+ * @generated MessageType for protobuf message etherean.CurveRequest
+ */
+export const CurveRequest = new CurveRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class CurveWidgetReply$Type extends MessageType<CurveWidgetReply> {
+    constructor() {
+        super("etherean.CurveWidgetReply", [
+            { no: 1, name: "pool", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "balances", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => CurveBalance },
+            { no: 3, name: "rewards", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => CurveBalance },
+            { no: 4, name: "sum_amount", kind: "message", T: () => Money$ }
+        ]);
+    }
+}
+/**
+ * @generated MessageType for protobuf message etherean.CurveWidgetReply
+ */
+export const CurveWidgetReply = new CurveWidgetReply$Type();
 /**
  * @generated ServiceType for protobuf service etherean.EthereanGrpc
  */
 export const EthereanGrpc = new ServiceType("etherean.EthereanGrpc", [
     { name: "GetLidoRewardsWidget", options: {}, I: LidoRewardsRequest, O: LidoRewardsWidgetReply },
     { name: "GetUniswapRewardsWidget", options: {}, I: UniswapRewardsRequest, O: UniswapRewardsWidgetReply },
-    { name: "GetSummerFiWidget", options: {}, I: SumerFiRequest, O: SummerFiWidgetReply }
+    { name: "GetSummerFiWidget", options: {}, I: SumerFiRequest, O: SummerFiWidgetReply },
+    { name: "GetCurveWidget", options: {}, I: CurveRequest, O: CurveWidgetReply }
 ]);

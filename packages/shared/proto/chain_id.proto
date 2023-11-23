@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package etherean.type;
+
+enum ChainID {
+  CHAIN_ID_UNSPECIFIED = 0;
+  CHAIN_ID_ETHEREUM = 1;
+  CHAIN_ID_GOERLI = 5;
+  CHAIN_ID_SEPOLIA = 11155111;
+}

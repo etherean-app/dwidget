@@ -7,6 +7,7 @@ import { Timestamp } from "./google/protobuf/timestamp";
 import { Money } from "./money";
 import { Decimal } from "./decimal";
 import { DecU256 } from "./u256";
+import { ChainID } from "./chain_id";
 import { UserWallet } from "./user_wallet";
 /**
  * @generated from protobuf message etherean.assets.AssetsRequest
@@ -16,6 +17,10 @@ export interface AssetsRequest {
      * @generated from protobuf field: etherean.type.UserWallet wallet = 1;
      */
     wallet?: UserWallet;
+    /**
+     * @generated from protobuf field: etherean.type.ChainID chain_id = 2;
+     */
+    chainId: ChainID;
 }
 /**
  * @generated from protobuf message etherean.assets.AssetsResponse
@@ -125,7 +130,8 @@ export interface ExchangeRate {
 class AssetsRequest$Type extends MessageType<AssetsRequest> {
     constructor() {
         super("etherean.assets.AssetsRequest", [
-            { no: 1, name: "wallet", kind: "message", T: () => UserWallet }
+            { no: 1, name: "wallet", kind: "message", T: () => UserWallet },
+            { no: 2, name: "chain_id", kind: "enum", T: () => ["etherean.type.ChainID", ChainID] }
         ]);
     }
 }

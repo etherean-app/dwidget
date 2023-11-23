@@ -1,16 +1,41 @@
 import { ComponentChildren, FunctionalComponent } from "preact";
-import { WagmiConfig, createConfig, mainnet } from "wagmi";
+import {
+  WagmiConfig,
+  configureChains,
+  createConfig,
+  mainnet,
+  sepolia,
+} from "wagmi";
+import { goerli } from "viem/chains"; // deprecated
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
-import { createPublicClient, http } from "viem";
+import { LedgerConnector } from "wagmi/connectors/ledger";
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [mainnet, sepolia, goerli],
+  [
+    alchemyProvider({ apiKey: "rov5Tf9RhgB-SJGkULjyEzotCowvokH5" }),
+    publicProvider(),
+  ]
+);
 
 const config = createConfig({
-  connectors: [new MetaMaskConnector(), new InjectedConnector()],
-  autoConnect: true,
-  publicClient: createPublicClient({
-    chain: mainnet,
-    transport: http(),
-  }),
+  connectors: [
+    new InjectedConnector({ chains }),
+    new MetaMaskConnector({ chains }),
+    new LedgerConnector({
+      chains,
+      options: {
+        walletConnectVersion: 2,
+        projectId: "f7ad7e365f67c5668b2d5d06bf751760",
+      },
+    }),
+  ],
+  // autoConnect: true,
+  publicClient,
+  webSocketPublicClient,
 });
 
 interface Props {

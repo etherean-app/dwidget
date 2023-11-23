@@ -4,6 +4,8 @@
 import type { RpcTransport } from "@protobuf-ts/runtime-rpc";
 import type { ServiceInfo } from "@protobuf-ts/runtime-rpc";
 import { EthereanGrpc } from "./etherean";
+import type { CurveWidgetReply } from "./etherean";
+import type { CurveRequest } from "./etherean";
 import type { SummerFiWidgetReply } from "./etherean";
 import type { SumerFiRequest } from "./etherean";
 import type { UniswapRewardsWidgetReply } from "./etherean";
@@ -29,6 +31,10 @@ export interface IEthereanGrpcClient {
      * @generated from protobuf rpc: GetSummerFiWidget(etherean.SumerFiRequest) returns (etherean.SummerFiWidgetReply);
      */
     getSummerFiWidget(input: SumerFiRequest, options?: RpcOptions): UnaryCall<SumerFiRequest, SummerFiWidgetReply>;
+    /**
+     * @generated from protobuf rpc: GetCurveWidget(etherean.CurveRequest) returns (etherean.CurveWidgetReply);
+     */
+    getCurveWidget(input: CurveRequest, options?: RpcOptions): UnaryCall<CurveRequest, CurveWidgetReply>;
 }
 /**
  * @generated from protobuf service etherean.EthereanGrpc
@@ -59,5 +65,12 @@ export class EthereanGrpcClient implements IEthereanGrpcClient, ServiceInfo {
     getSummerFiWidget(input: SumerFiRequest, options?: RpcOptions): UnaryCall<SumerFiRequest, SummerFiWidgetReply> {
         const method = this.methods[2], opt = this._transport.mergeOptions(options);
         return stackIntercept<SumerFiRequest, SummerFiWidgetReply>("unary", this._transport, method, opt, input);
+    }
+    /**
+     * @generated from protobuf rpc: GetCurveWidget(etherean.CurveRequest) returns (etherean.CurveWidgetReply);
+     */
+    getCurveWidget(input: CurveRequest, options?: RpcOptions): UnaryCall<CurveRequest, CurveWidgetReply> {
+        const method = this.methods[3], opt = this._transport.mergeOptions(options);
+        return stackIntercept<CurveRequest, CurveWidgetReply>("unary", this._transport, method, opt, input);
     }
 }

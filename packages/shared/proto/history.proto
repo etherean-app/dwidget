@@ -1,0 +1,97 @@
+syntax = "proto3";
+package etherean.history;
+
+import "amount.proto";
+import "chain_id.proto";
+import "google/protobuf/timestamp.proto";
+import "token.proto";
+import "transaction.proto";
+import "user_wallet.proto";
+
+service HistoryService {
+  rpc GetWalletHistory (HistoryRequest)
+      returns (HistoryResponse);
+  rpc GetWalletHistoryEntry (HistoryEntryRequest)
+      returns (HistoryEntryResponse);
+}
+
+message Cursor {
+  optional string value = 1;
+  optional uint32 limit = 2;
+  optional string source = 3;
+}
+
+message HistoryEntryRequest {
+  etherean.type.TransactionId tx_hash = 1;
+  etherean.type.ChainID chain_id = 2;
+}
+
+message HistoryEntryResponse {
+  HistoryEntry entry = 1;
+}
+
+message HistoryRequest {
+  etherean.type.UserWallet wallet = 1;
+  Filter filter = 2;
+  Cursor cursor = 3;
+}
+
+message Filter {
+  etherean.type.ChainID chain_id = 1;
+  FilterStatus status = 2;
+}
+
+enum FilterStatus {
+  FILTER_STATUS_UNSPECIFIED = 0;
+  FILTER_STATUS_CONFIRMED = 1;
+  FILTER_STATUS_PENDING = 2;
+}
+
+message HistoryResponse {
+  repeated HistoryEntry entries = 1;
+  Cursor cursor = 2;
+}
+
+message Transfer {
+  etherean.type.Token token = 1;
+  etherean.type.Amount amount = 2;
+  etherean.type.UserWallet from = 3;
+  etherean.type.UserWallet to = 4;
+}
+
+enum EntryStatus {
+  ENTRY_STATUS_UNSPECIFIED = 0;
+  ENTRY_STATUS_CONFIRMED = 1;
+  ENTRY_STATUS_PENDING = 2;
+  ENTRY_STATUS_FAILED = 3;
+}
+
+enum EntryCategory {
+  ENTRY_CATEGORY_UNSPECIFIED = 0;
+  ENTRY_CATEGORY_APPROVED = 1;
+  ENTRY_CATEGORY_BORROWED = 2;
+  ENTRY_CATEGORY_BURNED = 3;
+  ENTRY_CATEGORY_CANCELLED = 4;
+  ENTRY_CATEGORY_CLAIMED = 5;
+  ENTRY_CATEGORY_DEPLOYED = 6;
+  ENTRY_CATEGORY_DEPOSITED = 7;
+  ENTRY_CATEGORY_EXECUTED = 8;
+  ENTRY_CATEGORY_MINTED = 9;
+  ENTRY_CATEGORY_RECEIVED = 10;
+  ENTRY_CATEGORY_REPAID = 11;
+  ENTRY_CATEGORY_SENT = 12;
+  ENTRY_CATEGORY_STAKED = 13;
+  ENTRY_CATEGORY_SWAPPED = 14;
+  ENTRY_CATEGORY_UNSTAKED = 15;
+  ENTRY_CATEGORY_WITHDRAWN = 16;
+}
+
+// TODO: Update type after output format is known
+message HistoryEntry {
+  etherean.type.TransactionId tx_hash = 1;
+  string tx_url = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  EntryCategory category = 4;
+  EntryStatus status = 5;
+  repeated Transfer transfers = 6;
+}

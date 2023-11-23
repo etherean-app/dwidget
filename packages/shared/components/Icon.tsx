@@ -1,9 +1,11 @@
 import { FunctionalComponent } from "preact";
 import { HTMLProps } from "preact/compat";
+import { MaterialSymbol } from "material-symbols";
+
 import { cn } from "./../utils";
 
 interface Props extends HTMLProps<HTMLSpanElement> {
-  name: string;
+  name: MaterialSymbol;
   className?: string;
 }
 
