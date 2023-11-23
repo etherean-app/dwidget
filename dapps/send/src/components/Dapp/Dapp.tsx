@@ -2,7 +2,7 @@ import { useEffect } from "preact/hooks";
 import { useAccount, useConnect, useNetwork } from "wagmi";
 import { pick } from "lodash";
 
-import { useStateMachine } from "@/providers/stateMachine";
+import { useStateMachine } from "@/providers";
 import { Sheets } from "./Sheets";
 import { Screens } from "./Screens";
 

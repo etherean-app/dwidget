@@ -109,8 +109,8 @@ export const machine = createMachine(
       TOKEN: {
         on: {
           backToken: {
-            actions: ["saveToken"],
             target: "SEND_TOKEN.hist",
+            actions: "saveToken",
           },
         },
       },
@@ -118,8 +118,8 @@ export const machine = createMachine(
       NETWORK: {
         on: {
           backNetwork: {
-            actions: ["saveNetwork"],
             target: "SEND_TOKEN.hist",
+            actions: "saveNetwork",
           },
         },
       },
@@ -127,8 +127,8 @@ export const machine = createMachine(
       RECEPIENT: {
         on: {
           backRecepient: {
-            actions: ["saveRecepient"],
             target: "SEND_TOKEN.hist",
+            actions: "saveRecepient",
           },
         },
       },
@@ -180,13 +180,5 @@ export const machine = createMachine(
         amount: (ctx, event) => event.value ?? ctx.amount,
       }),
     },
-    // services: {
-    //   async getAssets(ctx) {
-    //     const response = await getAssets({
-    //       wallet: ctx.address ? { walletAddress: ctx.address } : undefined,
-    //     });
-    //     return response;
-    //   },
-    // },
   }
 );
