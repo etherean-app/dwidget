@@ -15,8 +15,6 @@
     ]
   },
   "include": [
-    "src",
-    "../shared/config/tailwind/config.ts",
-    "../shared/config/tailwind/index.ts"
+    "src"
   ]
 }
