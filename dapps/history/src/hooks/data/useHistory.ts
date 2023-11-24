@@ -12,7 +12,7 @@ function getQueryArgs(args: HistoryRequest) {
       const { response } = await historyClient.getWalletHistory(args);
       return response;
     },
-    enabled: false,
+    enabled: !!args.wallet,
   };
 }
 
@@ -21,7 +21,7 @@ export function useHistory(args: HistoryRequest) {
 }
 
 export function getHistory(args: HistoryRequest) {
-  return queryClient.ensureQueryData<HistoryResponse>(getQueryArgs(args));
+  return queryClient.fetchQuery<HistoryResponse>(getQueryArgs(args));
 }
 
 export default useHistory;

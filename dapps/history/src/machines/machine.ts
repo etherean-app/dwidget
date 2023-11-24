@@ -15,6 +15,13 @@ import { getHistory, getHistoryEntry } from "@/hooks";
 import { HISTORY_LIMIT } from "@/constants";
 import { safeCall } from "./utils";
 
+const INITIAL_HISTORY = {
+  filter: undefined,
+  entries: [],
+  cursor: undefined,
+  error: undefined,
+};
+
 type HistoryContext = {
   filter?: Filter;
   entries: HistoryEntry[];
@@ -68,12 +75,7 @@ export const machine = createMachine(
     context: {
       address: undefined,
       txHash: undefined,
-      history: {
-        filter: undefined,
-        entries: [],
-        cursor: undefined,
-        error: undefined,
-      },
+      history: INITIAL_HISTORY,
       historyEntry: undefined,
     },
 
@@ -207,12 +209,12 @@ export const machine = createMachine(
   },
   {
     guards: {
-      hasMoreHistory: (ctx) => !!ctx.history.cursor?.value,
+      hasMoreHistory: (ctx) => !!ctx.history.cursor?.value
     },
     actions: {
       saveFilter: assign({
         history: (ctx, event) => ({
-          ...ctx.history,
+          ...INITIAL_HISTORY,
           filter: {
             chainId: ChainID.CHAIN_ID_UNSPECIFIED,
             status: FilterStatus.UNSPECIFIED,
@@ -243,7 +245,10 @@ export const machine = createMachine(
         history: (ctx, event) => ({
           ...ctx.history,
           entries: [...ctx.history.entries, ...event.data.entries],
-          cursor: event.data.cursor,
+          cursor: {
+            ...event.data.cursor,
+            limit: HISTORY_LIMIT,
+          },
           error: null,
         }),
       }),

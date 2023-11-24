@@ -10,6 +10,8 @@ interface Props {
 }
 
 export const Details: FunctionalComponent<Props> = ({ entry }) => {
+  if (!entry) return <div>Transaction not found</div>;
+
   return (
     <div className="flex flex-col bg-[#E6EEFF] rounded-[20px] divide-y divide-outline-variant">
       {entry?.txHash ? (

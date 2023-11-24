@@ -1,10 +1,9 @@
 import { ComponentChildren } from "preact";
-import { EmittedFrom } from "xstate";
 import { createActorContext } from "@xstate/react";
 
 import { machine } from "../machines";
 
-const StateMachineContext = createActorContext(machine);
+const StateMachineContext = createActorContext(machine, { devTools: false });
 
 export function StateMachineProvider({
   children,

@@ -32,7 +32,7 @@ export const History = () => {
   const grouped = useMemo(
     () =>
       entries.reduce((acc, el) => {
-        if (!el.timestamp) return acc;
+        if (!el.timestamp) el.timestamp = Timestamp.fromDate(new Date());
         const date = Timestamp.toDate(el.timestamp).toDateString();
         if (!acc[date]) acc[date] = [];
         acc[date].push(el);
