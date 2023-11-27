@@ -1,6 +1,6 @@
 import { Sheet, ListItem, Button } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers";
+import { useStateMachineRef, useStateMachineSelector } from "@/providers";
 import {
   ListItemAccount,
   ListItemNetwork,
@@ -9,9 +9,20 @@ import {
 } from "./components";
 
 export const TransactionSubmitted = () => {
-  const [state, send] = useStateMachine();
+  const { send } = useStateMachineRef();
 
-  const open = state.matches("TRANSACTION_SUBMITTED");
+  const open = useStateMachineSelector((state) =>
+    state.matches("TRANSACTION_SUBMITTED")
+  );
+
+  const { network, address, amount, token, recepient } =
+    useStateMachineSelector((state) => ({
+      network: state.context.network,
+      address: state.context.address,
+      amount: state.context.amount,
+      token: state.context.token,
+      recepient: state.context.recepient,
+    }));
 
   return (
     <Sheet
@@ -21,16 +32,12 @@ export const TransactionSubmitted = () => {
       title="Transaction submitted"
     >
       <div className="grid gap-1">
-        <ListItemNetwork network={state.context.network} />
-        <ListItemAccount address={state.context.address} />
+        <ListItemNetwork network={network} />
+        <ListItemAccount address={address} />
         <ListItem label="ERC-20" value="Gas fee 25$" notImplemented />
-        <ListItemAmount
-          amount={state.context.amount}
-          token={state.context.token}
-          notImplemented
-        />
+        <ListItemAmount amount={amount} token={token} notImplemented />
         <ListItem label="Recipient gets" value="0.0556ETH" notImplemented />
-        <ListItemRecepient recepient={state.context.recepient} />
+        <ListItemRecepient recepient={recepient} />
       </div>
       <div className="grid gap-4 mt-4" onClick={() => send("back")}>
         <Button>Continue</Button>

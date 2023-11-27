@@ -1,15 +1,15 @@
 import { useEffect } from "preact/hooks";
 import { useAccount, useConnect, useNetwork } from "wagmi";
-import { pick } from "lodash";
 
-import { useStateMachine } from "@/providers";
+import { useStateMachineRef } from "@/providers";
 import { Sheets } from "./Sheets";
 import { Screens } from "./Screens";
+import { Errors } from "./Errors";
 
 export const Dapp = () => {
   const { address, isConnected } = useAccount();
   const { connect, connectors } = useConnect();
-  const [state, send] = useStateMachine();
+  const { send } = useStateMachineRef();
 
   useEffect(() => {
     if (!isConnected) {
@@ -26,19 +26,20 @@ export const Dapp = () => {
     send({ type: "SET_ADDRESS", value: address });
   }, [address, send]);
 
-  useEffect(() => {
-    localStorage.setItem(
-      "state-machine-context",
-      JSON.stringify(pick(state.context, ["recepient"]), (_, v) =>
-        typeof v === "bigint" ? v.toString() : v
-      )
-    );
-  }, [state]);
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     "state-machine-context",
+  //     JSON.stringify(pick(state.context, ["recepient"]), (_, v) =>
+  //       typeof v === "bigint" ? v.toString() : v
+  //     )
+  //   );
+  // }, [state]);
 
   return (
     <>
       <Screens />
       <Sheets />
+      <Errors />
     </>
   );
 };

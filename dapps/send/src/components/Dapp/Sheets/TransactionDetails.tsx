@@ -1,6 +1,6 @@
 import { Sheet, Button, ListItem } from "@dwidget/shared-dapp/components";
 
-import { useStateMachine } from "@/providers";
+import { useStateMachineRef, useStateMachineSelector } from "@/providers";
 import {
   ListItemToken,
   ListItemAccount,
@@ -9,9 +9,20 @@ import {
 } from "./components";
 
 export const TransactionDetails = () => {
-  const [state, send] = useStateMachine();
+  const { send } = useStateMachineRef();
 
-  const open = state.matches("SEND_TOKEN.TRANSACTION_DETAILS");
+  const open = useStateMachineSelector((state) =>
+    state.matches("SEND_TOKEN.TRANSACTION_DETAILS")
+  );
+
+  const { network, address, token, recepient } = useStateMachineSelector(
+    (state) => ({
+      network: state.context.network,
+      address: state.context.address,
+      token: state.context.token,
+      recepient: state.context.recepient,
+    })
+  );
 
   return (
     <Sheet
@@ -22,18 +33,15 @@ export const TransactionDetails = () => {
     >
       <div className="grid gap-1">
         <ListItemNetwork
-          network={state.context.network}
+          network={network}
           onClick={() => send({ type: "network" })}
         />
-        <ListItemAccount address={state.context.address} />
+        <ListItemAccount address={address} />
         <ListItem label="ERC-20" value="Gas fee 25$" notImplemented />
-        <ListItemToken
-          token={state.context.token}
-          onClick={() => send({ type: "token" })}
-        />
+        <ListItemToken token={token} onClick={() => send({ type: "token" })} />
         <ListItem label="Recipient gets" value="0.0556ETH" notImplemented />
         <ListItemRecepient
-          recepient={state.context.recepient}
+          recepient={recepient}
           onClick={() => send({ type: "recepient" })}
         />
       </div>

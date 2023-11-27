@@ -25,6 +25,8 @@ export function useStateMachine() {
   return context;
 }
 
+export const useStateMachineSelector = StateMachineContext.useSelector;
+
 export function useStateMachineRef() {
   const context = StateMachineContext.useActorRef();
   if (context === undefined) {

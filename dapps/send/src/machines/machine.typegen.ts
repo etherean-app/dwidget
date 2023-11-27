@@ -18,6 +18,7 @@ export interface Typegen0 {
     saveRecepient: "backRecepient";
     saveToken: "backToken";
     setAmount: "SET_AMOUNT";
+    setError: "failure";
   };
   eventsCausingDelays: {};
   eventsCausingGuards: {
@@ -26,6 +27,7 @@ export interface Typegen0 {
   };
   eventsCausingServices: {};
   matchesStates:
+    | "FAILURE"
     | "NETWORK"
     | "RECEPIENT"
     | "SEND_TOKEN"

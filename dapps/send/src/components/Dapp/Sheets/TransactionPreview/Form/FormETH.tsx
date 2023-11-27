@@ -26,8 +26,12 @@ export const FormETH = () => {
 
   const handleContinueClick = useCallback(async () => {
     if (sendTransactionAsync) {
-      const result = await sendTransactionAsync();
-      send({ type: "transactionSubmitted" });
+      try {
+        const result = await sendTransactionAsync();
+        send({ type: "transactionSubmitted" });
+      } catch (e) {
+        send({ type: "failure", error: (e as Error).message });
+      }
     }
   }, [sendTransactionAsync, send]);
 

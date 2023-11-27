@@ -1,7 +1,7 @@
 import { useCallback } from "preact/hooks";
+import { ErrorSheet } from "@dwidget/shared-dapp/components";
 
 import { useStateMachineRef, useStateMachineSelector } from "@/providers";
-import { ErrorSheet } from "./ErrorSheet";
 
 export const Errors = () => {
   const { send } = useStateMachineRef();
