@@ -21,7 +21,7 @@ export default mergeConfig(
           src: "https://etherean-app.github.io/dwidget/history/",
           sizes: {
             default: {
-              height: 164,
+              height: 252,
             },
           },
         },
