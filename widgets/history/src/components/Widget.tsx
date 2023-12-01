@@ -2,7 +2,6 @@ import { FunctionComponent } from "preact";
 import { useEffect } from "preact/hooks";
 import { useAccount, useConnect } from "wagmi";
 
-import { useHistory } from "@/hooks";
 import { HistoryWidget } from "./HistoryWidget";
 import { PendingTransactionsWidget } from "./PendingTransactionsWidget";
 
