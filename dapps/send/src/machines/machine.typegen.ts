@@ -13,6 +13,7 @@ export interface Typegen0 {
     services: never;
   };
   eventsCausingActions: {
+    appClose: "close";
     saveAddress: "SET_ADDRESS";
     saveNetwork: "SET_NETWORK" | "backNetwork";
     saveRecepient: "backRecepient";

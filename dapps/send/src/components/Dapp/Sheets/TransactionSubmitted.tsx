@@ -27,7 +27,7 @@ export const TransactionSubmitted = () => {
   return (
     <Sheet
       open={open}
-      onClose={() => open && send("back")}
+      onClose={() => open && send("close")}
       icon="done"
       title="Transaction submitted"
     >
@@ -39,7 +39,7 @@ export const TransactionSubmitted = () => {
         <ListItem label="Recipient gets" value="0.0556ETH" notImplemented />
         <ListItemRecepient recepient={recepient} />
       </div>
-      <div className="grid gap-4 mt-4" onClick={() => send("back")}>
+      <div className="grid gap-4 mt-4" onClick={() => send("close")}>
         <Button>Continue</Button>
       </div>
     </Sheet>
